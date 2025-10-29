@@ -18,8 +18,8 @@ on:
         - Release
 
 env:
-  DEVELOPER_TEAM_ID: 7RV2Y67HF6
-  BUNDLE_IDENTIFIER: com.7RV2Y67HF6.xdripswiftt1li23
+  DEVELOPER_TEAM_ID: HHZN32E89C
+  BUNDLE_IDENTIFIER: com.HHZN32E89C.xdripswiftt1li23
 
 jobs:
   build-ipa:
@@ -76,17 +76,17 @@ jobs:
         echo "检查 App Store Connect 配置..."
         
         # 检查主应用是否存在
-        echo "检查主应用 Bundle ID: com.7RV2Y67HF6.xdripswiftt1li23"
+        echo "检查主应用 Bundle ID: com.HHZN32E89C.xdripswiftt1li23"
         
         # 检查扩展应用 Bundle ID
         echo "检查扩展应用 Bundle ID:"
-        echo "- com.7RV2Y67HF6.xdripswiftt1li23.xDripWidget"
-        echo "- com.7RV2Y67HF6.xdripswiftt1li23.watchkitapp"
-        echo "- com.7RV2Y67HF6.xdripswiftt1li23.watchkitapp.xDripWatchComplication"
-        echo "- com.7RV2Y67HF6.xdripswiftt1li23.xDripNotificationContextExtension"
+        echo "- com.HHZN32E89C.xdripswiftt1li23.xDripWidget"
+        echo "- com.HHZN32E89C.xdripswiftt1li23.watchkitapp"
+        echo "- com.HHZN32E89C.xdripswiftt1li23.watchkitapp.xDripWatchComplication"
+        echo "- com.HHZN32E89C.xdripswiftt1li23.xDripNotificationContextExtension"
         
         # 检查 App Group
-        echo "检查 App Group: group.com.7RV2Y67HF6.loopkit.LoopGroup"
+        echo "检查 App Group: group.com.HHZN32E89C.loopkit.LoopGroup"
         
         echo "注意：如果构建失败，请确保在 Apple Developer Portal 中："
         echo "1. 创建了所有必要的 Bundle ID"

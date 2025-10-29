@@ -16,9 +16,9 @@ on:
           - capabilities
 
 env:
-  DEVELOPER_TEAM_ID: 7RV2Y67HF6
-  MAIN_BUNDLE_ID: com.7RV2Y67HF6.xdripswiftt1li23
-  APP_GROUP_ID: group.com.7RV2Y67HF6.loopkit.LoopGroup
+  DEVELOPER_TEAM_ID: HHZN32E89C
+  MAIN_BUNDLE_ID: com.HHZN32E89C.xdripswiftt1li23
+  APP_GROUP_ID: group.com.HHZN32E89C.loopkit.LoopGroup
 
 jobs:
   verify-configuration:
@@ -122,7 +122,7 @@ jobs:
           # 检查 project.pbxproj 中的 Bundle ID
           echo ""
           echo "📄 project.pbxproj 中的 Bundle ID:"
-          grep -o "com\.7RV2Y67HF6\.xdripswiftt1li23[^\"]*" xdrip.xcodeproj/project.pbxproj | sort -u | while read bundle_id; do
+          grep -o "com\.HHZN32E89C\.xdripswiftt1li23[^\"]*" xdrip.xcodeproj/project.pbxproj | sort -u | while read bundle_id; do
             echo "   ✓ $bundle_id"
           done
           
