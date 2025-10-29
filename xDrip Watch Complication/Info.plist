@@ -26,7 +26,7 @@
 
     <!-- 关键：把 Complication 绑定到 Watch App -->
     <key>WKAppBundleIdentifier</key>
-    <string>com.7RV2Y67HF6.xdripswiftt1li23.watchkitapp</string>
+    <string>$(MAIN_APP_BUNDLE_IDENTIFIER).watchkitapp</string>
 
     <!-- 这是 WidgetKit 的表盘扩展 -->
     <key>NSExtension</key>
