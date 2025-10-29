@@ -1,0 +1,142 @@
+name: Initialize Fastlane Match Repository
+
+# 只允许手动触发
+on:
+  workflow_dispatch:
+
+env:
+  DEVELOPER_TEAM_ID: HHZN32E89C
+
+jobs:
+  init-match:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+        
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0
+        bundler-cache: true
+        
+    - name: Install dependencies
+      run: |
+        gem install bundler:2.4.19
+        bundle install
+        
+    - name: Check if xDrip-Match-Secrets repository exists
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
+      run: |
+        echo "🔍 检查 xDrip-Match-Secrets 仓库是否存在..."
+        
+        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
+          -H "Authorization: token $GH_PAT" \
+          https://api.github.com/repos/${{ github.repository_owner }}/xDrip-Match-Secrets)
+        
+        if [ "$RESPONSE" == "200" ]; then
+          echo "✅ xDrip-Match-Secrets 仓库已存在"
+        elif [ "$RESPONSE" == "404" ]; then
+          echo "❌ xDrip-Match-Secrets 仓库不存在"
+          echo ""
+          echo "请先创建仓库:"
+          echo "1. 访问: https://github.com/new"
+          echo "2. Repository name: xDrip-Match-Secrets"
+          echo "3. Visibility: Private"
+          echo "4. 不勾选任何初始化选项"
+          echo "5. Create repository"
+          exit 1
+        else
+          echo "❌ 检查失败,HTTP 状态码: $RESPONSE"
+          echo "请检查 GH_PAT 是否有效"
+          exit 1
+        fi
+        
+    - name: Initialize Match and Upload Certificates
+      env:
+        MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+        GH_PAT: ${{ secrets.GH_PAT }}
+        GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+        TEAMID: ${{ env.DEVELOPER_TEAM_ID }}
+        GITHUB_WORKSPACE: ${{ github.workspace }}
+        FASTLANE_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+        FASTLANE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+        FASTLANE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+      run: |
+        echo "🚀 初始化 Fastlane Match..."
+        echo ""
+        echo "目标仓库: https://github.com/$GITHUB_REPOSITORY_OWNER/xDrip-Match-Secrets"
+        echo "Team ID: $TEAMID"
+        echo ""
+        echo "将为以下 5 个 Bundle IDs 创建 Provisioning Profiles:"
+        echo "  1. com.HHZN32E89C.xdripswiftt1li23"
+        echo "  2. com.HHZN32E89C.xdripswiftt1li23.xDripWidget"
+        echo "  3. com.HHZN32E89C.xdripswiftt1li23.watchkitapp"
+        echo "  4. com.HHZN32E89C.xdripswiftt1li23.watchkitapp.xDripWatchComplication"
+        echo "  5. com.HHZN32E89C.xdripswiftt1li23.xDripNotificationContextExtension"
+        echo ""
+        
+        # 运行 Fastlane Match 初始化
+        # 使用 certs lane (会强制创建新的 Profiles)
+        bundle exec fastlane certs
+        
+        echo ""
+        echo "✅ Match 初始化完成!"
+        echo ""
+        echo "Match-Secrets 仓库已更新,包含:"
+        echo "  ✅ Distribution 证书"
+        echo "  ✅ 5 个 Provisioning Profiles"
+        echo ""
+        
+    - name: Verify Match Repository
+      env:
+        GH_PAT: ${{ secrets.GH_PAT }}
+      run: |
+        echo "🔍 验证 Match 仓库内容..."
+        
+        # 克隆并检查内容
+        git clone https://$GH_PAT@github.com/${{ github.repository_owner }}/xDrip-Match-Secrets.git /tmp/match-verify
+        
+        echo ""
+        echo "📁 Match 仓库结构:"
+        cd /tmp/match-verify
+        tree -L 3 || find . -type f -not -path "./.git/*"
+        
+        echo ""
+        echo "✅ Match 仓库验证完成"
+        
+    - name: Summary
+      run: |
+        echo ""
+        echo "╔══════════════════════════════════════════════════════════════════════════╗"
+        echo "║                  🎉 Match 初始化成功!                                   ║"
+        echo "╚══════════════════════════════════════════════════════════════════════════╝"
+        echo ""
+        echo "✅ 完成的操作:"
+        echo "  1. 连接到 Apple Developer Portal"
+        echo "  2. 下载/使用现有的 Distribution 证书"
+        echo "  3. 为 5 个 Bundle IDs 创建 Provisioning Profiles"
+        echo "  4. 加密并上传到 xDrip-Match-Secrets 仓库"
+        echo ""
+        echo "📋 下一步:"
+        echo "  1. 验证 GitHub Secrets 配置:"
+        echo "     - MATCH_PASSWORD ✅"
+        echo "     - GH_PAT ✅"
+        echo "     - APPSTORE_API_KEY_ID ✅"
+        echo "     - APPSTORE_ISSUER_ID ✅"
+        echo "     - APPSTORE_API_PRIVATE_KEY ✅"
+        echo ""
+        echo "  2. 使用 build-ipa-with-match.yml 构建:"
+        echo "     访问: https://github.com/${{ github.repository }}/actions"
+        echo "     运行: Build xDrip iOS IPA (with Fastlane Match)"
+        echo ""
+        echo "🎉 现在可以自动构建和上传 TestFlight 了!"
+        echo ""
+
