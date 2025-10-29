@@ -1,0 +1,167 @@
+name: Build xDrip iOS IPA (Simplified)
+
+on:
+  push:
+    branches: [ main, develop ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      build_configuration:
+        description: 'Build configuration'
+        required: true
+        default: 'Release'
+        type: choice
+        options:
+        - Debug
+        - Release
+
+env:
+  DEVELOPER_TEAM_ID: 7RV2Y67HF6
+  BUNDLE_IDENTIFIER: com.7RV2Y67HF6.xdripswiftt1li23
+
+jobs:
+  build-ipa:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+        
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0
+        bundler-cache: true
+        
+    - name: Install dependencies
+      run: |
+        gem install bundler:2.4.19
+        bundle install
+        
+    - name: Resolve Package Dependencies
+      run: |
+        xcodebuild -workspace xdrip.xcworkspace -scheme xdrip -resolvePackageDependencies
+        
+    - name: Setup App Store Connect API Key
+      env:
+        API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+        API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+        API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+      run: |
+        # 创建 App Store Connect API Key 目录
+        mkdir -p ~/.appstoreconnect/private_keys
+        
+        # 保存 API Key
+        echo "$API_PRIVATE_KEY" > ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8
+        
+        # 设置文件权限
+        chmod 600 ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8
+        
+    - name: Setup Fastlane Environment
+      env:
+        API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+        API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+        API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+      run: |
+        # 导出环境变量供 Fastlane 使用
+        echo "APPSTORE_API_KEY_ID=$API_KEY_ID" >> $GITHUB_ENV
+        echo "APPSTORE_ISSUER_ID=$API_ISSUER_ID" >> $GITHUB_ENV
+        echo "APPSTORE_API_PRIVATE_KEY=$API_PRIVATE_KEY" >> $GITHUB_ENV
+        
+    - name: Disable Automatic Code Signing
+      run: |
+        # 禁用自动代码签名，使用手动签名
+        # 这样可以避免 "No Account" 错误
+        
+        BUILD_CONFIG=${{ inputs.build_configuration || 'Release' }}
+        
+        # 设置为手动代码签名
+        /usr/libexec/PlistBuddy -c "Set :objects:*:buildSettings:CODE_SIGN_STYLE Manual" xdrip.xcodeproj/project.pbxproj || true
+        
+    - name: Build IPA with xcodebuild
+      env:
+        API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+        API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+      run: |
+        BUILD_CONFIG=${{ inputs.build_configuration || 'Release' }}
+        
+        # 清理构建
+        xcodebuild clean -workspace xdrip.xcworkspace -scheme xdrip
+        
+        # 使用 xcodebuild 构建（手动代码签名模式）
+        # -allowProvisioningUpdates 会自动创建和下载配置文件
+        xcodebuild archive \
+          -workspace xdrip.xcworkspace \
+          -scheme xdrip \
+          -configuration $BUILD_CONFIG \
+          -destination "generic/platform=iOS" \
+          -archivePath "build/xdrip.xcarchive" \
+          -allowProvisioningUpdates \
+          -allowProvisioningDeviceRegistration \
+          -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8 \
+          -authenticationKeyID $API_KEY_ID \
+          -authenticationKeyIssuerID $API_ISSUER_ID \
+          CODE_SIGN_STYLE=Manual \
+          DEVELOPMENT_TEAM=${{ env.DEVELOPER_TEAM_ID }} || \
+        {
+          echo "❌ Archive failed, trying with Automatic signing..."
+          
+          # 如果失败，尝试自动签名
+          xcodebuild archive \
+            -workspace xdrip.xcworkspace \
+            -scheme xdrip \
+            -configuration $BUILD_CONFIG \
+            -destination "generic/platform=iOS" \
+            -archivePath "build/xdrip.xcarchive" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8 \
+            -authenticationKeyID $API_KEY_ID \
+            -authenticationKeyIssuerID $API_ISSUER_ID \
+            CODE_SIGN_STYLE=Automatic \
+            DEVELOPMENT_TEAM=${{ env.DEVELOPER_TEAM_ID }}
+        }
+        
+        # 导出 IPA
+        xcodebuild -exportArchive \
+          -archivePath "build/xdrip.xcarchive" \
+          -exportPath "build/ipa" \
+          -exportOptionsPlist "ExportOptions.plist" \
+          -allowProvisioningUpdates \
+          -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8 \
+          -authenticationKeyID $API_KEY_ID \
+          -authenticationKeyIssuerID $API_ISSUER_ID
+          
+    - name: Upload IPA artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: xdrip-ipa-${{ github.sha }}
+        path: build/ipa/*.ipa
+        retention-days: 30
+        
+    - name: Upload dSYMs artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: xdrip-dsyms-${{ github.sha }}
+        path: build/ipa/*.dSYM.zip
+        retention-days: 30
+        if-no-files-found: ignore
+        
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          build/ipa/*.ipa
+          build/ipa/*.dSYM.zip
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
