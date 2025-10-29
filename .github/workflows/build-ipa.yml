@@ -68,12 +68,11 @@ jobs:
       env:
         API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
         API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
-        API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
       run: |
         # 导出环境变量供 Fastlane 使用
         echo "APPSTORE_API_KEY_ID=$API_KEY_ID" >> $GITHUB_ENV
         echo "APPSTORE_ISSUER_ID=$API_ISSUER_ID" >> $GITHUB_ENV
-        echo "APPSTORE_API_PRIVATE_KEY=$API_PRIVATE_KEY" >> $GITHUB_ENV
+        # API_PRIVATE_KEY 已经保存为文件，不需要作为环境变量
         
     - name: Disable Automatic Code Signing
       run: |
