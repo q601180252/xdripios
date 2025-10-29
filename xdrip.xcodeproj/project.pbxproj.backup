@@ -242,11 +242,9 @@
 		94E56CCD2D19425500BEC953 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E56CCA2D19425500BEC953 /* DetailCell.swift */; };
 		B61A33882E5FE23E00F26BA9 /* LibOutshine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13153E72C66081A006E34C8 /* LibOutshine.xcframework */; };
 		B61A33892E5FE23E00F26BA9 /* LibOutshine.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F13153E72C66081A006E34C8 /* LibOutshine.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B68C3E432E6038980037C9CE /* LibOutshine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13153E72C66081A006E34C8 /* LibOutshine.xcframework */; };
-		B6DDE8922E6A94BC00BC73CA /* BleLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65E81E52E6967F000AB4820 /* BleLibrary.framework */; };
-		B6DDE8932E6A94BC00BC73CA /* BleLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B65E81E52E6967F000AB4820 /* BleLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B6DDE8942E6A94BF00BC73CA /* FotaLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940BBDE62CDF55260063FC19 /* FotaLibrary.framework */; };
-		B6DDE8952E6A94BF00BC73CA /* FotaLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940BBDE62CDF55260063FC19 /* FotaLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B67A30652E6ACD5100510CC5 /* FotaLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940BBDE62CDF55260063FC19 /* FotaLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6F91DD42EB1C6130024331C /* BleLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F91DD32EB1C6130024331C /* BleLibrary.framework */; };
+		B6F91DD52EB1C6130024331C /* BleLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6F91DD32EB1C6130024331C /* BleLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE1B2FE025D0264B00F642F5 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1B2FD125D0264900F642F5 /* LaunchScreen.strings */; };
 		CE1B2FE125D0264B00F642F5 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1B2FD425D0264900F642F5 /* Main.strings */; };
 		D400F8032778BD8000B57648 /* TextsTreatmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D400F8022778BD8000B57648 /* TextsTreatmentsView.swift */; };
@@ -821,25 +819,25 @@
 			remoteGlobalIDString = 7C43C7C2225F05F100B0172D;
 			remoteInfo = FotaLibrary;
 		};
-		B65E81E42E6967F000AB4820 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B65E81DE2E6967F000AB4820 /* BleLibrary.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7CF2CA52225DCB4C004A07F4;
-			remoteInfo = BleLibrary;
-		};
-		B6DDE88E2E6A94A800BC73CA /* PBXContainerItemProxy */ = {
+		B67A30592E6ACCC100510CC5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 940BBDE02CDF55250063FC19 /* FotaLibrary.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 7C43C7C1225F05F100B0172D;
 			remoteInfo = FotaLibrary;
 		};
-		B6DDE8902E6A94AA00BC73CA /* PBXContainerItemProxy */ = {
+		B68EE0B82EB1E488008B9F1A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B65E81DE2E6967F000AB4820 /* BleLibrary.xcodeproj */;
+			containerPortal = B68EE0B52EB1E488008B9F1A /* BleLibrary.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 7CF2CA51225DCB4C004A07F4;
+			remoteInfo = BleLibrary;
+		};
+		B68EE0BB2EB1E488008B9F1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B68EE0B52EB1E488008B9F1A /* BleLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7CF2CA52225DCB4C004A07F4;
 			remoteInfo = BleLibrary;
 		};
 /* End PBXContainerItemProxy section */
@@ -851,10 +849,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B6DDE8952E6A94BF00BC73CA /* FotaLibrary.framework in Embed Frameworks */,
+				B6F91DD52EB1C6130024331C /* BleLibrary.framework in Embed Frameworks */,
+				B67A30652E6ACD5100510CC5 /* FotaLibrary.framework in Embed Frameworks */,
 				B61A33892E5FE23E00F26BA9 /* LibOutshine.xcframework in Embed Frameworks */,
 				470824D3297484B500C52317 /* SwiftCharts in Embed Frameworks */,
-				B6DDE8932E6A94BC00BC73CA /* BleLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1137,7 +1135,8 @@
 		94E56CC72D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		94E56CCA2D19425500BEC953 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		94E56CCB2D19425500BEC953 /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
-		B65E81DE2E6967F000AB4820 /* BleLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BleLibrary.xcodeproj; path = RSL_Fota/BleLibrary/BleLibrary.xcodeproj; sourceTree = "<group>"; };
+		B68EE0B52EB1E488008B9F1A /* BleLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BleLibrary.xcodeproj; path = /Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary.xcodeproj; sourceTree = "<absolute>"; };
+		B6F91DD32EB1C6130024331C /* BleLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BleLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1B2FC825D0261500F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Alerts.strings; sourceTree = "<group>"; };
 		CE1B2FCD25D0264900F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AlertTypesSettingsView.strings; sourceTree = "<group>"; };
 		CE1B2FCE25D0264900F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/WatlaaView.strings; sourceTree = "<group>"; };
@@ -2022,10 +2021,8 @@
 				4779BCEE2974306300515714 /* ActionClosurable in Frameworks */,
 				F821CF9722AE589E005C1E43 /* HealthKit.framework in Frameworks */,
 				47DE41AA2B860DF00041DA19 /* WatchConnectivity.framework in Frameworks */,
-				B6DDE8942E6A94BF00BC73CA /* FotaLibrary.framework in Frameworks */,
 				9423ADB42C8162C900574EB6 /* Bugly.framework in Frameworks */,
-				B68C3E432E6038980037C9CE /* LibOutshine.xcframework in Frameworks */,
-				B6DDE8922E6A94BC00BC73CA /* BleLibrary.framework in Frameworks */,
+				B6F91DD42EB1C6130024331C /* BleLibrary.framework in Frameworks */,
 				4779BCF42974308F00515714 /* PieCharts in Frameworks */,
 				4779BCF12974307700515714 /* CryptoSwift in Frameworks */,
 				94A4F2DE2CDF5D1600A78BFE /* SnapKit in Frameworks */,
@@ -2301,6 +2298,7 @@
 		48C0E851274A3BB6D42C6F20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6F91DD32EB1C6130024331C /* BleLibrary.framework */,
 				F81F3C4125D1D91300520946 /* CoreNFC.framework */,
 				F821CF9622AE589E005C1E43 /* HealthKit.framework */,
 				F870D3D225126A49008967B0 /* NotificationCenter.framework */,
@@ -2369,10 +2367,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B65E81DF2E6967F000AB4820 /* Products */ = {
+		B68EE0B62EB1E488008B9F1A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B65E81E52E6967F000AB4820 /* BleLibrary.framework */,
+				B68EE0BC2EB1E488008B9F1A /* BleLibrary.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2998,7 +2996,7 @@
 				F8AC425B21ADEBD60078C348 /* Products */,
 				F85DC29B21CFCEB800B9F74A /* Recovered References */,
 				F8AC425C21ADEBD60078C348 /* xdrip */,
-				B65E81DE2E6967F000AB4820 /* BleLibrary.xcodeproj */,
+				B68EE0B52EB1E488008B9F1A /* BleLibrary.xcodeproj */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -4087,8 +4085,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				B6DDE8912E6A94AA00BC73CA /* PBXTargetDependency */,
-				B6DDE88F2E6A94A800BC73CA /* PBXTargetDependency */,
+				B68EE0B92EB1E488008B9F1A /* PBXTargetDependency */,
+				B67A305A2E6ACCC100510CC5 /* PBXTargetDependency */,
 				4716A4FD2B406C3F00419052 /* PBXTargetDependency */,
 				47DE41B12B864EE50041DA19 /* PBXTargetDependency */,
 				47CD641F2BE9506C002BDA68 /* PBXTargetDependency */,
@@ -4114,7 +4112,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1640;
 				ORGANIZATIONNAME = "Johan Degraeve";
 				TargetAttributes = {
 					4716A4EC2B406C3D00419052 = {
@@ -4180,8 +4178,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = B65E81DF2E6967F000AB4820 /* Products */;
-					ProjectRef = B65E81DE2E6967F000AB4820 /* BleLibrary.xcodeproj */;
+					ProductGroup = B68EE0B62EB1E488008B9F1A /* Products */;
+					ProjectRef = B68EE0B52EB1E488008B9F1A /* BleLibrary.xcodeproj */;
 				},
 				{
 					ProductGroup = 940BBDE12CDF55250063FC19 /* Products */;
@@ -4207,11 +4205,11 @@
 			remoteRef = 940BBDE52CDF55260063FC19 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		B65E81E52E6967F000AB4820 /* BleLibrary.framework */ = {
+		B68EE0BC2EB1E488008B9F1A /* BleLibrary.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = BleLibrary.framework;
-			remoteRef = B65E81E42E6967F000AB4820 /* PBXContainerItemProxy */;
+			remoteRef = B68EE0BB2EB1E488008B9F1A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -5062,15 +5060,15 @@
 			target = 47A6ABDE2B790CC60047A4BA /* xDrip Watch App */;
 			targetProxy = 47DE41B02B864EE50041DA19 /* PBXContainerItemProxy */;
 		};
-		B6DDE88F2E6A94A800BC73CA /* PBXTargetDependency */ = {
+		B67A305A2E6ACCC100510CC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FotaLibrary;
-			targetProxy = B6DDE88E2E6A94A800BC73CA /* PBXContainerItemProxy */;
+			targetProxy = B67A30592E6ACCC100510CC5 /* PBXContainerItemProxy */;
 		};
-		B6DDE8912E6A94AA00BC73CA /* PBXTargetDependency */ = {
+		B68EE0B92EB1E488008B9F1A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BleLibrary;
-			targetProxy = B6DDE8902E6A94AA00BC73CA /* PBXContainerItemProxy */;
+			targetProxy = B68EE0B82EB1E488008B9F1A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -5716,7 +5714,6 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).xDripWidget";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.7RV2Y67HF6.xdripswift.xDripWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -5750,7 +5747,6 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).xDripWidget";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.7RV2Y67HF6.xdripswift.xDripWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -5771,7 +5767,7 @@
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Watch Complication/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = xDrip4iO5;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Johan Degraeve. All rights reserved.";
@@ -5784,7 +5780,6 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).watchkitapp.xDripWatchComplication";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=watchos*]" = com.7RV2Y67HF6.xdripswift.watchkitapp.xDripWatchComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -5808,7 +5803,7 @@
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Watch Complication/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = xDrip4iO5;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Johan Degraeve. All rights reserved.";
@@ -5821,7 +5816,6 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).watchkitapp.xDripWatchComplication";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=watchos*]" = com.7RV2Y67HF6.xdripswift.watchkitapp.xDripWatchComplication;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -5835,7 +5829,6 @@
 		47A6ABEA2B790CC70047A4BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_GROUP_IDENTIFIER = "group.com.${DEVELOPMENT_TEAM}.loopkit.LoopGroup";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -5851,17 +5844,16 @@
 				INFOPLIST_FILE = "xDrip-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = xDrip4iO5;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.7RV2Y67HF6.xdripswift;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.7RV2Y67HF6.xdripswiftt1li23;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MAIN_APP_BUNDLE_IDENTIFIER = com.7RV2Y67HF6.xdripswift;
+				MAIN_APP_BUNDLE_IDENTIFIER = com.7RV2Y67HF6.xdripswiftt1li23;
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).watchkitapp";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=watchos*]" = com.7RV2Y67HF6.xdripswift.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -5876,7 +5868,6 @@
 		47A6ABEB2B790CC70047A4BA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_GROUP_IDENTIFIER = "group.com.${DEVELOPMENT_TEAM}.loopkit.LoopGroup";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -5892,17 +5883,16 @@
 				INFOPLIST_FILE = "xDrip-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = xDrip4iO5;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.7RV2Y67HF6.xdripswift;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.7RV2Y67HF6.xdripswiftt1li23;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MAIN_APP_BUNDLE_IDENTIFIER = com.7RV2Y67HF6.xdripswift;
+				MAIN_APP_BUNDLE_IDENTIFIER = com.7RV2Y67HF6.xdripswiftt1li23;
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).watchkitapp";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=watchos*]" = com.7RV2Y67HF6.xdripswift.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -5938,7 +5928,6 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).xDripNotificationContextExtension";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.7RV2Y67HF6.xdripswift.xDripNotificationContextExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -5973,7 +5962,6 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).xDripNotificationContextExtension";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.7RV2Y67HF6.xdripswift.xDripNotificationContextExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -6020,6 +6008,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -6088,6 +6077,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -6114,7 +6104,6 @@
 		F8AC426F21ADEBD70078C348 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_GROUP_IDENTIFIER = "group.com.${DEVELOPMENT_TEAM}.loopkit.LoopGroup";
 				APP_GROUP_IDENTIFIER_TRIO = "group.org.nightscout.${DEVELOPMENT_TEAM}.trio.trio-app-group";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6136,7 +6125,6 @@
 				);
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER)";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.7RV2Y67HF6.xdripswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "xdrip/xdrip-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -6148,7 +6136,6 @@
 		F8AC427021ADEBD70078C348 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_GROUP_IDENTIFIER = "group.com.${DEVELOPMENT_TEAM}.loopkit.LoopGroup";
 				APP_GROUP_IDENTIFIER_TRIO = "group.org.nightscout.${DEVELOPMENT_TEAM}.trio.trio-app-group";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -6170,7 +6157,6 @@
 				);
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER)";
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.7RV2Y67HF6.xdripswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "xdrip/xdrip-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

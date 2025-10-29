@@ -229,7 +229,7 @@
 		940BBDD62CDF55080063FC19 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940BBDC32CDF55080063FC19 /* GradientView.swift */; };
 		940BBDD72CDF55080063FC19 /* DeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 940BBDBF2CDF55080063FC19 /* DeviceCell.xib */; };
 		940BBDD92CDF55080063FC19 /* Fota.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940BBDC22CDF55080063FC19 /* Fota.storyboard */; };
-		9423ADB42C8162C900574EB6 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9423ADB32C8162C900574EB6 /* Bugly.framework */; };
+/* 		9423ADB42C8162C900574EB6 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9423ADB32C8162C900574EB6 /* Bugly.framework */; }; */
 		9478D19C2CE4C96B006FFCA8 /* NanoOTAFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9478D19B2CE4C95F006FFCA8 /* NanoOTAFetcher.swift */; };
 		9478D1A02CE4FE48006FFCA8 /* s8.1_h1.5_20240919.fota in Resources */ = {isa = PBXBuildFile; fileRef = 9478D19F2CE4FE48006FFCA8 /* s8.1_h1.5_20240919.fota */; };
 		949BCFB42C64E75D00C3E316 /* CADataCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949BCFB32C64E75D00C3E316 /* CADataCollector.swift */; };
@@ -2021,7 +2021,7 @@
 				4779BCEE2974306300515714 /* ActionClosurable in Frameworks */,
 				F821CF9722AE589E005C1E43 /* HealthKit.framework in Frameworks */,
 				47DE41AA2B860DF00041DA19 /* WatchConnectivity.framework in Frameworks */,
-				9423ADB42C8162C900574EB6 /* Bugly.framework in Frameworks */,
+/* 				9423ADB42C8162C900574EB6 /* Bugly.framework in Frameworks */, */
 				B6F91DD42EB1C6130024331C /* BleLibrary.framework in Frameworks */,
 				4779BCF42974308F00515714 /* PieCharts in Frameworks */,
 				4779BCF12974307700515714 /* CryptoSwift in Frameworks */,
