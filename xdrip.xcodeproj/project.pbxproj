@@ -826,6 +826,20 @@
 			remoteGlobalIDString = 7C43C7C1225F05F100B0172D;
 			remoteInfo = FotaLibrary;
 		};
+		B68EE0B82EB1E488008B9F1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B68EE0B52EB1E488008B9F1A /* BleLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CF2CA51225DCB4C004A07F4;
+			remoteInfo = BleLibrary;
+		};
+		B68EE0BB2EB1E488008B9F1A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B68EE0B52EB1E488008B9F1A /* BleLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7CF2CA52225DCB4C004A07F4;
+			remoteInfo = BleLibrary;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1121,6 +1135,7 @@
 		94E56CC72D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		94E56CCA2D19425500BEC953 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		94E56CCB2D19425500BEC953 /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
+		B68EE0B52EB1E488008B9F1A /* BleLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BleLibrary.xcodeproj; path = /Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary.xcodeproj; sourceTree = "<absolute>"; };
 		B6F91DD32EB1C6130024331C /* BleLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BleLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1B2FC825D0261500F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Alerts.strings; sourceTree = "<group>"; };
 		CE1B2FCD25D0264900F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AlertTypesSettingsView.strings; sourceTree = "<group>"; };
@@ -2352,6 +2367,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B68EE0B62EB1E488008B9F1A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B68EE0BC2EB1E488008B9F1A /* BleLibrary.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D4028CBE2774A4B900341476 /* Treatments */ = {
 			isa = PBXGroup;
 			children = (
@@ -2973,6 +2996,7 @@
 				F8AC425B21ADEBD60078C348 /* Products */,
 				F85DC29B21CFCEB800B9F74A /* Recovered References */,
 				F8AC425C21ADEBD60078C348 /* xdrip */,
+				B68EE0B52EB1E488008B9F1A /* BleLibrary.xcodeproj */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -4061,6 +4085,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B68EE0B92EB1E488008B9F1A /* PBXTargetDependency */,
 				B67A305A2E6ACCC100510CC5 /* PBXTargetDependency */,
 				4716A4FD2B406C3F00419052 /* PBXTargetDependency */,
 				47DE41B12B864EE50041DA19 /* PBXTargetDependency */,
@@ -4153,6 +4178,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = B68EE0B62EB1E488008B9F1A /* Products */;
+					ProjectRef = B68EE0B52EB1E488008B9F1A /* BleLibrary.xcodeproj */;
+				},
+				{
 					ProductGroup = 940BBDE12CDF55250063FC19 /* Products */;
 					ProjectRef = 940BBDE02CDF55250063FC19 /* FotaLibrary.xcodeproj */;
 				},
@@ -4174,6 +4203,13 @@
 			fileType = wrapper.framework;
 			path = FotaLibrary.framework;
 			remoteRef = 940BBDE52CDF55260063FC19 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B68EE0BC2EB1E488008B9F1A /* BleLibrary.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BleLibrary.framework;
+			remoteRef = B68EE0BB2EB1E488008B9F1A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -5029,6 +5065,11 @@
 			name = FotaLibrary;
 			targetProxy = B67A30592E6ACCC100510CC5 /* PBXContainerItemProxy */;
 		};
+		B68EE0B92EB1E488008B9F1A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BleLibrary;
+			targetProxy = B68EE0B82EB1E488008B9F1A /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -5658,7 +5699,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "xDrip Widget Extension.entitlements";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = HHZN32E89C;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "xDrip Widget/Info.plist";
@@ -5691,7 +5732,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "xDrip Widget Extension.entitlements";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = HHZN32E89C;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "xDrip Widget/Info.plist";
@@ -5724,7 +5765,7 @@
 				CODE_SIGN_ENTITLEMENTS = "xDrip Watch Complication Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = HHZN32E89C;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Watch Complication/Info.plist";
@@ -5760,7 +5801,7 @@
 				CODE_SIGN_ENTITLEMENTS = "xDrip Watch Complication Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = HHZN32E89C;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Watch Complication/Info.plist";
@@ -5796,7 +5837,7 @@
 				CODE_SIGN_ENTITLEMENTS = "xDrip Watch App/xDrip Watch App.entitlements";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DEVELOPMENT_ASSET_PATHS = "\"xDrip Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = HHZN32E89C;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -5835,7 +5876,7 @@
 				CODE_SIGN_ENTITLEMENTS = "xDrip Watch App/xDrip Watch App.entitlements";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DEVELOPMENT_ASSET_PATHS = "\"xDrip Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = HHZN32E89C;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -5872,7 +5913,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = HHZN32E89C;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "xDrip Notification Context Extension/Info.plist";
@@ -5906,7 +5947,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = HHZN32E89C;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "xDrip Notification Context Extension/Info.plist";
@@ -6070,7 +6111,7 @@
 				CODE_SIGN_ENTITLEMENTS = xdrip/xdripDebug.entitlements;
 				CODE_SIGN_STYLE = "$(XDRIP_CODE_SIGN_STYLE)";
 				CURRENT_PROJECT_VERSION = 4215;
-				DEVELOPMENT_TEAM = HHZN32E89C;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -6102,7 +6143,7 @@
 				CODE_SIGN_ENTITLEMENTS = xdrip/xdrip.entitlements;
 				CODE_SIGN_STYLE = "$(XDRIP_CODE_SIGN_STYLE)";
 				CURRENT_PROJECT_VERSION = 4215;
-				DEVELOPMENT_TEAM = HHZN32E89C;
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
