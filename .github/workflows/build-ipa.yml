@@ -55,45 +55,45 @@ jobs:
       run: |
         xcodebuild -workspace xdrip.xcworkspace -scheme xdrip -resolvePackageDependencies
         
-    - name: Set up code signing
-      uses: Apple-Actions/import-codesign-certs@v2
-      with:
-        p12-file-base64: ${{ secrets.CERTIFICATES_P12 }}
-        p12-password: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
-        
-    - name: Set up provisioning profile
-      uses: Apple-Actions/download-provisioning-profiles@v1
-      with:
-        bundle-id: ${{ env.BUNDLE_IDENTIFIER }}
-        issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
-        api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
-        api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
-        
-    - name: Build IPA
+    - name: Build IPA with Automatic Code Signing
+      env:
+        APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+        APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+        APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
       run: |
         # 设置构建配置
-        BUILD_CONFIG=${INPUT_BUILD_CONFIGURATION:-Release}
+        BUILD_CONFIG=${{ inputs.build_configuration || 'Release' }}
+        
+        # 创建 API Key 文件
+        mkdir -p ~/private_keys
+        echo "$APP_STORE_CONNECT_API_KEY_KEY" > ~/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_KEY_ID.p8
         
         # 清理之前的构建
         xcodebuild clean -workspace xdrip.xcworkspace -scheme xdrip
         
-        # 构建应用
+        # 构建应用（使用自动代码签名）
         xcodebuild archive \
           -workspace xdrip.xcworkspace \
           -scheme xdrip \
           -configuration $BUILD_CONFIG \
           -destination "generic/platform=iOS" \
           -archivePath "build/xdrip.xcarchive" \
-          CODE_SIGN_STYLE=Manual \
-          DEVELOPMENT_TEAM=${{ env.DEVELOPER_TEAM_ID }} \
-          PROVISIONING_PROFILE_SPECIFIER=${{ secrets.PROVISIONING_PROFILE_NAME }} \
-          CODE_SIGN_IDENTITY="iPhone Distribution"
+          -allowProvisioningUpdates \
+          -authenticationKeyPath ~/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_KEY_ID.p8 \
+          -authenticationKeyID $APP_STORE_CONNECT_API_KEY_KEY_ID \
+          -authenticationKeyIssuerID $APP_STORE_CONNECT_API_KEY_ISSUER_ID \
+          CODE_SIGN_STYLE=Automatic \
+          DEVELOPMENT_TEAM=${{ env.DEVELOPER_TEAM_ID }}
           
         # 导出 IPA
         xcodebuild -exportArchive \
           -archivePath "build/xdrip.xcarchive" \
           -exportPath "build/ipa" \
-          -exportOptionsPlist "ExportOptions.plist"
+          -exportOptionsPlist "ExportOptions.plist" \
+          -allowProvisioningUpdates \
+          -authenticationKeyPath ~/private_keys/AuthKey_$APP_STORE_CONNECT_API_KEY_KEY_ID.p8 \
+          -authenticationKeyID $APP_STORE_CONNECT_API_KEY_KEY_ID \
+          -authenticationKeyIssuerID $APP_STORE_CONNECT_API_KEY_ISSUER_ID
           
     - name: Upload IPA artifact
       uses: actions/upload-artifact@v4

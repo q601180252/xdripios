@@ -19,13 +19,6 @@
     <key>destination</key>
     <string>export</string>
     <key>signingStyle</key>
-    <string>manual</string>
-    <key>signingCertificate</key>
-    <string>iPhone Distribution</string>
-    <key>provisioningProfiles</key>
-    <dict>
-        <key>com.7RV2Y67HF6.xdripswift</key>
-        <string>PROVISIONING_PROFILE_NAME</string>
-    </dict>
+    <string>automatic</string>
 </dict>
 </plist>
