@@ -243,6 +243,8 @@
 		B61A33882E5FE23E00F26BA9 /* LibOutshine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13153E72C66081A006E34C8 /* LibOutshine.xcframework */; };
 		B61A33892E5FE23E00F26BA9 /* LibOutshine.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F13153E72C66081A006E34C8 /* LibOutshine.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B67A30652E6ACD5100510CC5 /* FotaLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940BBDE62CDF55260063FC19 /* FotaLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6F91DD42EB1C6130024331C /* BleLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F91DD32EB1C6130024331C /* BleLibrary.framework */; };
+		B6F91DD52EB1C6130024331C /* BleLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6F91DD32EB1C6130024331C /* BleLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE1B2FE025D0264B00F642F5 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1B2FD125D0264900F642F5 /* LaunchScreen.strings */; };
 		CE1B2FE125D0264B00F642F5 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1B2FD425D0264900F642F5 /* Main.strings */; };
 		D400F8032778BD8000B57648 /* TextsTreatmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D400F8022778BD8000B57648 /* TextsTreatmentsView.swift */; };
@@ -810,20 +812,6 @@
 			remoteGlobalIDString = 47A6ABDE2B790CC60047A4BA;
 			remoteInfo = "xDrip Watch App";
 		};
-		856DB0DC2E6B032B00EED7BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 856DB0D92E6B032B00EED7BE /* BleLibrary.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7CF2CA51225DCB4C004A07F4;
-			remoteInfo = BleLibrary;
-		};
-		856DB0DF2E6B032B00EED7BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 856DB0D92E6B032B00EED7BE /* BleLibrary.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7CF2CA52225DCB4C004A07F4;
-			remoteInfo = BleLibrary;
-		};
 		940BBDE52CDF55260063FC19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 940BBDE02CDF55250063FC19 /* FotaLibrary.xcodeproj */;
@@ -847,6 +835,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B6F91DD52EB1C6130024331C /* BleLibrary.framework in Embed Frameworks */,
 				B67A30652E6ACD5100510CC5 /* FotaLibrary.framework in Embed Frameworks */,
 				B61A33892E5FE23E00F26BA9 /* LibOutshine.xcframework in Embed Frameworks */,
 				470824D3297484B500C52317 /* SwiftCharts in Embed Frameworks */,
@@ -1107,7 +1096,6 @@
 		666E283826F7E54C00ACE4DF /* xDrip.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = xDrip.xcconfig; path = xdrip/xDrip.xcconfig; sourceTree = "<group>"; };
 		666E283926F7E54C00ACE4DF /* Version.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Version.xcconfig; path = xdrip/Version.xcconfig; sourceTree = "<group>"; };
 		7D6301D7725005424B51C6C0 /* FotaLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FotaLibrary.framework; path = Frameworks/FotaLibrary.framework; sourceTree = "<group>"; };
-		856DB0D92E6B032B00EED7BE /* BleLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BleLibrary.xcodeproj; path = /Users/birdfly/Downloads/Development/xdrip_ios/RSL_Fota/BleLibrary/BleLibrary.xcodeproj; sourceTree = "<absolute>"; };
 		9064D18A33A8E879C285AFCC /* BleLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BleLibrary.framework; path = Frameworks/BleLibrary.framework; sourceTree = "<group>"; };
 		940BBDB52CDF55080063FC19 /* FotaPeripheral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotaPeripheral.swift; sourceTree = "<group>"; };
 		940BBDB62CDF55080063FC19 /* FotaPeripheralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotaPeripheralManager.swift; sourceTree = "<group>"; };
@@ -1133,6 +1121,7 @@
 		94E56CC72D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		94E56CCA2D19425500BEC953 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		94E56CCB2D19425500BEC953 /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
+		B6F91DD32EB1C6130024331C /* BleLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BleLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1B2FC825D0261500F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Alerts.strings; sourceTree = "<group>"; };
 		CE1B2FCD25D0264900F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AlertTypesSettingsView.strings; sourceTree = "<group>"; };
 		CE1B2FCE25D0264900F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/WatlaaView.strings; sourceTree = "<group>"; };
@@ -2018,6 +2007,7 @@
 				F821CF9722AE589E005C1E43 /* HealthKit.framework in Frameworks */,
 				47DE41AA2B860DF00041DA19 /* WatchConnectivity.framework in Frameworks */,
 				9423ADB42C8162C900574EB6 /* Bugly.framework in Frameworks */,
+				B6F91DD42EB1C6130024331C /* BleLibrary.framework in Frameworks */,
 				4779BCF42974308F00515714 /* PieCharts in Frameworks */,
 				4779BCF12974307700515714 /* CryptoSwift in Frameworks */,
 				94A4F2DE2CDF5D1600A78BFE /* SnapKit in Frameworks */,
@@ -2293,6 +2283,7 @@
 		48C0E851274A3BB6D42C6F20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6F91DD32EB1C6130024331C /* BleLibrary.framework */,
 				F81F3C4125D1D91300520946 /* CoreNFC.framework */,
 				F821CF9622AE589E005C1E43 /* HealthKit.framework */,
 				F870D3D225126A49008967B0 /* NotificationCenter.framework */,
@@ -2305,14 +2296,6 @@
 				7D6301D7725005424B51C6C0 /* FotaLibrary.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		856DB0DA2E6B032B00EED7BE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				856DB0E02E6B032B00EED7BE /* BleLibrary.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		940BBDB72CDF55080063FC19 /* BLE */ = {
@@ -2990,7 +2973,6 @@
 				F8AC425B21ADEBD60078C348 /* Products */,
 				F85DC29B21CFCEB800B9F74A /* Recovered References */,
 				F8AC425C21ADEBD60078C348 /* xdrip */,
-				856DB0D92E6B032B00EED7BE /* BleLibrary.xcodeproj */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -4023,7 +4005,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				856DB0DD2E6B032B00EED7BE /* PBXTargetDependency */,
 			);
 			name = "xDrip Watch Complication Extension";
 			productName = "xDrip Watch ComplicationExtension";
@@ -4172,10 +4153,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 856DB0DA2E6B032B00EED7BE /* Products */;
-					ProjectRef = 856DB0D92E6B032B00EED7BE /* BleLibrary.xcodeproj */;
-				},
-				{
 					ProductGroup = 940BBDE12CDF55250063FC19 /* Products */;
 					ProjectRef = 940BBDE02CDF55250063FC19 /* FotaLibrary.xcodeproj */;
 				},
@@ -4192,13 +4169,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		856DB0E02E6B032B00EED7BE /* BleLibrary.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = BleLibrary.framework;
-			remoteRef = 856DB0DF2E6B032B00EED7BE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		940BBDE62CDF55260063FC19 /* FotaLibrary.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -5054,11 +5024,6 @@
 			target = 47A6ABDE2B790CC60047A4BA /* xDrip Watch App */;
 			targetProxy = 47DE41B02B864EE50041DA19 /* PBXContainerItemProxy */;
 		};
-		856DB0DD2E6B032B00EED7BE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BleLibrary;
-			targetProxy = 856DB0DC2E6B032B00EED7BE /* PBXContainerItemProxy */;
-		};
 		B67A305A2E6ACCC100510CC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FotaLibrary;
@@ -5693,7 +5658,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "xDrip Widget Extension.entitlements";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = 7RV2Y67HF6;
+				DEVELOPMENT_TEAM = HHZN32E89C;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "xDrip Widget/Info.plist";
@@ -5727,7 +5692,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_ENTITLEMENTS = "xDrip Widget Extension.entitlements";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = 7RV2Y67HF6;
+				DEVELOPMENT_TEAM = HHZN32E89C;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "xDrip Widget/Info.plist";
@@ -5761,7 +5726,7 @@
 				CODE_SIGN_ENTITLEMENTS = "xDrip Watch Complication Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = 7RV2Y67HF6;
+				DEVELOPMENT_TEAM = HHZN32E89C;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Watch Complication/Info.plist";
@@ -5798,7 +5763,7 @@
 				CODE_SIGN_ENTITLEMENTS = "xDrip Watch Complication Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = 7RV2Y67HF6;
+				DEVELOPMENT_TEAM = HHZN32E89C;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Watch Complication/Info.plist";
@@ -5835,7 +5800,7 @@
 				CODE_SIGN_ENTITLEMENTS = "xDrip Watch App/xDrip Watch App.entitlements";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DEVELOPMENT_ASSET_PATHS = "\"xDrip Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 7RV2Y67HF6;
+				DEVELOPMENT_TEAM = HHZN32E89C;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -5849,7 +5814,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MAIN_APP_BUNDLE_IDENTIFIER = com.7RV2Y67HF6.xdripswift;
+				MAIN_APP_BUNDLE_IDENTIFIER = com.7RV2Y67HF6.xdripswiftt1li23;
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).watchkitapp";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=watchos*]" = com.7RV2Y67HF6.xdripswiftt1li23.watchkitapp;
@@ -5875,7 +5840,7 @@
 				CODE_SIGN_ENTITLEMENTS = "xDrip Watch App/xDrip Watch App.entitlements";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DEVELOPMENT_ASSET_PATHS = "\"xDrip Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 7RV2Y67HF6;
+				DEVELOPMENT_TEAM = HHZN32E89C;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -5889,7 +5854,7 @@
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MAIN_APP_BUNDLE_IDENTIFIER = com.7RV2Y67HF6.xdripswift;
+				MAIN_APP_BUNDLE_IDENTIFIER = com.7RV2Y67HF6.xdripswiftt1li23;
 				MARKETING_VERSION = "$(XDRIP_MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).watchkitapp";
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=watchos*]" = com.7RV2Y67HF6.xdripswiftt1li23.watchkitapp;
@@ -5913,7 +5878,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = 7RV2Y67HF6;
+				DEVELOPMENT_TEAM = HHZN32E89C;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "xDrip Notification Context Extension/Info.plist";
@@ -5948,7 +5913,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = 7RV2Y67HF6;
+				DEVELOPMENT_TEAM = HHZN32E89C;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "xDrip Notification Context Extension/Info.plist";
@@ -6113,7 +6078,7 @@
 				CODE_SIGN_ENTITLEMENTS = xdrip/xdripDebug.entitlements;
 				CODE_SIGN_STYLE = "$(XDRIP_CODE_SIGN_STYLE)";
 				CURRENT_PROJECT_VERSION = 4215;
-				DEVELOPMENT_TEAM = 7RV2Y67HF6;
+				DEVELOPMENT_TEAM = HHZN32E89C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -6146,7 +6111,7 @@
 				CODE_SIGN_ENTITLEMENTS = xdrip/xdrip.entitlements;
 				CODE_SIGN_STYLE = "$(XDRIP_CODE_SIGN_STYLE)";
 				CURRENT_PROJECT_VERSION = 4215;
-				DEVELOPMENT_TEAM = 7RV2Y67HF6;
+				DEVELOPMENT_TEAM = HHZN32E89C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
