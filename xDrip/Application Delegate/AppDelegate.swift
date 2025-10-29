@@ -2,7 +2,7 @@ import UIKit
 import CoreData
 import OSLog
 
-import Bugly
+// import Bugly  // Temporarily disabled for simulator builds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,9 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let config = BuglyConfig()
-        config.consolelogEnable = false
-        Bugly.start(withAppId: "7b284185bd", config: config)
+        // Bugly crash reporting - temporarily disabled for simulator builds
+        // let config = BuglyConfig()
+        // config.consolelogEnable = false
+        // Bugly.start(withAppId: "7b284185bd", config: config)
 
         trace("in didFinishLaunchingWithOptions", log: log, category: ConstantsLog.categoryAppDelegate, type: .info)
         
