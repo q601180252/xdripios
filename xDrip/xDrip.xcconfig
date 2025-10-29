@@ -1,0 +1,36 @@
+//
+//  xDrip.xcconfig
+//  xdrip
+//
+//
+
+DEVELOPMENT_TEAM = 7RV2Y67HF6
+
+MAIN_APP_BUNDLE_IDENTIFIER = com.$(DEVELOPMENT_TEAM).xdripswift
+GROUP_ID = group.com.$(DEVELOPMENT_TEAM).loopkit.LoopGroup
+
+PRODUCT_BUNDLE_IDENTIFIER = $(MAIN_APP_BUNDLE_IDENTIFIER)
+APP_GROUP_IDENTIFIER = $(GROUP_ID)
+
+// Application name [DEFAULT]
+MAIN_APP_DISPLAY_NAME = xDrip4iO5
+
+// Entitlements [DEFAULT]
+XDRIP_ENTITLEMENTS_RELEASE = xdrip/xDrip.entitlements
+XDRIP_ENTITLEMENTS_DEBUG = xdrip/xdripDebug.entitlements
+
+//XDRIP_WIDGET_ENTITLEMENTS_RELEASE = xDrip4iOS Widget/xDrip4iOS Widget.entitlements
+//XDRIP_WIDGET_ENTITLEMENTS_DEBUG = $(XDRIP_WIDGET_ENTITLEMENTS_RELEASE)
+
+// Code signing and provisioning [DEFAULT]
+//XDRIP_CODE_SIGN_IDENTITY_DEBUG = Apple Development
+//XDRIP_CODE_SIGN_IDENTITY_RELEASE = Apple Development
+//XDRIP_CODE_SIGN_STYLE = Automatic
+
+
+// Version [DEFAULT]
+#include? "Version.xcconfig"
+
+// Optional overrides
+#include? "xDripOverride.xcconfig"
+#include? "../xDripConfigOverride.xcconfig"

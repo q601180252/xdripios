@@ -1,0 +1,11 @@
+framework module BleLibrary {
+  umbrella header "BleLibrary.h"
+  export *
+
+  module * { export * }
+}
+
+module BleLibrary.Swift {
+  header "BleLibrary-Swift.h"
+  requires objc
+}

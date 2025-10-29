@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- 基础信息（用内置 Build Settings 填充，避免写死） -->
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundleDisplayName</key>
+    <string>$(PRODUCT_NAME)</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundlePackageType</key>
+    <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+    <key>CFBundleVersion</key>
+    <string>$(CURRENT_PROJECT_VERSION)</string>
+    <key>CFBundleShortVersionString</key>
+    <string>$(MARKETING_VERSION)</string>
+
+    <!-- 你项目里已有的自定义键（可保留） -->
+    <key>AppGroupIdentifier</key>
+    <string>$(APP_GROUP_IDENTIFIER)</string>
+    <key>MainAppBundleIdentifier</key>
+    <string>$(MAIN_APP_BUNDLE_IDENTIFIER)</string>
+
+    <!-- 关键：把 Complication 绑定到 Watch App -->
+    <key>WKAppBundleIdentifier</key>
+    <string>com.7RV2Y67HF6.xdripswift.watchkitapp</string>
+
+    <!-- 这是 WidgetKit 的表盘扩展 -->
+    <key>NSExtension</key>
+    <dict>
+        <key>NSExtensionPointIdentifier</key>
+        <string>com.apple.widgetkit-extension</string>
+        <!-- WidgetKit 不需要 PrincipalClass，保持缺省即可 -->
+    </dict>
+</dict>
+</plist>

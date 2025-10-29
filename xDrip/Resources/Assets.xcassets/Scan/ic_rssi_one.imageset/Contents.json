@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "ic_rssi_one.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
