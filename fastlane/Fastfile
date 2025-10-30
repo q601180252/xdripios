@@ -116,7 +116,7 @@ platform :ios do
     
     # Build sub-projects first
     puts "🔧 Building sub-projects frameworks..."
-    sh "./build_subprojects.sh"
+    sh "cd #{GITHUB_WORKSPACE} && ./build_subprojects.sh"
     
     gym(
       export_method: "app-store",
