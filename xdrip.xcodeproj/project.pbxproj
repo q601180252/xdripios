@@ -5846,7 +5846,7 @@
 				INFOPLIST_FILE = "xDrip-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = xDrip4iO5;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.HHZN32E89C.xdripswiftt1li23;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.7RV2Y67HF6.xdripswift;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5885,7 +5885,7 @@
 				INFOPLIST_FILE = "xDrip-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = xDrip4iO5;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.HHZN32E89C.xdripswiftt1li23;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.7RV2Y67HF6.xdripswift;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
