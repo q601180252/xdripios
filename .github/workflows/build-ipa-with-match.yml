@@ -43,6 +43,7 @@ jobs:
     - name: Install dependencies
       run: |
         gem install bundler:2.4.19
+        bundle update fastlane
         bundle install
         
     - name: Resolve Package Dependencies
