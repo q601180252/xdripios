@@ -97,7 +97,7 @@ jobs:
         bundle exec fastlane match appstore \
           --readonly \
           --git_basic_authorization $(echo -n "$GITHUB_REPOSITORY_OWNER:$GH_PAT" | base64) \
-          --app_identifier "com.$TEAMID.xdripswiftt1li23,com.$TEAMID.xdripswiftt1li23.xDripWidget,com.$TEAMID.xdripswiftt1li23.watchkitapp,com.$TEAMID.xdripswiftt1li23.watchkitapp.xDripWatchComplication,com.$TEAMID.xdripswiftt1li23.xDripNotificationContextExtension"
+          --app_identifier "com.$TEAMID.xdripswift,com.$TEAMID.xdripswift.xDripWidget,com.$TEAMID.xdripswift.watchkitapp,com.$TEAMID.xdripswift.watchkitapp.xDripWatchComplication,com.$TEAMID.xdripswift.xDripNotificationContextExtension"
         
         echo "✅ 证书和 Provisioning Profiles 已下载"
         
