@@ -5,7 +5,8 @@ on:
   workflow_dispatch:
 
 env:
-  DEVELOPER_TEAM_ID: HHZN32E89C
+  DEVELOPER_TEAM_ID: 7RV2Y67HF6
+  BUNDLE_IDENTIFIER: com.7RV2Y67HF6.xdripswift
 
 jobs:
   init-match:
@@ -28,7 +29,8 @@ jobs:
         
     - name: Install dependencies
       run: |
-        gem install bundler:2.4.19
+        gem install bundler
+        bundle lock --update
         bundle install
         
     - name: Check if xDrip-Match-Secrets repository exists
@@ -76,11 +78,11 @@ jobs:
         echo "Team ID: $TEAMID"
         echo ""
         echo "将为以下 5 个 Bundle IDs 创建 Provisioning Profiles:"
-        echo "  1. com.HHZN32E89C.xdripswiftt1li23"
-        echo "  2. com.HHZN32E89C.xdripswiftt1li23.xDripWidget"
-        echo "  3. com.HHZN32E89C.xdripswiftt1li23.watchkitapp"
-        echo "  4. com.HHZN32E89C.xdripswiftt1li23.watchkitapp.xDripWatchComplication"
-        echo "  5. com.HHZN32E89C.xdripswiftt1li23.xDripNotificationContextExtension"
+        echo "  1. com.7RV2Y67HF6.xdripswift"
+        echo "  2. com.7RV2Y67HF6.xdripswift.xDripWidget"
+        echo "  3. com.7RV2Y67HF6.xdripswift.watchkitapp"
+        echo "  4. com.7RV2Y67HF6.xdripswift.watchkitapp.xDripWatchComplication"
+        echo "  5. com.7RV2Y67HF6.xdripswift.xDripNotificationContextExtension"
         echo ""
         
         # 运行 Fastlane Match 初始化
