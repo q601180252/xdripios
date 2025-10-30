@@ -18,8 +18,8 @@ on:
         - Release
 
 env:
-  DEVELOPER_TEAM_ID: HHZN32E89C
-  BUNDLE_IDENTIFIER: com.HHZN32E89C.xdripswiftt1li23
+  DEVELOPER_TEAM_ID: 7RV2Y67HF6
+  BUNDLE_IDENTIFIER: com.7RV2Y67HF6.xdripswift
 
 jobs:
   build-ipa:
