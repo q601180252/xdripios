@@ -134,7 +134,6 @@
 
 /// general usage
 "unknown" = "Unknown";
-"unsupported" = "Unsupported";
 
 /// literal translation needed
 "common_hourshort" = "h";

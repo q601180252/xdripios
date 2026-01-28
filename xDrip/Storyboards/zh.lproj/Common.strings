@@ -70,7 +70,6 @@
 
 /// general usage
 "unknown" = "Unknown";
-"unsupported" = "Unsupported";
 
 /// literally 'OK'
 "common_Ok" = "OK";

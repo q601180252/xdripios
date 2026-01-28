@@ -77,26 +77,6 @@ protocol CGMTransmitter: AnyObject {
     /// returns the receive characteristic CBUUID
     func getCBUUID_Receive() -> String
     
-    func getDeviceName() -> String?
-
-    func getSensorName() -> String?
-    
-    func startOTA()
-}
-
-extension CGMTransmitter {
-    
-    func getDeviceName() -> String? {
-        return nil
-    }
-
-    func getSensorName() -> String? {
-        return nil
-    }
-    
-    func startOTA() {
-        
-    }
 }
 
 /// cgm transmitter types

@@ -37,7 +37,6 @@
 "firmware" = "Donanım yazılımı";
 "hardware" = "Donanım";
 "unknown" = "Bilinmeyen";
-"unsupported" = "Desteklenmeyen";
 "sensorStatus" = "Sensör durumu";
 "invalidAccountOrPassword" = "Geçersiz hesap ya da şifre";
 "common_statistics_low" = "Düşük";

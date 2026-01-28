@@ -237,7 +237,7 @@ extension AlertTypeSettingsViewController: UITableViewDataSource, UITableViewDel
             
         case .enabled:
             cell.textLabel?.text = Texts_AlertTypeSettingsView.alertTypeEnabled
-            cell.detailTextLabel?.text = nil
+            cell.detailTextLabel?.text = self.enabled ? nil : ConstantsAlerts.disabledAlertSymbol
             cell.accessoryType = UITableViewCell.AccessoryType.none
             cell.accessoryView = UISwitch(isOn: enabled, action: {
                 (isOn:Bool) in
@@ -384,7 +384,7 @@ extension AlertTypeSettingsViewController: UITableViewDataSource, UITableViewDel
             })
             
             // create and present pickerviewcontroller
-            PickerViewController.displayPickerViewController(pickerViewData: pickerViewData, parentController: self)
+            PickerViewControllerModal.displayPickerViewController(pickerViewData: pickerViewData, parentController: self)
 
         case .overridemute:
             break // status is changed only when clicking the switch, not the row

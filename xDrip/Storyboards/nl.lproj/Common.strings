@@ -37,8 +37,6 @@
 "firmware" = "Firmware";
 "hardware" = "Hardware";
 "unknown" = "Onbekend";
-"unsupported" = "Niet ondersteund";
-
 "sensorStatus" = "Sensor Status";
 /// Where credentials need to be given, if either account or password is invalid (for the moment only applicable to Dexcom Share
 "invalidAccountOrPassword" = "Verkeerde account en/of paswoord";

@@ -25,9 +25,6 @@ class BubbleBluetoothPeripheralViewModel {
         /// hardware version
         case hardWare = 5
         
-        /// battery logs
-        case batteryLog = 6
-        
     }
     
     /// Bubble settings willb be in section 0 + numberOfGeneralSections
@@ -52,8 +49,6 @@ class BubbleBluetoothPeripheralViewModel {
         }
     }
     
-    private let otaFetcher = NanoOTAFetcher()
-        
     // MARK: - deinit
     
     deinit {
@@ -145,7 +140,7 @@ extension BubbleBluetoothPeripheralViewModel: BluetoothPeripheralViewModel {
         case .firmWare:
             
             cell.textLabel?.text = Texts_Common.firmware
-            cell.detailTextLabel?.text = otaFetcher.display(bubble.firmware)
+            cell.detailTextLabel?.text = bubble.firmware
             cell.accessoryType = .disclosureIndicator
             cell.accessoryView =  disclosureAccessoryView
             
@@ -159,17 +154,19 @@ extension BubbleBluetoothPeripheralViewModel: BluetoothPeripheralViewModel {
         case .sensorSerialNumber:
             
             cell.textLabel?.text = Texts_BluetoothPeripheralView.sensorSerialNumber
-            
-            if let type = bubble.blePeripheral.libreSensorType, type != .unsupported, let sensorSerialNumber = bubble.blePeripheral.sensorSerialNumber {
-                
+            if let sensorSerialNumber = bubble.blePeripheral.sensorSerialNumber {
+
                 cell.detailTextLabel?.text = sensorSerialNumber
                 cell.accessoryType = .disclosureIndicator
                 cell.accessoryView =  disclosureAccessoryView
-
+                
             } else {
+                
+                cell.detailTextLabel?.text = Texts_Common.unknown
                 cell.accessoryType = .none
-                cell.detailTextLabel?.text = "-"
+                
             }
+            
             
         case .sensorType:
             
@@ -183,7 +180,7 @@ extension BubbleBluetoothPeripheralViewModel: BluetoothPeripheralViewModel {
                 
             } else {
                 
-                cell.detailTextLabel?.text = Texts_HomeView.noSensorData
+                cell.detailTextLabel?.text = nil
             }
             
         case .sensorState:
@@ -192,23 +189,8 @@ extension BubbleBluetoothPeripheralViewModel: BluetoothPeripheralViewModel {
             
             cell.textLabel?.text = Texts_Common.sensorStatus
             
-            if let libreSensorType = bubble.blePeripheral.libreSensorType, libreSensorType != .unsupported {
-                
-                cell.detailTextLabel?.text = bubble.sensorState.translatedDescription
-
-            } else {
-                
-                cell.detailTextLabel?.text = "-"
-            }
+            cell.detailTextLabel?.text = bubble.sensorState.translatedDescription
             
-        case .batteryLog:
-            
-            cell.accessoryType = .disclosureIndicator
-            cell.accessoryView =  disclosureAccessoryView
-
-            cell.textLabel?.text = Texts_Common.batteryLog
-            
-            cell.detailTextLabel?.text = ""
         }
 
     }
@@ -230,14 +212,10 @@ extension BubbleBluetoothPeripheralViewModel: BluetoothPeripheralViewModel {
         case .firmWare:
             
             // firmware text could be longer than screen width, clicking the row allos to see it in pop up with more text place
-            if let otaFile = otaFetcher.latestFotaFile, bubble.blePeripheral.name.lowercased().contains("nano"), otaFetcher.hasNewVersion(bubble.firmware) {
-                return .performSegue(withIdentifier: "showOTA", sender: otaFile)
-            } else {
-                if let firmware = bubble.firmware {
-                    return .showInfoText(title: Texts_HomeView.info, message: Texts_Common.firmware + ": " + firmware)
-                }
+            if let firmware = bubble.firmware {
+                return .showInfoText(title: Texts_HomeView.info, message: Texts_Common.firmware + ": " + firmware)
             }
-            
+
         case .hardWare:
 
             // hardware text could be longer than screen width, clicking the row allows to see it in pop up with more text place
@@ -248,13 +226,10 @@ extension BubbleBluetoothPeripheralViewModel: BluetoothPeripheralViewModel {
         case .sensorSerialNumber:
             
             // serial text could be longer than screen width, clicking the row allows to see it in a pop up with more text place
-            if let type = bubble.blePeripheral.libreSensorType, type != .unsupported, let serialNumber = bubble.blePeripheral.sensorSerialNumber {
+            if let serialNumber = bubble.blePeripheral.sensorSerialNumber {
                 return .showInfoText(title: Texts_HomeView.info, message: Texts_BluetoothPeripheralView.sensorSerialNumber + " " + serialNumber)
             }
             
-        case .batteryLog:
-            
-            return .performSegue(withIdentifier: "showBatteryLog", sender: nil)
         }
         
         return .nothing
@@ -301,11 +276,8 @@ extension BubbleBluetoothPeripheralViewModel: CGMBubbleTransmitterDelegate {
         // inform also bluetoothPeripheralManager
         (bluetoothPeripheralManager as? CGMBubbleTransmitterDelegate)?.received(serialNumber: serialNumber, from: cGMBubbleTransmitter)
      
-        DispatchQueue.main.async { [weak self] in
-            // here's the trigger to update the table
-            self?.reloadRow(row: Settings.sensorSerialNumber.rawValue)
-
-        }
+        // here's the trigger to update the table
+        reloadRow(row: Settings.sensorSerialNumber.rawValue)
 
     }
     
@@ -340,11 +312,30 @@ extension BubbleBluetoothPeripheralViewModel: CGMBubbleTransmitterDelegate {
     }
     
     private func reloadRow(row: Int) {
-        
-        if let bluetoothPeripheralViewController = bluetoothPeripheralViewController {
+        DispatchQueue.main.async {
+            guard let tableView = self.tableView,
+                  let bluetoothPeripheralViewController = self.bluetoothPeripheralViewController else { return }
+
+            // Always reload the general section (0) first, because its row count may have changed.
+            tableView.reloadSections(IndexSet(integer: 0), with: .none)
             
-            tableView?.reloadRows(at: [IndexPath(row: row, section: bluetoothPeripheralViewController.numberOfGeneralSections() + sectionNumberForBubbleSpecificSettings)], with: .none)
-        
+            let totalSections = tableView.numberOfSections
+            let section = bluetoothPeripheralViewController.numberOfGeneralSections() + self.sectionNumberForBubbleSpecificSettings
+            
+            // Guard against invalid section index. A mismatch between calculated section and the current
+            // table structure can occur during updates, which previously caused a crash in
+            // -[UITableViewRowData numberOfRowsInSection:]. If the section is gone/shifted, fall back to a full reload.
+            guard section < totalSections else {
+                tableView.reloadData()
+                return
+            }
+
+            // Then safely refresh the target section: reload the row if it still exists; otherwise reload the whole section.
+            if row < tableView.numberOfRows(inSection: section) {
+                tableView.reloadRows(at: [IndexPath(row: row, section: section)], with: .none)
+            } else {
+                tableView.reloadSections(IndexSet(integer: section), with: .none)
+            }
         }
     }
     

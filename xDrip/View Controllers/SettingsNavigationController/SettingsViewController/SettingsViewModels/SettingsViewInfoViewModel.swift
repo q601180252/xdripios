@@ -30,12 +30,7 @@ struct SettingsViewInfoViewModel:SettingsViewModelProtocol {
     }
     
     func sectionTitle() -> String? {
-        var title = ConstantsSettingsIcons.infoSettingsIcon + " " + Texts_SettingsView.sectionTitleAbout
-        if let dictionary = Bundle.main.infoDictionary, let identifier = dictionary["CFBundleIdentifier"] as? String {
-            title = title + " (" + identifier + ")"
-        }
-        
-        return title
+        return ConstantsSettingsIcons.infoSettingsIcon + " " + Texts_SettingsView.sectionTitleAbout
     }
     
     func settingsRowText(index: Int) -> String {
@@ -97,7 +92,7 @@ struct SettingsViewInfoViewModel:SettingsViewModelProtocol {
             guard let dictionary = Bundle.main.infoDictionary else {return "unknown"}
             
             guard let version = dictionary["CFBundleShortVersionString"] as? String else {return "unknown"}
-
+            
             return version
             
         case .buildNumber:

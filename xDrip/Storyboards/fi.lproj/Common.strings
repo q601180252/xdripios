@@ -32,7 +32,6 @@
 "firmware" = "Laiteohjelmisto";
 "hardware" = "Laitteisto";
 "unknown" = "tuntematon";
-"unsupported" = "ei tuettu";
 "sensorStatus" = "Sensorin tila";
 
 /////////////////////////////////////////////////////////////////////////////////////////////

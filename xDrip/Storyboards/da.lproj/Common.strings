@@ -37,7 +37,6 @@
 "firmware" = "Firmware";
 "hardware" = "Hardware";
 "unknown" = "Unknown";
-"unsupported" = "Unsupported";
 "sensorStatus" = "Sensor Status";
 "invalidAccountOrPassword" = "Invalid account or password";
 "common_statistics_low" = "Low";

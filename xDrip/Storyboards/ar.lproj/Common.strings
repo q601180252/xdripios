@@ -37,7 +37,6 @@
 "firmware" = "البرنامج الثابت";
 "hardware" = "الجهاز";
 "unknown" = "غير معروف";
-"unsupported" = "غير مدعوم";
 "sensorStatus" = "حالة الحساس";
 "invalidAccountOrPassword" = "حساب أو رقم سري غير صحيح";
 "common_statistics_low" = "منخفض";

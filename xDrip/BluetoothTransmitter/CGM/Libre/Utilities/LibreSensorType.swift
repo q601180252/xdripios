@@ -6,56 +6,59 @@ import os
 public enum LibreSensorType: String {
     
     // Libre 1
-    case libre1 = "libre1"
+    case libre1 = "DF"
     
-    case libreUS14day = "libreUS14day"
+    case libre1A2 = "A2"
     
-    case libreProH = "libreProH"
-
-    case libre2 = "libre2"
-            
-    case libre2Plus = "libre2Plus"
+    case libre2 = "9D"
     
-    case libre2US = "libre2US"
-
-    case libre2CA = "libre2CA"
-
-    case libre2RU = "libre2RU"
-
-    case libreSense = "libreSense"
+    case libre2C5 = "C5"
     
-    case libre3 = "libre3"
+    case libre2C6 = "C6" // EU Libre 2 Plus (May 2024)
     
-    case unsupported
+    case libre27F = "7F" // EU Libre 2 Plus (May 2025)
+    
+    case libreUS = "E5"
+    
+    case libreUSE6 = "E6"
+   
+    case libreProH = "70"
     
     var description: String {
+        
         switch self {
-        case .libre1, .libreUS14day:
+            
+        case .libre1:
             return "Libre 1"
+            
+        case .libre1A2:
+            return "Libre 1 A2"
+            
+        case .libre2:
+            return "Libre 2 EU"
+            
+        case .libre2C5:
+            return "Libre 2 EU C5"
+            
+        case .libre2C6:
+            return "Libre 2 Plus EU C6"
+            
+        case .libre27F:
+            return "Libre 2 Plus EU 7F"
+            
+        case .libreUS:
+            return "Libre US"
+            
+        case .libreUSE6:
+            return "Libre US E6"
+            
         case .libreProH:
             return "Libre PRO H"
-        case .libre2:
-            return "Libre 2"
-        case .libre2Plus:
-            return "Libre 2 Plus"
-        case .libre2US:
-            return "Libre 2 US"
-        case .libre2CA:
-            return "Libre 2 CA"
-        case .libre2RU:
-            return "Libre 2 RU"
-        case .libreSense:
-            return "Libre Sense"
-        case .libre3:
-            return "Libre 3"
-            
-        case .unsupported:
-            return TextsLibreStates.unsupported
-        default:
-            return ""
+
         }
-    }
         
+    }
+    
     /// decrypts for libre2 and libreUs,
     func decryptIfPossibleAndNeeded(rxBuffer:inout Data, headerLength: Int, log: OSLog?, patchInfo: String?, uid: [UInt8]) -> Bool {
         
@@ -68,7 +71,7 @@ public enum LibreSensorType: String {
         }
         
         // decrypt if libre2 or libreUS
-        if self == .libre2 || self == .libre2US {
+        if self == .libre2 || self == .libre2C5 || self == .libre2C6 || self == .libre27F || self == .libreUS || self == .libreUSE6 {
             
             var libreData = rxBuffer.subdata(in: headerLength..<(rxBufferEnd + 1))
 
@@ -77,8 +80,8 @@ public enum LibreSensorType: String {
                 if let log = log {
                     trace("    decrypting libre data", log: log, category: ConstantsLog.categoryLibreSensorType, type: .info)
                 }
-                //TODO2
-//                libreData = Data(PreLibre2.decryptFRAM(uid, info.bytes, libreData.bytes))
+                
+                libreData = Data(PreLibre2.decryptFRAM(uid, Array(info), Array(libreData)))
                 
             } else {
                 
@@ -118,64 +121,77 @@ public enum LibreSensorType: String {
     /// - if first byte is unknown, then returns nil
     static func type(patchInfo: String?) -> LibreSensorType? {
         
-        guard let pathInfoData = patchInfo?.hexadecimal() else {return nil}
+        guard let patchInfo = patchInfo else {return .libre1}
         
-        guard pathInfoData.count > 1 else { return nil }
+        guard patchInfo.count > 1 else {return nil}
         
-        switch pathInfoData[0] {
-        case 0xDF, 0xA2:
-            return .libre1
-        case 0xE5, 0xE6:
-            return .libreUS14day
-        case 0x70:
-            return .libreProH
-        case 0x9D, 0xC5:
-            return .libre2
-        case 0xC6, 0x2C:
-            return .libre2Plus
+        let firstTwoChars = patchInfo[0..<2].uppercased()
+        
+        switch firstTwoChars {
             
-        case 0x76, 0x2B:
-            if pathInfoData[3] == 2 {
-                return .libre2US
-            } else if pathInfoData[3] == 4 {
-                return .libre2CA
-            } else if pathInfoData[3] == 8 {
-                if pathInfoData[2] & 0x0F < 0x0A {
-                    return .libre2RU
-                } else {
-                    return .libre2Plus
-                }
-            } else if pathInfoData[2] >> 4 == 7 {
-                return .libreSense
-            }
-                        
+        case "DF":
+            return .libre1
+            
+        case "A2":
+            return .libre1A2
+            
+        case "9D":
+            return .libre2
+            
+        case "C5":
+            return .libre2C5 // new Libre 2 EU type (May 2023)
+            
+        case "C6":
+            return .libre2C6 // new Libre 2 Plus EU type (May 2024)
+            
+        case "7F":
+            return .libre27F // new Libre 2 Plus EU type (May 2025)
+            
+        case "E5":
+            return .libreUS
+            
+        case "E6":
+            return .libreUSE6
+            
+        case "70":
+            return .libreProH
+            
         default:
-            if pathInfoData.count == 24 {
-                return .libre3
-            }
+            return nil
+            
         }
-        
-        return nil
-}
+            
+    }
     
     /// maximum sensor age in days, nil if no maximum
     func maxSensorAgeInDays() -> Double? {
+        
         switch self {
+        
         case .libre1:
             return 14.5
-        case .libre2, .libreSense:
+            
+        case .libre1A2:
             return 14.5
+
+        case .libre2, .libre2C5:
+            return 14.5
+            
+        case .libre2C6, .libre27F:
+            return 15.5
+
+        case .libreUS, .libreUSE6:
+            return nil
+
         case .libreProH:
             return 14
-        case .libreUS14day:
-            return 14
-        case .libre2Plus, .libre2US, .libre2CA, .libre2RU, .libre3:
-            return nil
-        default:
-            return nil
-        }
-    }
 
+        }
+        
+    }
+    
+
+    
 }
 
 

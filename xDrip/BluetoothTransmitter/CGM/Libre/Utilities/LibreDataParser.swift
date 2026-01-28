@@ -51,9 +51,6 @@ class LibreDataParser {
                 if i < 0 {i += maxIndex}
                 let timeInSeconds = timeInSecondsCalculator(index)
                 
-                if (i * 6 + firstByteToAppend + 5 >= libreData.count) {
-                    continue
-                }
                 var byte = Data()
                 byte.append(libreData[(i * 6 + firstByteToAppend)])
                 byte.append(libreData[(i * 6 + firstByteToAppend + 1)])
@@ -222,11 +219,11 @@ class LibreDataParser {
             
             switch libreSensorType {
                 
-            case .libre1, .libreProH:// these types are all Libre 1
+            case .libre1A2, .libre1, .libreProH:// these types are all Libre 1
                 
                 libre1DataProcessor(libreSensorSerialNumber: libreSensorSerialNumber, libreSensorType: libreSensorType, libreData: libreData, cgmTransmitterDelegate: cgmTransmitterDelegate, testTimeStamp: testTimeStamp, completionHandler: completionHandler)
                 
-            case .libreUS14day:// not sure if this works for libreUS
+            case .libreUS, .libreUSE6:// not sure if this works for libreUS
                 
                 // libreUS isn't working yet, create an error and send to delegate
                 cgmTransmitterDelegate?.errorOccurred(xDripError: LibreOOPWebError.libreUSNotSupported)
@@ -234,13 +231,10 @@ class LibreDataParser {
                 // should never come here ?
                 trace("in libreDataProcessor, is libreUS but data is not decrypted - no further processing", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
                 
-            case .libre2, .libre2US, .libre2CA, .libre2RU, .libre2Plus, .libreSense, .libre3:
+            case .libre2, .libre2C5, .libre2C6, .libre27F:
                 
                 // should never come here ?
                 trace("in libreDataProcessor, is libre2 but data is not decrypted - no further processing", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
-                
-            default:
-                break
                 
             }
             

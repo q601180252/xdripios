@@ -3,7 +3,7 @@ import Foundation
 enum ConstantsTrace {
 
     /// email address to which to send trace file
-    static let traceFileDestinationAddress = "diaboxapp@gmail.com"
+    static let traceFileDestinationAddress = "xdrip@proximus.be"
 
     /// - will be used as filename to store traces on disk, and attachment file name when sending trace via e-mail
     /// - filename will be extended with digit, eg xdriptrace.0.log, or xdriptrace.1.log - the actual trace file is always xdriptrace.0.log

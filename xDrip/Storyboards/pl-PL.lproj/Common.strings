@@ -104,7 +104,6 @@
 
 /// general usage
 "unknown" = "Unknown";
-"unsupported" = "Unsupported";
 
 /// the word HIGH, in capitals
 "common_high" = "HIGH";

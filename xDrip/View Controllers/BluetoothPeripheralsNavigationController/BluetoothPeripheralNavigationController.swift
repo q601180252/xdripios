@@ -14,6 +14,21 @@ final class BluetoothPeripheralNavigationController: UINavigationController {
     
     /// a bluetoothPeripheralManager
     private weak var bluetoothPeripheralManager: BluetoothPeripheralManaging!
+
+    /// provider for the current active sensor (injected by RootViewController)
+    public weak var sensorProvider: ActiveSensorProviding?
+
+    // Apply the provider to any child VC that can accept it
+    private func applyProvider(to viewController: UIViewController) {
+        if let bluetoothPeripheralViewController = viewController as? BluetoothPeripheralViewController {
+            bluetoothPeripheralViewController.sensorProvider = sensorProvider
+            // Immediately refresh so the row isn't blank until the first timer tick
+            DispatchQueue.main.async {
+                bluetoothPeripheralViewController.updateTransmitterReadSuccess()
+                bluetoothPeripheralViewController.tableView.reloadSections(IndexSet(integer: 0), with: .none)
+            }
+        }
+    }
     
     // MARK:- public functions
     
@@ -32,18 +47,8 @@ final class BluetoothPeripheralNavigationController: UINavigationController {
         super.viewDidLoad()
         
         delegate = self
-        
-        if #available(iOS 15, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.backgroundColor = UIColor(red:0.16, green:0.16, blue:0.16, alpha:1.00)
-            navigationBar.scrollEdgeAppearance = appearance
-            navigationBar.standardAppearance = appearance
-        } else {
-            navigationBar.barTintColor = UIColor(red:0.16, green:0.16, blue:0.16, alpha:1.00)
-            navigationBar.isTranslucent = false
-        }
+        // Ensure existing children receive the provider immediately
+        viewControllers.forEach { applyProvider(to: $0) }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,6 +73,8 @@ extension BluetoothPeripheralNavigationController: UINavigationControllerDelegat
         if let bluetoothPeripheralsViewController = viewController as? BluetoothPeripheralsViewController, let coreDataManager = coreDataManager {
             bluetoothPeripheralsViewController.configure(coreDataManager: coreDataManager, bluetoothPeripheralManager: bluetoothPeripheralManager)
         }
+        // Forward the provider to detail controller(s)
+        applyProvider(to: viewController)
     }
 }
 

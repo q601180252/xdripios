@@ -12,7 +12,6 @@
 
 /// general usage
 "unknown" = "Inconnu";
-"unsupported" = "Non pris en charge";
 
 /// Possible Libre Sensor states
 "ready" = "prêt";

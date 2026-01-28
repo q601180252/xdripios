@@ -7,7 +7,6 @@
 
 /// general usage
 "unknown" = "غير معروف";
-"unsupported" = "غير مدعوم";
 
 /// Possible Libre Sensor states
 "starting" = "بداية";

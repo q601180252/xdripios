@@ -27,7 +27,6 @@
 "name" = "Nombre";
 "delete" = "Borrar";
 "unknown" = "Desconocido";
-"unsupported" = "No compatible";
 "red" = "rojo";
 "green" = "verde";
 "hardware" = "Hardware";
@@ -52,3 +51,5 @@
 "common_enabled" = "Habilitado";
 "common_disabled" = "Deshabilitado";
 "common_notRequired" = "No requerido";
+"next" = "Siguiente";
+"common_checking" = "Comprobando...";

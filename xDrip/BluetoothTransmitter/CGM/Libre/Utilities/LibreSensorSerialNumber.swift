@@ -104,11 +104,11 @@ public struct LibreSensorSerialNumber: CustomStringConvertible {
                 
                 first = "1"
                 
-            case .libre2, .libre2CA, .libre2RU, .libre2US, .libre2Plus, .libreSense:
+            case .libre2, .libre2C5, .libre2C6, .libre27F:
             
                 first = "3"
                 
-            case .libre1, .libreUS14day:
+            case .libre1, .libreUS, .libreUSE6:
                 
                 first = "0"
                 

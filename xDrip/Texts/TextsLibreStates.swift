@@ -32,8 +32,5 @@ class TextsLibreStates {
         return NSLocalizedString("unknown", tableName: filename, bundle: Bundle.main, value: "unknown", comment: "Possible Libre Sensor states")
     }()
     
-    static let unsupported: String = {
-        return NSLocalizedString("unsupported", tableName: filename, bundle: Bundle.main, value: "unsupported", comment: "Possible Libre Sensor states")
-    }()
 
 }

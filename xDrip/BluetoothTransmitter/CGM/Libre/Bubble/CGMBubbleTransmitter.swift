@@ -2,14 +2,11 @@ import Foundation
 import CoreBluetooth
 import os
 
-import LibOutshine
-
-class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
-    var appId:UInt8=0xA0;
-
+@objcMembers
+class CGMBubbleTransmitter: BluetoothTransmitter, CGMTransmitter {
+    let appId:UInt8=0xA0;
     var lastDataTime:Double=0;
-    
-    var logsBubbleAccessor: LogsBubbleAccessor?
+    // MARK: - properties
     
     private var lastGlucoseDate: Date? {
         get {
@@ -75,8 +72,6 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
     
     /// sensor type
     private var libreSensorType: LibreSensorType?
-    
-    fileprivate var cacheBattery: UInt8 = 0x00
 
     // MARK: - Initialization
     
@@ -120,87 +115,6 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
 
         super.init(addressAndName: newAddressAndName, CBUUID_Advertisement: nil, servicesCBUUIDs: [CBUUID(string: CBUUID_Service_Bubble)], CBUUID_ReceiveCharacteristic: CBUUID_ReceiveCharacteristic_Bubble, CBUUID_WriteCharacteristic: CBUUID_WriteCharacteristic_Bubble, bluetoothTransmitterDelegate: bluetoothTransmitterDelegate)
         
-        package.writeFunc = { [weak self] data in self?.write(data: data) }
-        package.libreDataCallback = { [weak self] result in
-            guard let self else { return }
-            
-            if self.cacheBattery > 0 {
-                self.logsBubbleAccessor?.updateBattery100(Int(self.cacheBattery))
-            }
-            self.logsBubbleAccessor?.updateCount()
-
-            if var crcData = result.hexadecimal(), let patchUid = patchUid, let patchInfo = patchInfo {
-                                        
-                guard Crc.LibreCrc(data: &crcData, headerOffset: 0, libreSensorType: nil) else {
-                    
-                    trace("    crc check failed, no further processing", log: log, category: ConstantsLog.categoryBlucon, type: .error)
-                    
-                    // transmitter can go to sleep
-                    return
-                }
-
-                 
-                DispatchQueue.main.async {
-                    let sensorTime = Int(crcData[317]) << 8 + Int(crcData[316])
-                    let sensorMaxTime = Int(crcData[327]) << 8 + Int(crcData[326])
-                
-                    self.maxAgeInDays = Double(sensorMaxTime) / 60.0 / 24.0
-                    UserDefaults.standard.activeSensorMaxSensorAgeInDays = self.maxAgeInDays
-                                            
-                    var state = LibreSensorState(stateByte: crcData[4])
-                    if state == .ready && sensorTime < 60 {
-                        state = .starting
-                    }
-                    
-                    if let libreSensorSerialNumber = self.libreSensorSerialNumber {
-                        
-                        self.cGMBubbleTransmitterDelegate?.received(serialNumber: libreSensorSerialNumber.serialNumber, from: self)
-
-                        // verify serial number and if changed inform delegate
-                        if libreSensorSerialNumber.serialNumber != self.sensorSerialNumber {
-
-                            // store self.sensorSerialNumber
-                            self.sensorSerialNumber = libreSensorSerialNumber.serialNumber
-                            
-                            trace("    new sensor detected :  %{public}@", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .info, libreSensorSerialNumber.serialNumber)
-                            
-                            // inform cgmTransmitterDelegate about new sensor detected
-                            // assign sensorStartDate, for this type of transmitter the sensorAge is passed in another call to cgmTransmitterDelegate
-                            self.cgmTransmitterDelegate?.newSensorDetected(sensorStartDate: Date(timeInterval: -Double(sensorTime * 60), since: Date()))
-
-                            // inform cGMBubbleTransmitterDelegate about new sensor detected
-                            self.cGMBubbleTransmitterDelegate?.received(serialNumber: libreSensorSerialNumber.serialNumber, from: self)
-                        }
-                    }
-
-                    self.lastDataTime=Date().timeIntervalSince1970
-                    
-                    self.libreDataParser.libreDataProcessor(libreSensorSerialNumber: self.libreSensorSerialNumber?.serialNumber, patchInfo: patchInfo, webOOPEnabled: self.webOOPEnabled, libreData: crcData, cgmTransmitterDelegate: self.cgmTransmitterDelegate, dataIsDecryptedToLibre1Format: true, testTimeStamp: nil) { (sensorState: LibreSensorState?, xDripError: XdripError?) in
-                        
-                        self.lastGlucoseDate = Date()
-                        
-                        self.resetRxBuffer()
-                        
-                        if let sensorState = sensorState {
-                            self.cGMBubbleTransmitterDelegate?.received(sensorStatus: sensorState, from: self)
-                        }
-                        
-                        if self.readTimeInterval != 0x05 {
-                            _ = self.sendStartReadingCommmand()
-                        }
-                    }
-                }
-            }
-
-        }
-    }
-    
-    func getDeviceName() -> String? {
-        return deviceName
-    }
-    
-    func getSensorName() -> String? {
-        return libreSensorType?.description
     }
     
     func nextReadTimeinterval() -> UInt8 {
@@ -222,22 +136,29 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
     private var readTimeInterval: UInt8 = 0x05
     func sendStartReadingCommmand() -> Bool {
         readTimeInterval = nextReadTimeinterval()
-
-        logsBubbleAccessor?.updateCountSendInit()
         if writeDataToPeripheral(data: Data([0x00, appId, readTimeInterval]), type: .withoutResponse) {
             return true
         } else {
-            trace("in sendStartReadingCommand, write failed", log: log, category: ConstantsLog.categoryCGMBubble, type: .error)
+            trace("in sendStartReadingCommmand, write failed", log: log, category: ConstantsLog.categoryCGMBubble, type: .error)
             return false
         }
     }
     
-    func startOTA() {
-        if deviceName?.lowercased().contains("nano") == true {
-            _ = writeDataToPeripheral(data: Data([0x7b, 0x03, 0x00]), type: .withoutResponse)
+    override func prepareForRelease() {
+        // Clear base CB delegates + unsubscribe common receiveCharacteristic synchronously on main
+        super.prepareForRelease()
+        // Bubble-specific: clear buffers and transient state synchronously on main
+        let tearDown = {
+            self.rxBuffer = Data()
+            self.startDate = Date()
+            self.libreSensorSerialNumber = nil
+            self.patchInfo = nil
+            self.firmware = nil
+            self.libreSensorType = nil
         }
+        if Thread.isMainThread { tearDown() } else { DispatchQueue.main.sync(execute: tearDown) }
     }
-    
+
     // MARK: - overriden  BluetoothTransmitter functions
     
     override func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
@@ -255,7 +176,6 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
         super.peripheral(peripheral, didUpdateValueFor: characteristic, error: error)
         
         if let value = characteristic.value {
-            print("===did update \(value.toHexString())")
             
             //check if buffer needs to be reset
             if (Date() > startDate.addingTimeInterval(CGMBubbleTransmitter.maxWaitForpacketInSeconds - 1)) {
@@ -267,38 +187,29 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                 if let bubbleResponseState = BubbleResponseType(rawValue: firstByte) {
                     switch bubbleResponseState {
                         
-                    case .bubbleDb:
-                        func setBubbleDb(value: Data) {
-                            guard value.count > 2 else { return }
-                            let db = value[2]
-                            UserDefaults.standard.bubbleDb = Int(db)
-                        }
-
                     case .dataInfo:
-                        
+                        trace("in .dataInfo, value: %{public}@", log: log, category: ConstantsLog.categoryCGMBubble, type: .info, value.hexEncodedString())
+                        guard value.count >= 5 else { return }
                         // get hardware, firmware and batteryPercentage
                         let hardware = value[value.count-2].description + "." + value[value.count-1].description
                         let firmware = value[2].description + "." + value[3].description
                         let batteryPercentage = Int(value[4])
-                        
-                        // send firmware, hardware and battery to delegeate
-                        cGMBubbleTransmitterDelegate?.received(firmware: firmware, from: self)
-                        cGMBubbleTransmitterDelegate?.received(hardware: hardware, from: self)
-                        cGMBubbleTransmitterDelegate?.received(batteryLevel: batteryPercentage, from: self)
-                        
-                        // send batteryPercentage to delegate
-                        cgmTransmitterDelegate?.cgmTransmitterInfoReceived(glucoseData: &emptyArray, transmitterBatteryInfo: TransmitterBatteryInfo.percentage(percentage: batteryPercentage), sensorAge: nil)
-                        
-                        if batteryPercentage > 0 {
-                            logsBubbleAccessor?.updateBattery(batteryPercentage)
-                            logsBubbleAccessor?.updateBattery100(batteryPercentage)
+
+                        // send firmware, hardware and battery to delegate on main
+                        DispatchQueue.main.async { [weak self] in
+                            guard let self = self else { return }
+                            self.cGMBubbleTransmitterDelegate?.received(firmware: firmware, from: self)
+                            self.cGMBubbleTransmitterDelegate?.received(hardware: hardware, from: self)
+                            self.cGMBubbleTransmitterDelegate?.received(batteryLevel: batteryPercentage, from: self)
+                            let empty = self.emptyArray
+                            var copy = empty
+                            self.cgmTransmitterDelegate?.cgmTransmitterInfoReceived(glucoseData: &copy, transmitterBatteryInfo: TransmitterBatteryInfo.percentage(percentage: batteryPercentage), sensorAge: nil)
                         }
-                        
+
                         // store received firmware local
                         self.firmware = firmware
-
                         lastDataTime=0
-                        
+
                         if let last = lastGlucoseDate {
                             if Date().timeIntervalSince(last) < 4 * 60 {
                                 return
@@ -306,35 +217,21 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                         }
 
                         //deviceName
-                        if(deviceName != "Bubble Nano") {
+                        if deviceName == "Bubble Nano" {
                             _ = writeDataToPeripheral(data: Data([0x08, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
                         } else {
                             if firmware.toDouble() ?? 0 >= 8.1 && libreSensorType == .libre1 {
                                 _ = writeDataToPeripheral(data: Data([0x0C, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
-                            } else if firmware.toDouble() ?? 0 >= 2.6 && libreSensorType != nil {       
+                            } else if firmware.toDouble() ?? 0 >= 2.6 {
                                 _ = writeDataToPeripheral(data: Data([0x08, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
                             } else {
                                 _ = writeDataToPeripheral(data: Data([0x02, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
                             }
-                            
-                            if firmware.toDouble() ?? 0 >= 8.1 {
-                                // update bubble db after 10s delay
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { [weak self] in
-                                    guard let self else { return }
-                                    _ = self.writeDataToPeripheral(data: Data([0x7A, self.appId, 0x04]), type: .withoutResponse)
-                                }
-                            }
                         }
-                        
                         // confirm receipt
                         // if firmware >= 2.6, write [0x08, 0x01, 0x00, 0x00, 0x00, 0x2B]
                         // bubble will decrypt the libre2 data and return it
-//                        if firmware.toDouble() ?? 0 >= 2.6 {
-//                            _ = writeDataToPeripheral(data: Data([0x02, 0x01, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
-//                        } else {
-//                            _ = writeDataToPeripheral(data: Data([0x02, 0x00, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
-//                        }
-                        
+
                     case .serialNumber:
                         
                         guard value.count >= 10 else { return }
@@ -345,31 +242,26 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                         // this is actually the sensor serial number, adding it to rxBuffer (we could also not add it and set bubbleHeaderLength to 0 - this is historic
                         rxBuffer.append(value.subdata(in: 2..<10))
                         
-                        patchUid = value.subdata(in: 2..<10).hexEncodedString().uppercased()
-                        
-                        package.patchUid = patchUid
-                        
                         // get libreSensorSerialNumber, if this fails, then self.libreSensorSerialNumber will keep it's current value
                         // Bubble sends the patchInfo only in a second step, which means patchInfo is nil here, as a result, the sensorSerialNumber will maybe not be correct (eg for Libre 2), because the function LibreSensorType.type uses the patchInfo
                         // libreSensorSerialNumber will be recalculated when receiving the patchInfo
-                        guard let patchInfo, let libreSensorSerialNumber = LibreSensorSerialNumber(withUID: Data(rxBuffer.subdata(in: 0..<8)), with: LibreSensorType.type(patchInfo: patchInfo)) else {
+                        guard let libreSensorSerialNumber = LibreSensorSerialNumber(withUID: Data(rxBuffer.subdata(in: 0..<8)), with: LibreSensorType.type(patchInfo: patchInfo)) else {
                             trace("    could not create libreSensorSerialNumber", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .info)
                             return
                         }
                         
                         // assign self.libreSensorSerialNumber to received libreSensorSerialNumber
                         self.libreSensorSerialNumber = libreSensorSerialNumber
-                        
-                        self.callbackStates()
 
-                    case .dataPacket, .decryptedDataPacket, .dataPacket2:
+                        
+                    case .dataPacket, .dataPacket2, .decryptedDataPacket:
+
                         //no different processing for decryptedDataPacket, we look at the firmware version of the bubble and sensortype to determine if data is decrypted or not
                         
                         rxBuffer.append(value.suffix(from: 4))
                         
                         if rxBuffer.count >= 352 {
                             
-                            print("rx buffer \(rxBuffer.toHexString())")
                             var dataIsDecryptedToLibre1Format = false
                             
                             // for libre2 and libreUS we will do decryption
@@ -380,20 +272,12 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                                 // if firmware < 2.6, libre2 and libreUS will decrypt fram local
                                 // after decryptFRAM, the libre2 and libreUS 344 will be libre1 344 data format
                                 // firmware >= 2.6, then bubble already decrypted the data, no need for decryption we already have the 344 bytes
-                                if libreSensorType == .libre2 || libreSensorType == .libre2CA || libreSensorType == .libre2US || libreSensorType == .libreUS14day || libreSensorType == .libre2RU {
+                                if libreSensorType == .libre2 || libreSensorType == .libre2C5 || libreSensorType == .libre2C6 || libreSensorType == .libre27F || libreSensorType == .libreUS || libreSensorType == .libreUSE6 {
                                     
                                     if let firmware = firmware?.toDouble(), firmware < 2.6 {
-                                        //TODO2
-//                                        dataIsDecryptedToLibre1Format = libreSensorType.decryptIfPossibleAndNeeded(rxBuffer: &rxBuffer, headerLength: bubbleHeaderLength, log: log, patchInfo: patchInfo, uid: rxBuffer[0..<bubbleHeaderLength].bytes)
-                                        let uidBytes = [UInt8](rxBuffer.subdata(in: 0..<bubbleHeaderLength))
-                                        dataIsDecryptedToLibre1Format = libreSensorType.decryptIfPossibleAndNeeded(
-                                            rxBuffer: &rxBuffer,
-                                            headerLength: bubbleHeaderLength,
-                                            log: log,
-                                            patchInfo: patchInfo,
-                                            uid: uidBytes
-                                        )
-
+                                        
+                                        dataIsDecryptedToLibre1Format = libreSensorType.decryptIfPossibleAndNeeded(rxBuffer: &rxBuffer, headerLength: bubbleHeaderLength, log: log, patchInfo: patchInfo, uid: Array(rxBuffer[0..<bubbleHeaderLength]))
+                                        
                                     } else {
                                         
                                         trace("    firmware version >= 2.6, libre data should be decrypted already", log: log, category: ConstantsLog.categoryCGMBubble, type: .info)
@@ -414,8 +298,6 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                             
                             // did we receive a serialNumber ?
                             if let libreSensorSerialNumber = libreSensorSerialNumber {
-                                
-                                cGMBubbleTransmitterDelegate?.received(serialNumber: libreSensorSerialNumber.serialNumber, from: self)
 
                                 // verify serial number and if changed inform delegate
                                 if libreSensorSerialNumber.serialNumber != sensorSerialNumber {
@@ -427,88 +309,70 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                                     
                                     // inform cgmTransmitterDelegate about new sensor detected
                                     // assign sensorStartDate, for this type of transmitter the sensorAge is passed in another call to cgmTransmitterDelegate
-                                    cgmTransmitterDelegate?.newSensorDetected(sensorStartDate: nil)
-
-                                    // inform cGMBubbleTransmitterDelegate about new sensor detected
-                                    cGMBubbleTransmitterDelegate?.received(serialNumber: libreSensorSerialNumber.serialNumber, from: self)
+                                    DispatchQueue.main.async { [weak self] in
+                                        guard let self = self else { return }
+                                        self.cgmTransmitterDelegate?.newSensorDetected(sensorStartDate: nil)
+                                        self.cGMBubbleTransmitterDelegate?.received(serialNumber: libreSensorSerialNumber.serialNumber, from: self)
+                                    }
                                     
                                 }
 
                             }
 
-                            libreDataParser.libreDataProcessor(libreSensorSerialNumber: libreSensorSerialNumber?.serialNumber, patchInfo: patchInfo, webOOPEnabled: webOOPEnabled, libreData:  (rxBuffer.subdata(in: bubbleHeaderLength..<(344 + bubbleHeaderLength))), cgmTransmitterDelegate: cgmTransmitterDelegate, dataIsDecryptedToLibre1Format: dataIsDecryptedToLibre1Format, testTimeStamp: nil) { [weak self] (sensorState: LibreSensorState?, xDripError: XdripError?) in
-                                
-                                guard let self = self else { return }
+                            libreDataParser.libreDataProcessor(libreSensorSerialNumber: libreSensorSerialNumber?.serialNumber, patchInfo: patchInfo, webOOPEnabled: webOOPEnabled, libreData:  (rxBuffer.subdata(in: bubbleHeaderLength..<(344 + bubbleHeaderLength))), cgmTransmitterDelegate: cgmTransmitterDelegate, dataIsDecryptedToLibre1Format: dataIsDecryptedToLibre1Format, testTimeStamp: nil) { (sensorState: LibreSensorState?, xDripError: XdripError?) in
                                 
                                 self.lastGlucoseDate = Date()
                                 
-                                if self.cacheBattery > 0 {
-                                    self.logsBubbleAccessor?.updateBattery100(Int(cacheBattery))
-                                }
-                                self.logsBubbleAccessor?.updateCount()
-
                                 if let sensorState = sensorState {
-                                    self.cGMBubbleTransmitterDelegate?.received(sensorStatus: sensorState, from: self)
+                                    DispatchQueue.main.async { [weak self] in
+                                        guard let self = self else { return }
+                                        self.cGMBubbleTransmitterDelegate?.received(sensorStatus: sensorState, from: self)
+                                    }
                                 }
                             }
-
                             lastDataTime=Date().timeIntervalSince1970
-
                             //reset the buffer
                             resetRxBuffer()
+                            
                         }
                         
                     case .noSensor:
                         if(Date().timeIntervalSince1970-lastDataTime>10000){
-                            cgmTransmitterDelegate?.sensorNotDetected()
-                            
-                            logsBubbleAccessor?.updateCountBf()
+                            DispatchQueue.main.async { [weak self] in
+                                self?.cgmTransmitterDelegate?.sensorNotDetected()
+                            }
                         }
-
+                        
+                        
                     case .patchInfo:
                         if value.count >= 10 {
                             
                             patchInfo = value.subdata(in: 5 ..< 11).hexEncodedString().uppercased()
-                            
-                            package.patchInfo = patchInfo
 
                             if let patchInfo = patchInfo {
                                 trace("    received patchInfo %{public}@ ", log: log, category: ConstantsLog.categoryCGMBubble, type: .info, patchInfo)
                             }
 
                             // send libreSensorType to delegate
-                            if var libreSensorType = LibreSensorType.type(patchInfo: patchInfo) {
-
-                                if let p = patchInfo?.lowercased() {
-                                    if p.hasPrefix("76") || p.hasPrefix("2b") || p.hasPrefix("2c") {
-                                        //TODO
-                                        if !DBOutshine.isSupported(patchInfo ?? "") {
-                                            libreSensorType = .unsupported
-                                            trace("    unsupported patchInfo %{public}@ ", log: log, category: ConstantsLog.categoryCGMBubble, type: .info, patchInfo ?? "")
-                                        }
-                                    }
+                            if let libreSensorType = LibreSensorType.type(patchInfo: patchInfo) {
+                                DispatchQueue.main.async { [weak self] in
+                                    guard let self = self else { return }
+                                    self.cGMBubbleTransmitterDelegate?.received(libreSensorType: libreSensorType, from: self)
                                 }
-                                
-                                self.libreSensorType = libreSensorType
-                                cGMBubbleTransmitterDelegate?.received(libreSensorType: libreSensorType, from: self)
-                                cgmTransmitterDelegate?.infoUpdate()
                             }
                             
-                            // we have the patchInfo now, so recalculate the sensorSerialNumber
-                            guard let libreSensorSerialNumber = LibreSensorSerialNumber(withUID: Data(rxBuffer.subdata(in: 0..<8)), with: LibreSensorType.type(patchInfo: patchInfo)) else {
-                                trace("    could not create libreSensorSerialNumber", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .info)
-                                return
-                            }
-                            
-                            // assign self.libreSensorSerialNumber to received libreSensorSerialNumber
-                            self.libreSensorSerialNumber = libreSensorSerialNumber
-                            
-                            self.callbackStates()
+                        // we have the patchInfo now, so recalculate the sensorSerialNumber
+                        guard rxBuffer.count >= 8,
+                              let libreSensorSerialNumber = LibreSensorSerialNumber(withUID: Data(rxBuffer.subdata(in: 0..<8)), with: LibreSensorType.type(patchInfo: patchInfo)) else {
+                            trace("    could not create libreSensorSerialNumber (rxBuffer too short or invalid UID)", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .info)
+                            return
+                        }
+                        
+                        // assign self.libreSensorSerialNumber to received libreSensorSerialNumber
+                        self.libreSensorSerialNumber = libreSensorSerialNumber
 
                         }
                         
-                    case .authData:
-                        receiveAuthData(data: value)
                     }
                 }
             }
@@ -516,59 +380,6 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
             trace("in peripheral didUpdateValueFor, value is nil, no further processing", log: log, category: ConstantsLog.categoryCGMBubble, type: .error)
         }
         
-    }
-    
-    private func callbackStates() {
-        if let libreSensorSerialNumber = self.libreSensorSerialNumber {
-
-            // verify serial number and if changed inform delegate
-            if libreSensorSerialNumber.serialNumber != self.sensorSerialNumber {
-
-                // store self.sensorSerialNumber
-                self.sensorSerialNumber = libreSensorSerialNumber.serialNumber
-                                            
-                
-                DispatchQueue.main.async {
-                    // inform cgmTransmitterDelegate about new sensor detected
-                    // assign sensorStartDate, for this type of transmitter the sensorAge is passed in another call to cgmTransmitterDelegate
-                    self.cgmTransmitterDelegate?.newSensorDetected(sensorStartDate: nil)
-
-                    // inform cGMBubbleTransmitterDelegate about new sensor detected
-                    self.cGMBubbleTransmitterDelegate?.received(serialNumber: libreSensorSerialNumber.serialNumber, from: self)
-
-                }
-                
-            }
-
-        }
-
-    }
-    
-    private var maxAgeInDays: Double?
-    
-    private var caFirstNet = false
-    private var caP1: String?
-
-    private var caData1 = Data()
-    private var caData2 = Data()
-    private var caData344 = Data()
-
-    private func write(data: String) {
-        guard let value = data.hexadecimal(), value.count > 3 else { return }
-        let sub = value[3...]
-        var bytes: [UInt8] = [0x0A, appId, UInt8(sub.count)]
-        bytes += sub
-        _ = writeDataToPeripheral(data: Data(bytes), type: .withResponse)
-    }
-    
-    private var patchUid: String?
-
-    private let package = CADataCollector()
-
-    private func receiveAuthData(data: Data) {
-        guard data[1] == appId else { return }
-        
-        package.append(data: data)
     }
     
     // MARK: CGMTransmitter protocol functions
@@ -612,9 +423,8 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
     }
     
     func maxSensorAgeInDays() -> Double? {
-        return libreSensorType?.maxSensorAgeInDays() ?? maxAgeInDays
-//        return maxAgeInDays
-//        return libreSensorType?.maxSensorAgeInDays()
+        
+        return libreSensorType?.maxSensorAgeInDays()
         
     }
 
@@ -648,15 +458,12 @@ fileprivate enum BubbleResponseType: UInt8 {
     /// if firmware >= 2.6, write [0x08, 0x01, 0x00, 0x00, 0x00, 0x2B]
     /// bubble will decrypt the libre2 data and return it
     case decryptedDataPacket = 136 // 0x88
-    
-    case authData = 0x8A
-    case bubbleDb = 0xB9
 }
 
 extension BubbleResponseType: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .dataPacket, .decryptedDataPacket, .dataPacket2:
+        case .dataPacket, .dataPacket2, .decryptedDataPacket:
             return "Data packet received"
         case .noSensor:
             return "No sensor detected"
@@ -666,10 +473,6 @@ extension BubbleResponseType: CustomStringConvertible {
             return "Serial number received"
         case .patchInfo:
             return "Patch info received"
-        case .authData:
-            return "Auth data"
-        case .bubbleDb:
-            return "Bubble DB"
         }
     }
 }

@@ -98,7 +98,7 @@ class LibreLinkUpFollowManager: NSObject {
         
         // run a quick check to see if the LibreLinkUp version stored in the constants file is newer than the one currently stored in the app. If it is, then update it. This will only happen if the user hasn't manually updated it before a new xDrip4iOS version is released.
         if ConstantsLibreLinkUp.libreLinkUpVersionDefault.compare(UserDefaults.standard.libreLinkUpVersion ?? "0.0.0", options: .numeric) == .orderedDescending {
-            trace("in init, updating coredata LibreLinkUp version from '%{public}@' to '%{public}@", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .info, UserDefaults.standard.libreLinkUpVersion ?? "nil", ConstantsLibreLinkUp.libreLinkUpVersionDefault)
+            trace("in init, updating userdefaults LibreLinkUp version from '%{public}@' to '%{public}@", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .info, UserDefaults.standard.libreLinkUpVersion ?? "nil", ConstantsLibreLinkUp.libreLinkUpVersionDefault)
             
             UserDefaults.standard.libreLinkUpVersion = ConstantsLibreLinkUp.libreLinkUpVersionDefault
         }
@@ -178,7 +178,7 @@ class LibreLinkUpFollowManager: NSObject {
     @objc public func download() {
         trace("in download", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .info)
         
-        if (UserDefaults.standard.timeStampLatestNightscoutSyncRequest ?? Date.distantPast).timeIntervalSinceNow > 15 {
+        if (UserDefaults.standard.timeStampLatestNightscoutSyncRequest ?? .distantPast).timeIntervalSinceNow < -15 {
             trace("    setting nightscoutSyncRequired to true, this will also initiate a treatments/devicestatus sync", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .info)
             
             UserDefaults.standard.timeStampLatestNightscoutSyncRequest = .now
@@ -190,7 +190,7 @@ class LibreLinkUpFollowManager: NSObject {
             return
         }
         
-        guard UserDefaults.standard.followerDataSourceType == .libreLinkUp else {
+        guard UserDefaults.standard.followerDataSourceType == .libreLinkUp || UserDefaults.standard.followerDataSourceType == .libreLinkUpRussia else {
             trace("    followerDataSourceType is not libreLinkUp", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .info)
             return
         }
@@ -227,27 +227,13 @@ class LibreLinkUpFollowManager: NSObject {
                     let graphResponse = try await requestGraph(patientId: patientId)
                     
                     // before processing the glucoseMeasurement values, let's set up the sensor info in coredata so that we can show it to the user in the settings screen
-                    // starting with LLU 4.12.0 this data sometimes isn't sent for some users so we'll try and use it if available and if not, just continue as normal without throwing an error
-                    if let startDate = graphResponse.data?.activeSensors?.first?.sensor?.a, let serialNumber = graphResponse.data?.activeSensors?.first?.sensor?.sn {
-                        UserDefaults.standard.activeSensorSerialNumber = serialNumber
-                        UserDefaults.standard.activeSensorStartDate = Date(timeIntervalSince1970: startDate)
+                    // starting with LLU 4.12.0 this data sometimes isn't sent for some users so we'll try and use it if available and if not, just try to get it from the data.connection and if not, just continue as normal without throwing an error
+                    if let startDate = graphResponse.data?.activeSensors?.first?.sensor?.a, let serialNumber = graphResponse.data?.activeSensors?.first?.sensor?.sn, serialNumber != "" {
+                        setActiveSensorInfo(serialNumber: serialNumber, startDateAsDouble: startDate)
                         
-                        UserDefaults.standard.activeSensorMaxSensorAgeInDays = UserDefaults.standard.libreLinkUpIs15DaySensor ? ConstantsLibreLinkUp.libreLinkUpMaxSensorAgeInDaysLibrePlus : ConstantsLibreLinkUp.libreLinkUpMaxSensorAgeInDays
-                        
-                        var activeSensorDescription = ""
-                        
-                        if serialNumber.range(of: #"^MH"#, options: .regularExpression) != nil {
-                            // MHxxxxxxxx
-                            // must be a L2 (or Libre 2 Plus) sensor
-                            activeSensorDescription = "Libre 2"
-                            
-                        } else if serialNumber.range(of: #"^0D"#, options: .regularExpression) != nil || serialNumber.range(of: #"^0E"#, options: .regularExpression) != nil || serialNumber.range(of: #"^0F"#, options: .regularExpression) != nil {
-                            // must be a Libre 3 (or Libre 3 Plus) sensor
-                            activeSensorDescription = "Libre 3"
-                        }
-                        
-                        UserDefaults.standard.activeSensorDescription = UserDefaults.standard.followerDataSourceType.fullDescription + " (" + activeSensorDescription + ")"
-                        
+                        // if no sensor info was found in data.activeSensor attributes, try and find it in the data.connection response
+                    } else if let startDate = graphResponse.data?.connection?.sensor?.a, let serialNumber = graphResponse.data?.connection?.sensor?.sn, serialNumber != "" {
+                        setActiveSensorInfo(serialNumber: serialNumber, startDateAsDouble: startDate)
                     } else {
                         // this will only happen if the account doesn't have an active sensor connected
                         // reset the data just in case it was previously stored
@@ -271,11 +257,14 @@ class LibreLinkUpFollowManager: NSObject {
                         
                         self.processDownloadResponse(data: glucoseMeasurementsArray, followGlucoseDataArray: &followGlucoseDataArray)
                         
-                        // call to delegate and rescheduling the timer must be done in main thread;
-                        DispatchQueue.main.sync {
+                        // Dispatch to delegate on the main actor (use a local copy for the inout parameter)
+                        let localCopy = followGlucoseDataArray
+                        await MainActor.run { [weak self] in
+                            guard let self = self else { return }
                             // call delegate followerInfoReceived which will process the new readings
                             if let followerDelegate = self.followerDelegate {
-                                followerDelegate.followerInfoReceived(followGlucoseDataArray: &followGlucoseDataArray)
+                                var array = localCopy
+                                followerDelegate.followerInfoReceived(followGlucoseDataArray: &array)
                             }
                         }
                     } else {
@@ -287,13 +276,48 @@ class LibreLinkUpFollowManager: NSObject {
                 trace("    in download, error = %{public}@", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .error, error.localizedDescription)
             }
             
-            // rescheduling the timer must be done in main thread
+            // rescheduling the timer must be done on the main actor
             // we do it here at the end of the function so that it is always rescheduled once a valid connection is established, irrespective of whether we get values.
-            DispatchQueue.main.sync {
-                // schedule new download
+            await MainActor.run { [weak self] in
+                guard let self = self else { return }
                 self.scheduleNewDownload()
             }
         }
+    }
+    
+    /// store the active sensor serial number and start date in userdefaults
+    /// also calculate and store the max sensor age
+    /// the serial number will be re-constructed to add the missing digits as needed
+    private func setActiveSensorInfo(serialNumber: String, startDateAsDouble: Double) {
+        
+        guard serialNumber != "" else { return }
+        
+        UserDefaults.standard.activeSensorSerialNumber = serialNumber
+        UserDefaults.standard.activeSensorStartDate = Date(timeIntervalSince1970: startDateAsDouble)
+        UserDefaults.standard.activeSensorMaxSensorAgeInDays = UserDefaults.standard.libreLinkUpIs15DaySensor ? ConstantsLibreLinkUp.libreLinkUpMaxSensorAgeInDaysLibrePlus : ConstantsLibreLinkUp.libreLinkUpMaxSensorAgeInDays
+        
+        var activeSensorDescription = ""
+        
+        if serialNumber.range(of: #"^MH"#, options: .regularExpression) != nil {
+            // 3MHxxxxxxxx
+            // must be a Libre 2 or Libre 2 Plus sensor
+            activeSensorDescription = "Libre 2"
+            
+        } else if serialNumber.range(of: #"^01"#, options: .regularExpression) != nil {
+            // 301xxxxxxxx
+            // must be a Libre 2 Plus sensor
+            activeSensorDescription = "Libre 2 Plus"
+            
+        } else if serialNumber.range(of: #"^0[D-Z]"#, options: .regularExpression) != nil {
+            // must be a Libre 3 (or Libre 3 Plus) sensor
+            activeSensorDescription = "Libre 3"
+            // overwrite and drop the last digit for L3 serial number: https://github.com/JohanDegraeve/xdripswift/issues/666
+            UserDefaults.standard.activeSensorSerialNumber = String(serialNumber.dropLast())
+        }
+        
+        UserDefaults.standard.activeSensorDescription = UserDefaults.standard.followerDataSourceType.fullDescription + " (" + activeSensorDescription + ")"
+        
+        return
     }
     
     /// if needed, perform a login request and retreive authentication token and expiry date. Then retreive the patient ID.
@@ -437,7 +461,6 @@ class LibreLinkUpFollowManager: NSObject {
             throw LibreLinkUpFollowError.urlErrorLogin
         }
         
-        print(loginUrl.description)
         trace("    in requestLogin, processing login request with URL: %{public}@", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .info, loginUrl)
         
         guard let url = URL(string: loginUrl) else {
@@ -607,30 +630,27 @@ class LibreLinkUpFollowManager: NSObject {
     private func processDownloadResponse(data: [RequestGraphResponseGlucoseMeasurement?], followGlucoseDataArray: inout [FollowerBgReading]) {
         // if data not nil then check if response is nil
         if !data.isEmpty {
-            let bgReadings = data.enumerated()
-            
-            for (_, element) in bgReadings {
-                if let followGlucoseData = FollowerBgReading(entry: element!) {
-                    // insert entry chronologically sorted, first is the youngest
-                    if followGlucoseDataArray.count == 0 {
+            for element in data {
+                guard let gm = element, let followGlucoseData = FollowerBgReading(entry: gm) else { continue }
+                // insert entry chronologically sorted, first is the youngest
+                if followGlucoseDataArray.isEmpty {
+                    followGlucoseDataArray.append(followGlucoseData)
+                } else {
+                    var elementInserted = false
+                    loop: for (index, existing) in followGlucoseDataArray.enumerated() {
+                        if existing.timeStamp < followGlucoseData.timeStamp {
+                            followGlucoseDataArray.insert(followGlucoseData, at: index)
+                            elementInserted = true
+                            break loop
+                        }
+                    }
+                    if !elementInserted {
                         followGlucoseDataArray.append(followGlucoseData)
-                    } else {
-                        var elementInserted = false
-                        loop: for (index, element) in followGlucoseDataArray.enumerated() {
-                            if element.timeStamp < followGlucoseData.timeStamp {
-                                followGlucoseDataArray.insert(followGlucoseData, at: index)
-                                elementInserted = true
-                                break loop
-                            }
-                        }
-                        if !elementInserted {
-                            followGlucoseDataArray.append(followGlucoseData)
-                        }
                     }
                 }
             }
         } else {
-            trace("    data is nil", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .error)
+            trace("    no glucose measurement elements to process", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .error)
         }
     }
     
@@ -660,11 +680,10 @@ class LibreLinkUpFollowManager: NSObject {
         let interval = UserDefaults.standard.followerBackgroundKeepAliveType == .normal ? ConstantsSuspensionPrevention.intervalNormal : ConstantsSuspensionPrevention.intervalAggressive
         
         // create playSoundTimer depending on the keep-alive type selected
-        self.playSoundTimer = RepeatingTimer(timeInterval: TimeInterval(Double(interval)), eventHandler: {
+        self.playSoundTimer = RepeatingTimer(timeInterval: TimeInterval(Double(interval)), eventHandler: { [weak self] in
+            guard let self = self else { return }
             // play the sound
-            
             trace("in eventhandler checking if audioplayer exists", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .info)
-            
             if let audioPlayer = self.audioPlayer, !audioPlayer.isPlaying {
                 trace("playing audio every %{public}@ seconds. %{public}@ keep-alive: %{public}@", log: self.log, category: ConstantsLog.categoryLibreLinkUpFollowManager, type: .info, interval.description, UserDefaults.standard.followerDataSourceType.description, UserDefaults.standard.followerBackgroundKeepAliveType.description)
                 audioPlayer.play()
@@ -672,7 +691,8 @@ class LibreLinkUpFollowManager: NSObject {
         })
         
         // schedulePlaySoundTimer needs to be created when app goes to background
-        ApplicationManager.shared.addClosureToRunWhenAppDidEnterBackground(key: self.applicationManagerKeyResumePlaySoundTimer, closure: {
+        ApplicationManager.shared.addClosureToRunWhenAppDidEnterBackground(key: self.applicationManagerKeyResumePlaySoundTimer, closure: { [weak self] in
+            guard let self = self else { return }
             if UserDefaults.standard.followerBackgroundKeepAliveType.shouldKeepAlive {
                 if let playSoundTimer = self.playSoundTimer {
                     playSoundTimer.resume()
@@ -684,7 +704,8 @@ class LibreLinkUpFollowManager: NSObject {
         })
         
         // schedulePlaySoundTimer needs to be invalidated when app goes to foreground
-        ApplicationManager.shared.addClosureToRunWhenAppWillEnterForeground(key: self.applicationManagerKeySuspendPlaySoundTimer, closure: {
+        ApplicationManager.shared.addClosureToRunWhenAppWillEnterForeground(key: self.applicationManagerKeySuspendPlaySoundTimer, closure: { [weak self] in
+            guard let self = self else { return }
             if let playSoundTimer = self.playSoundTimer {
                 playSoundTimer.suspend()
             }
@@ -693,7 +714,7 @@ class LibreLinkUpFollowManager: NSObject {
     
     /// verifies values of applicable UserDefaults and either starts or stops follower mode, inclusive call to enableSuspensionPrevention or disableSuspensionPrevention - also first download is started if applicable
     private func verifyUserDefaultsAndStartOrStopFollowMode() {
-        if !UserDefaults.standard.isMaster && UserDefaults.standard.followerDataSourceType == .libreLinkUp && UserDefaults.standard.libreLinkUpEmail != nil && UserDefaults.standard.libreLinkUpPassword != nil {
+        if !UserDefaults.standard.isMaster && (UserDefaults.standard.followerDataSourceType == .libreLinkUp || UserDefaults.standard.followerDataSourceType == .libreLinkUpRussia) && UserDefaults.standard.libreLinkUpEmail != nil && UserDefaults.standard.libreLinkUpPassword != nil {
             // this will enable the suspension prevention sound playing if background keep-alive is needed
             // (i.e. not disabled and not using a heartbeat)
             if UserDefaults.standard.followerBackgroundKeepAliveType.shouldKeepAlive {
@@ -716,6 +737,20 @@ class LibreLinkUpFollowManager: NSObject {
         }
     }
     
+    deinit {
+        // clean observers to avoid KVO crashes
+        UserDefaults.standard.removeObserver(self, forKeyPath: UserDefaults.Key.isMaster.rawValue)
+        UserDefaults.standard.removeObserver(self, forKeyPath: UserDefaults.Key.followerDataSourceType.rawValue)
+        UserDefaults.standard.removeObserver(self, forKeyPath: UserDefaults.Key.libreLinkUpEmail.rawValue)
+        UserDefaults.standard.removeObserver(self, forKeyPath: UserDefaults.Key.libreLinkUpPassword.rawValue)
+
+        // stop keep-alive helpers
+        disableSuspensionPrevention()
+
+        // invalidate any pending download timer
+        invalidateDownLoadTimerClosure?()
+    }
+    
     // MARK: - overriden function
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
@@ -726,6 +761,9 @@ class LibreLinkUpFollowManager: NSObject {
                     
                     // change by user, should not be done within 200 ms
                     if self.keyValueObserverTimeKeeper.verifyKey(forKey: keyPathEnum.rawValue, withMinimumDelayMilliSeconds: 200) {
+                        // re-allow login to be attempted if the user has changed data source type or other items
+                        UserDefaults.standard.libreLinkUpPreventLogin = false
+                        
                         // reset the token so that a new login process is forced when the download() function is later run
                         // this will also reset all activeSensor coredata values to update the UI
                         self.resetActiveSensorData()

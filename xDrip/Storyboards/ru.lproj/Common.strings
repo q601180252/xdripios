@@ -37,7 +37,6 @@
 "firmware" = "Прошивка";
 "hardware" = "Аппаратное обеспечение";
 "unknown" = "Неизвестно";
-"unsupported" = "Неподдерживаемый";
 "sensorStatus" = "Статус сенсора";
 "invalidAccountOrPassword" = "Неверный аккаунт или пароль";
 "common_statistics_low" = "Низ";

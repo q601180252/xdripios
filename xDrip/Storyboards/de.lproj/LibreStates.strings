@@ -3,7 +3,6 @@
 
 /// general usage
 "unknown" = "Unbekannt";
-"unsupported" = "nicht unterstützt";
 
 /// Possible Libre Sensor states
 "failure" = "Fehler";

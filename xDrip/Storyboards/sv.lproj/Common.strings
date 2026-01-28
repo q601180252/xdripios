@@ -37,7 +37,6 @@
 "firmware" = "Firmware";
 "hardware" = "Hårdvara";
 "unknown" = "Okänd";
-"unsupported" = "Inte stöds";
 "sensorStatus" = "Sensorstatus";
 "invalidAccountOrPassword" = "Ogitigt konto eller lösenord";
 "common_statistics_low" = "Lågt";

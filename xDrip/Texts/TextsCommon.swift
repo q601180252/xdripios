@@ -177,10 +177,6 @@ class Texts_Common {
         return NSLocalizedString("sensorStatus", tableName: filename, bundle: Bundle.main, value: "Sensor Status", comment: "to show the sensor status")
     }()
     
-    static let batteryLog = {
-        return NSLocalizedString("batteryLog", tableName: filename, bundle: Bundle.main, value: "Battery Logs", comment: "to show the battery log")
-    }()
-    
     static let invalidAccountOrPassword = {
         return NSLocalizedString("invalidAccountOrPassword", tableName: filename, bundle: Bundle.main, value: "Invalid account or password", comment: "Where credentials need to be given, if either account or password is invalid (for the moment only applicable to Dexcom Share")
     }()
@@ -232,5 +228,13 @@ class Texts_Common {
     
     static let notRequired = {
         return NSLocalizedString("common_notRequired", tableName: filename, bundle: Bundle.main, value: "Not required", comment: "not required")
+    }()
+    
+    static let next = {
+        return NSLocalizedString("common_next", tableName: filename, bundle: Bundle.main, value: "Next", comment: "next")
+    }()
+    
+    static let checking = {
+        return NSLocalizedString("common_checking", tableName: filename, bundle: Bundle.main, value: "Checking...", comment: "checking")
     }()
 }

@@ -37,7 +37,6 @@
 "firmware" = "Firmware";
 "hardware" = "Hardware";
 "unknown" = "Inconnu";
-"unsupported" = "Non pris en charge";
 
 /// to show the sensor status
 "sensorStatus" = "Statut du capteur";

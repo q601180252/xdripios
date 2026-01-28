@@ -37,7 +37,6 @@
 "firmware" = "Firmware";
 "hardware" = "Hardware";
 "unknown" = "Άγνωστο";
-"unsupported" = "Μη υποστηριζόμενο";
 "sensorStatus" = "Κατάσταση αισθητήρα";
 "invalidAccountOrPassword" = "Λάθος όνομα χρήστη ή κωδικός";
 "common_statistics_low" = "Χαμηλή";
