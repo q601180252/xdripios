@@ -230,9 +230,7 @@
 		47F7B1CD2C68CC3000609DA7 /* ConstantsCalibrationAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1585422EDB706007F5B5D /* ConstantsCalibrationAlgorithms.swift */; };
 		47FB28082636B04200042FFB /* StatisticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB28072636B04200042FFB /* StatisticsManager.swift */; };
 		B6F479142F2B7C7E00B56FD7 /* Fota.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6F478E52F2B7C7E00B56FD7 /* Fota.storyboard */; };
-		B6F479152F2B7C7E00B56FD7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6F478CB2F2B7C7E00B56FD7 /* Info.plist */; };
 		B6F479162F2B7C7E00B56FD7 /* DeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F478E22F2B7C7E00B56FD7 /* DeviceCell.xib */; };
-		B6F479172F2B7C7E00B56FD7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6F4790A2F2B7C7E00B56FD7 /* Info.plist */; };
 		B6F479182F2B7C7E00B56FD7 /* s7.3_h1.5_20240728.fota in Resources */ = {isa = PBXBuildFile; fileRef = B6F478EB2F2B7C7E00B56FD7 /* s7.3_h1.5_20240728.fota */; };
 		B6F479192F2B7C7E00B56FD7 /* BasePeripehralProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F478C32F2B7C7E00B56FD7 /* BasePeripehralProtocol.swift */; };
 		B6F4791A2F2B7C7E00B56FD7 /* UIBarButtonItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F478E82F2B7C7E00B56FD7 /* UIBarButtonItem+Extensions.swift */; };
@@ -381,6 +379,10 @@
 		B6F479B52F2B7C8B00B56FD7 /* FotaLibrary.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = B6F479B22F2B7C8B00B56FD7 /* FotaLibrary.framework.dSYM */; };
 		B6F479B62F2B7C8B00B56FD7 /* FotaLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F479B12F2B7C8B00B56FD7 /* FotaLibrary.framework */; };
 		B6F479B72F2B7C8B00B56FD7 /* BleLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F479AF2F2B7C8B00B56FD7 /* BleLibrary.framework */; };
+		B6F479C72F2B7F6400B56FD7 /* BleLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F479AB2F2B7C7E00B56FD7 /* BleLibrary.framework */; };
+		B6F479C82F2B7F6400B56FD7 /* BleLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6F479AB2F2B7C7E00B56FD7 /* BleLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6F479C92F2B7F6A00B56FD7 /* FotaLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F479AE2F2B7C7E00B56FD7 /* FotaLibrary.framework */; };
+		B6F479CA2F2B7F6A00B56FD7 /* FotaLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6F479AE2F2B7C7E00B56FD7 /* FotaLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE1B2FE025D0264B00F642F5 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1B2FD125D0264900F642F5 /* LaunchScreen.strings */; };
 		CE1B2FE125D0264B00F642F5 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1B2FD425D0264900F642F5 /* Main.strings */; };
 		D400F8032778BD8000B57648 /* TextsTreatmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D400F8022778BD8000B57648 /* TextsTreatmentsView.swift */; };
@@ -908,6 +910,20 @@
 			remoteGlobalIDString = 7C43C7C2225F05F100B0172D;
 			remoteInfo = FotaLibrary;
 		};
+		B6F479C32F2B7F5800B56FD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6F478D62F2B7C7E00B56FD7 /* BleLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CF2CA51225DCB4C004A07F4;
+			remoteInfo = BleLibrary;
+		};
+		B6F479C52F2B7F5D00B56FD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6F4790D2F2B7C7E00B56FD7 /* FotaLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7C43C7C1225F05F100B0172D;
+			remoteInfo = FotaLibrary;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -917,6 +933,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B6F479CA2F2B7F6A00B56FD7 /* FotaLibrary.framework in Embed Frameworks */,
+				B6F479C82F2B7F6400B56FD7 /* BleLibrary.framework in Embed Frameworks */,
 				470824D3297484B500C52317 /* SwiftCharts in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -2152,6 +2170,8 @@
 			files = (
 				B6F479B62F2B7C8B00B56FD7 /* FotaLibrary.framework in Frameworks */,
 				B6F479B72F2B7C8B00B56FD7 /* BleLibrary.framework in Frameworks */,
+				B6F479C72F2B7F6400B56FD7 /* BleLibrary.framework in Frameworks */,
+				B6F479C92F2B7F6A00B56FD7 /* FotaLibrary.framework in Frameworks */,
 				F81F3C4225D1D91300520946 /* CoreNFC.framework in Frameworks */,
 				470824D2297484B500C52317 /* SwiftCharts in Frameworks */,
 				4779BCEE2974306300515714 /* ActionClosurable in Frameworks */,
@@ -4283,6 +4303,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				B6F479C62F2B7F5D00B56FD7 /* PBXTargetDependency */,
+				B6F479C42F2B7F5800B56FD7 /* PBXTargetDependency */,
 				4716A4FD2B406C3F00419052 /* PBXTargetDependency */,
 				47DE41B12B864EE50041DA19 /* PBXTargetDependency */,
 				47CD641F2BE9506C002BDA68 /* PBXTargetDependency */,
@@ -4591,9 +4613,7 @@
 				F82437C924CB7A9900BED341 /* Computer_Magic.caf in Resources */,
 				F82437A124CB7A9900BED341 /* Jingle_All_The_Way.caf in Resources */,
 				B6F479142F2B7C7E00B56FD7 /* Fota.storyboard in Resources */,
-				B6F479152F2B7C7E00B56FD7 /* Info.plist in Resources */,
 				B6F479162F2B7C7E00B56FD7 /* DeviceCell.xib in Resources */,
-				B6F479172F2B7C7E00B56FD7 /* Info.plist in Resources */,
 				B6F479182F2B7C7E00B56FD7 /* s7.3_h1.5_20240728.fota in Resources */,
 				470CE1FC246802EB00D5CB74 /* BluetoothPeripheralsView.strings in Resources */,
 				F821CF7F22A4EDCF005C1E43 /* 20ms-of-silence.caf in Resources */,
@@ -5341,6 +5361,16 @@
 			target = 47A6ABDE2B790CC60047A4BA /* xDrip Watch App */;
 			targetProxy = 47DE41B02B864EE50041DA19 /* PBXContainerItemProxy */;
 		};
+		B6F479C42F2B7F5800B56FD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BleLibrary;
+			targetProxy = B6F479C32F2B7F5800B56FD7 /* PBXContainerItemProxy */;
+		};
+		B6F479C62F2B7F5D00B56FD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FotaLibrary;
+			targetProxy = B6F479C52F2B7F5D00B56FD7 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -5948,9 +5978,9 @@
 				CODE_SIGN_IDENTITY = "$(XDRIP_CODE_SIGN_IDENTITY_DEBUG)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = "$(XDRIP_DEVELOPMENT_TEAM)";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(MAIN_APP_DISPLAY_NAME)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Johan Degraeve. All rights reserved.";
@@ -5984,9 +6014,9 @@
 				CODE_SIGN_IDENTITY = "$(XDRIP_CODE_SIGN_IDENTITY_RELEASE)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = "$(XDRIP_DEVELOPMENT_TEAM)";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(MAIN_APP_DISPLAY_NAME)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Johan Degraeve. All rights reserved.";
@@ -6018,9 +6048,9 @@
 				CODE_SIGN_ENTITLEMENTS = "xDrip Watch Complication Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = "$(XDRIP_DEVELOPMENT_TEAM)";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Watch Complication/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(MAIN_APP_DISPLAY_NAME)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Johan Degraeve. All rights reserved.";
@@ -6055,9 +6085,9 @@
 				CODE_SIGN_ENTITLEMENTS = "xDrip Watch Complication Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = "$(XDRIP_DEVELOPMENT_TEAM)";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Watch Complication/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(MAIN_APP_DISPLAY_NAME)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Johan Degraeve. All rights reserved.";
@@ -6092,10 +6122,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DEVELOPMENT_ASSET_PATHS = "\"xDrip Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = "$(XDRIP_DEVELOPMENT_TEAM)";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(MAIN_APP_DISPLAY_NAME)";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -6132,10 +6162,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DEVELOPMENT_ASSET_PATHS = "\"xDrip Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = "$(XDRIP_DEVELOPMENT_TEAM)";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(MAIN_APP_DISPLAY_NAME)";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -6170,9 +6200,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = "$(XDRIP_DEVELOPMENT_TEAM)";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Notification Context Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(MAIN_APP_DISPLAY_NAME)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Johan Degraeve. All rights reserved.";
@@ -6205,9 +6235,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = "$(XDRIP_DEVELOPMENT_TEAM)";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "xDrip Notification Context Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "$(MAIN_APP_DISPLAY_NAME)";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2024 Johan Degraeve. All rights reserved.";
@@ -6370,7 +6400,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = "$(XDRIP_CODE_SIGN_STYLE)";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = "$(XDRIP_DEVELOPMENT_TEAM)";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -6403,7 +6433,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = "$(XDRIP_CODE_SIGN_STYLE)";
 				CURRENT_PROJECT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DEVELOPMENT_TEAM = "$(XDRIP_DEVELOPMENT_TEAM)";
+				DEVELOPMENT_TEAM = 7RV2Y67HF6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
