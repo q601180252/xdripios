@@ -1,0 +1,456 @@
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsCommon.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/HeartBeat/Libre3HeartBeatBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsContactImage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsDexcomShareTestResult.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreNFCDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/TransmitterMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/G4/CGMDexomG4TransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/accessors/LogsBubbleAccessor.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomTransmitterTimeRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Date.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsTreatmentsView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/SwiftUIViews/BgReadingsView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/DexcomG7+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UIView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsCalibration.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/GNSEntry+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/GNSEntry/CGMGNSEntryTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewNotificationsSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UITabBarController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Droplet+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Libre2/CGMLibre2TransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Libre2/CGMLibre2Transmitter+TestData.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/AlertsSettingsViewController/AlertSettingsViewController/AlertSettingsViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewAppleWatchSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/M5Stack/M5StackTransmitterOpCode.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/SwiftUIViews/BgReadingsDetailView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Libre/Blucon/Blucon+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/G5/CGMG5TransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Blucon+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/M5Stack/M5StackBluetoothTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/accessors/SensorsAccessor.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreSensorState.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Int.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Bubble+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Atom/CGMAtomTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Dexcom/G7/DexcomG7+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsBgReadings.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Loop/GlucoseData+LoopShare.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsSettingsIcons.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/OmniPodHeartBeat+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/GNSEntry/CGMGNSEntryTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomSessionStopTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/LiveActivity/LiveActivityManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/MiaoMiao+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/ResetMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsHeartBeat.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/accessors/SnoozeParametersAccessor.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/LoopDelayScheduleViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/MiaoMiao/CGMMiaoMiaoTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UInt32.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsSpeakReading.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/M5Stack/M5StackMessages/M5StackReadBlePassWordTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/DexcomG5+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/NSData+CRC.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsCoreData.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Nightscout/NightscoutFollowType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Generic/GlucoseData+Smoothable.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Helpers/Date\ Picker\ View\ Controller/DatePickerViewData.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Blucon/BluconTransmitterOpCode.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsLiveActivity.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Double.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/Generic/BluetoothTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/M5/M5StickC/M5StickC.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsNightscout.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/AlertsSettingsViewController/AlertsSettingsViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewSpeakSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsErrorMessages.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Helpers/SettingsViewModelProtocol.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManaging.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/BgReading+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Followers/FollowerBackgroundKeepAliveType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Droplet+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Alerts/AlertKind.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/Extensions/BgReading+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomG7GlucoseDataRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Libre/Atom/Atom+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/M5Stack/M5StackMessages/M5StackAuthenticateTXMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/DexcomG7HeartBeat+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/FirmwareVersionTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/CGM/Libre/Libre2/Libre2BluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreCalibrationInfo.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/extensions/Calibration+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UIStoryboard.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Watlaa+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/G4/CGMG4xDripTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/RepeatingTimer.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/PreLibre2.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Charts/GlucoseMiniChartManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsQuickActions.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/CRC.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomTransmitterTimeTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Nightscout/Endpoint+Nightscout.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Generic/TransmitterBatteryInfo.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Nightscout/NightscoutDateFormatter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomCalibrationResponseType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/MiaoMiao/CGMMiaoMiaoTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Bubble/CGMBubbleTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsStatistics.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Charts/GlucoseChartType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewContactImageSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMBubbleTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMGNSEntryTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/AlgorithmType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/UniqueId.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsBGGraphBuilder.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Root\ View\ Controller/LandscapeValueViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/DexcomShare/DexcomShareUploadManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Generic/CGMSensorType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsMaster.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Followers/FollowerDataSourceType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomG7BackfillMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/M5Stack/M5StackBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Generic/CGMTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UserDefaults+charts.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsHealthKit.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Alerts/AlertUrgencyType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsAlerts.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Treatments/TreatmentTableViewCell.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/G7/CGMG7TransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/TreatmentEntry+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Libre/Libre2/Libre2+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/AuthChallengeRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Root\ View\ Controller/LandscapeChartViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Calibration/Libre1Calibrator.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/G7/CGMG7Transmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsHomeView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Calibration/DexcomCalibrator.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/Generic/BluetoothTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/BatteryStatusRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMBluconTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Calibration/Libre1NonFixedSlopeCalibrator.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Bundle.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Nightscout/NightscoutSyncManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/TransmitterVersionRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsSpeakReadingLanguages.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsCalibrationAlgorithms.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewStatisticsSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/CBPeripheralState.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreOOPWebError.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/LiveActivityIntent.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/HeartBeat/OmniPodHeartBeatBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Libre2HeartBeat+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/accessors/TreatmentEntryAccessor.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/M5/M5Stack/M5Stack+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/BLE/FotaPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/View/UIBarButtonItem+Extensions.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/View/DeviceCell.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/Controllers/BleDeviceViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/View/RoundButton.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/View/UIColor+Ext.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/View/CircularProgressView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/BLE/FotaPeripheralManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/View/FileTableViewCell.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/View/GradientView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/watlaa/Watlaa+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Alerts/SnoozeParameters.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Watch/WatchState.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/Fota/Controllers/NanoOTAFetcher.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsWatlaaView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Atom/AtomResponseType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/AlertEntry+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/watlaa/WatlaaBluetoothTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsTrace.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/LogsBubble+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/LogsBubble+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/Generic/BluetoothPeripheralType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Alerts/AlertNotificationDictionary.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/ActionClosureable-extension.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/GlucoseDataRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Helpers/Picker\ View\ Controller/PickerViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/HealthKit/HealthKitManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomSessionStopResponse.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/DexcomG7+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/accessors/CalibrationsAccessor.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Speak/BGReadingSpeaker.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralsViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewHealthKitSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Calibration/Protocol/Calibrator.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Sensor+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewAlertSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/SwiftUIViews/ShowHideItemsView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewHomeScreenSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Bubble/CADataCollector.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsSounds.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsDexcomShare.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsSuspensionPrevention.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsNavigationController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/HeartBeat/DexcomG7HeartBeatBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip\ Watch\ Complication/DataModels/ComplicationSharedUserDefaultsModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Treatments/TreatmentsNavigationController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/M5StackSettingsViewController/M5StackSettingsViewModels/SettingsViewM5StackBluetoothSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Charts/GlucoseChartManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/CGM/Libre/MiaoMiao/MiaoMiaoBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMDexcomG4TransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/BlueReader+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Helpers/SettingsTableViewCell/SettingsTableViewCell.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsLibreStates.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsDexcomG7.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewDataSourceSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/SavitzkyGolayFilter/SavitzkyGolaySmoothableArray.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Helpers/ProgressBarViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewCalendarEventsSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Watlaa+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip\ Widget/DataModels/XDripWidgetAttributes.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Bubble+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsNotifications.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/DexcomG5+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMG7TransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Treatments/TreatmentCollection.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/TransmitterVersionTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Dexcom/G5/DexcomG5+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/G5/CGMG5Transmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/accessors/AlertEntriesAccessor.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsDexcomG5.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/CGM/Dexcom/DexcomG7/DexcomG7BluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/GNSEntry+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UInt16.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsSettingsView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Calibration/NoCalibrator.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreSensorType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Libre/MiaoMiao/MiaoMiao+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsFollower.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/NSMutableURLRequest.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsWidget.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/String.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/OmniPodHeartBeat+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewNightscoutSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/AlertEntry+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMMiaoMiaoTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreSmoothing.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip\ Widget/Constants/ConstantsWidgetExtension.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/String+Dexcom.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Bubble/CGMBubbleTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/M5Stack+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomGlucoseDataTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/MiaoMiao+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomTransmitterOpCode.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Application\ Delegate/AppDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Atom+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomSessionStartRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/M5Stack+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/SnoozeParameters+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/M5Stack/Utilities/M5StackPacket.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Helpers/Date\ Picker\ View\ Controller/DatePickerViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsLibreErrors.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/BluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralNavigationController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/LibreLinkUp/LibreLinkUpModels.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsBloodGlucose.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Followers/FollowerBgReading.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsLibreSmoothing.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomBackfillStream.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/HeartBeat/OmniPodHeartBeat+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/BLEPeripheral+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/M5StackSettingsViewController/M5StackSettingsViewModels/SettingsViewM5StackWiFiSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Charts/ChartPointsContextFillLayer.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Array.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/HeartBeat/DexcomG7HeartbeatBluetoothTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsM5Stack.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UIButton.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/KeyValueObserverTimeKeeper.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UISwitch.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Root\ View\ Controller/SnoozeViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/Errors/XdripError.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/TimeScheduleViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Loop/LoopFollowManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMBlueReaderTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreSensorSerialNumber.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsHomeView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/LogsViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsDefaultAlertLevels.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Calibration/SlopeParameters.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Watch/WatchManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/SwiftUIViews/ContactImageView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/watlaa/WatlaaBluetoothTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/CBManagerState.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Charts/ChartPointsScatterDownTrianglesLayer.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Blucon/CGMBluconTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Calendar/CalendarManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsAlertTypeSettings.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/HouseKeeping/HouseKeeper.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomBackfillTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/BlueReader/CGMBlueReaderTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/SwiftUIViews/AIDStatusView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsLibre.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomSessionStartTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/M5StackSettingsViewController/M5StackSettingsViewModels/SettingsViewM5StackGeneralSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/BlueReader/CGMBlueReaderTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsGlucoseChartSwiftUI.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/AlertTypesSettingsViewController/AlertTypesSettingsViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Treatments/TreatmentsInsertViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Libre/GNSEntry/GNSEntry+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Helpers/SettingsSelectedRowAction.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/DexcomG7HeartBeat+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreNFC.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Blucon+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMLibre2TransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/Libre2BLEUtilities.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/LiveActivity/LiveActivityType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/SwiftUIViews/Settings/LoopDelayScheduleView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/StringProtocol.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/AuthChallengeTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/AlertType+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/CoreData/CoreDataManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewTraceSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Calibration/CalibrationType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Calibration+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Int16.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsCalendar.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/PairRequestTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/TimeInterval.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/HeartBeat/DexcomG7HeartBeat+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/HeartBeat/Libre2HeartBeat+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/GlucoseBackfillRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/BatteryStatusTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomG6GlucoseDataRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/AlertsSettingsViewController/AlertSettingsViewController/NewAlertSettingsViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Libre2+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Treatments/TreatmentsViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UInt8.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/accessors/BLEPeripheralAccessor.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomSessionStopRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/CGM/Libre/Droplet/DropletBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsLibreNFC.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Libre/BlueReader/BlueReader+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/watlaa/WatlaaBluetoothTransmitterMaster+CGMTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/AlertsSettingsViewController/AlertSettingsViewController/AlertSettingsViewControllerData.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreError.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsBluetoothPairing.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/Generic/BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Droplet/CGMDroplet1Transmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMDropletTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/Trace.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsSpeakReading.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomSessionStartResponse.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewHelpSettingModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Application/ApplicationManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Nightscout/NightscoutProfileModels.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Helpers/Picker\ View\ Controller/PickerViewData.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/Libre1DerivedAlgorithmParameters.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/TreatmentEntry+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/HeartBeat/Libre3HeartbeatBluetoothTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/ChartPoint.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Atom+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Blucon/BluconUtilities.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/Generic/BluetoothPeripheralCategory.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/AlertType+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/CGM/Libre/Atom/AtomBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/DexcomError.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsAlerts.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/SensorDataRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/BlueReader+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Atom/CGMAtomTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/Root\ View\ Controller/RootViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UIAlertController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/SwiftUIViews/GlucoseChartView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Droplet/CGMBDropletTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/AuthRequestRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMAtomTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UserDefaults.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/DexcomShare/BgReading+DexcomShare.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/M5Stack/Utilities/M5StackUtilities.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/BluetoothPeripheralViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/CGM/Dexcom/DexcomG4/DexcomG4BluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Alerts/AlertSnoozeStatus.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Nightscout/NightscoutFollowManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreMeasurement.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsM5StackView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/M5Stack/M5StackBluetoothTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/CGM/Libre/Bubble/BubbleBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsSnooze.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Statistics/TimeInRangeType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Generic/GlucoseData.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewUtilities.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+M5StackBluetoothTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+CGMG5TransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsLibreLinkUp.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/SoundPlayer/SoundPlayer.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Treatments/TreatmentNSResponse.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/DexcomG4+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+WatlaaBluetoothTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/accessors/AlertTypesAccessor.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/AuthRequestTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/KeepAliveTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/QuickActions/QuickActionsManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/accessors/BgReadingsAccessor.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/View.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/HouseKeeping/DataExporter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/SummaryCell.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/DetailCell.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Followers/FollowerDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Libre2HeartBeat+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomCalibrationRxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/MiaoMiao/MiaoMiaoResponseType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/Network/Endpoint.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Alerts/AlertManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Libre2/CGMLibre2Transmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsBluetoothPeripheralsView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Statistics/StatisticsManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/Libre2+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/HeartBeat/OmniPodHeartbeatBluetoothTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/UIBarButtonItem.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Blucon/CGMBluconTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/M5StackSettingsViewController/M5StackSettingsViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Nightscout/BgReading+Nightscout.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/GlucoseIntent.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomCalibrationTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewM5StackSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Dexcom/G4/DexcomG4+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsHousekeeping.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Nightscout/Calibration+Nightscout.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/LibreLinkUp/LibreLinkUpFollowManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Libre/Bubble/Bubble+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Data.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsGlucoseChart.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/CGM/Libre/GNSENtry/GNSEntryBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Treatments/DateOnly.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Loop/LoopManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Loop/LoopShareType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/CGM/Dexcom/DexcomG5/DexcomG5BluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/Watlaa/WatlaaBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/Extensions/Sensor+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsBluetoothPeripheralView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Views/BloodGlucoseChartView.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Utilities/ScreenLockDimmingType.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewDevelopmentSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/DexcomG4+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/M5StickC/M5StickCBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/BluetoothPeripheral/BluetoothPeripheralManager+BluetoothTransmitterDelegate.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreDataParser.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsShareWithLoop.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/BluetoothPeripheralsNavigationController/BluetoothPeripheralsViewController/BluetoothPeripheralViewController/Models/CGM/Libre/Blucon/BluconBluetoothPeripheralViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Generic/CGMTransmitter.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Widgets/WidgetSharedUserDefaultsModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsNightscout.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/SnoozeParameters+CoreDataClass.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Libre/Utilities/LibreAlgorithmThresholds.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Double+Smoothable.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomAlgorithmState.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/URL.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Nightscout/NightscoutDeviceStatusModels.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/AlertTypesSettingsViewController/AlertTypeSettingsViewController/AlertTypeSettingsViewController.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewInfoViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewDexcomShareSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/SensorDataTxMessage.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/ContactImage/ContactImageManager.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Core\ Data/classes/BLEPeripheral+CoreDataProperties.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsLog.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothTransmitter/CGM/Dexcom/Generic/DexcomCalibrationParameters.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsDefaultAlertTypeSettings.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/View\ Controllers/SettingsNavigationController/SettingsViewController/SettingsViewModels/SettingsViewHousekeeperSettingsViewModel.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/BluetoothPeripheral/CGM/Libre/Droplet/Droplet+BluetoothPeripheral.swift
+/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsUI.swift
+/xdrip.build/Debug-iphoneos/xdrip.build/DerivedSources/GeneratedAssetSymbols.swift

@@ -1,0 +1,15 @@
+Target dependency graph (7 targets)
+Target 'xdrip' in project 'xdrip'
+➜ Explicit dependency on target 'BleLibrary' in project 'BleLibrary'
+➜ Explicit dependency on target 'FotaLibrary' in project 'FotaLibrary'
+➜ Explicit dependency on target 'xDrip Widget Extension' in project 'xdrip'
+➜ Explicit dependency on target 'xDrip Watch App' in project 'xdrip'
+➜ Explicit dependency on target 'xDrip Notification Context Extension' in project 'xdrip'
+Target 'xDrip Notification Context Extension' in project 'xdrip' (no dependencies)
+Target 'xDrip Watch App' in project 'xdrip'
+➜ Explicit dependency on target 'xDrip Watch Complication Extension' in project 'xdrip'
+Target 'xDrip Watch Complication Extension' in project 'xdrip' (no dependencies)
+Target 'xDrip Widget Extension' in project 'xdrip' (no dependencies)
+Target 'FotaLibrary' in project 'FotaLibrary'
+➜ Explicit dependency on target 'BleLibrary' in project 'BleLibrary'
+Target 'BleLibrary' in project 'BleLibrary' (no dependencies)

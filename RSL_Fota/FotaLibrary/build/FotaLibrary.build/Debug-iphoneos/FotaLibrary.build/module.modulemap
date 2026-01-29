@@ -1,0 +1,11 @@
+framework module FotaLibrary {
+  umbrella header "FotaLibrary.h"
+  export *
+
+  module * { export * }
+}
+
+module FotaLibrary.Swift {
+  header "FotaLibrary-Swift.h"
+  requires objc
+}

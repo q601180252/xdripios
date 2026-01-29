@@ -1,0 +1,23 @@
+{
+  "version": 0,
+  "use-external-names": false,
+  "case-sensitive": false,
+  "roots": [{
+    "type": "directory",
+    "name": "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/Debug-iphoneos/FotaLibrary.framework/Modules",
+    "contents": [{
+      "type": "file",
+      "name": "module.modulemap",
+      "external-contents": "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    "type": "directory",
+    "name": "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/Debug-iphoneos/FotaLibrary.framework/Headers",
+    "contents": [{
+      "type": "file",
+      "name": "FotaLibrary-Swift.h",
+      "external-contents": "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/unextended-interface-header.h",
+    }]
+  }]
+}

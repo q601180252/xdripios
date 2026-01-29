@@ -1,0 +1,18 @@
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/FotaLibrary/Utils/FotaStatus.swift":
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaStatus.o"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaStatus.dia"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaStatus.d"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaStatus.swiftconstvalues"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaStatus.swiftdeps"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/FotaLibrary/FotaFrameHandler.swift":
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaFrameHandler.d"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaFrameHandler.swiftdeps"
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaFrameHandler.o"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaFrameHandler.dia"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaFrameHandler.swiftconstvalues"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/FotaLibrary/Utils/FotaFirmwareImage.swift":
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaFirmwareImage.d"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaFirmwareImage.dia"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaFirmwareImage.swiftconstvalues"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaFirmwareImage.swiftdeps"
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaFirmwareImage.o"

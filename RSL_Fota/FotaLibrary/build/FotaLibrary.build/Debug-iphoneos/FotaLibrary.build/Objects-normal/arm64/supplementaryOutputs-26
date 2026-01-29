@@ -1,0 +1,18 @@
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/FotaLibrary/FotaOptions.swift":
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaOptions.o"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaOptions.swiftdeps"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaOptions.dia"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaOptions.d"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaOptions.swiftconstvalues"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/FotaLibrary/EventArgs/DataReceivedEventArgs.swift":
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/DataReceivedEventArgs.o"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/DataReceivedEventArgs.swiftconstvalues"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/DataReceivedEventArgs.dia"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/DataReceivedEventArgs.d"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/DataReceivedEventArgs.swiftdeps"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/FotaLibrary/Utils/FotaProgressEventArgs.swift":
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaProgressEventArgs.dia"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaProgressEventArgs.swiftdeps"
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaProgressEventArgs.o"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaProgressEventArgs.d"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/FotaProgressEventArgs.swiftconstvalues"

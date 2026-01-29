@@ -1,0 +1,18 @@
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/FotaLibrary/EventArgs/ProgressChangedEventArgs.swift":
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/ProgressChangedEventArgs.swiftdeps"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/ProgressChangedEventArgs.dia"
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/ProgressChangedEventArgs.o"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/ProgressChangedEventArgs.swiftconstvalues"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/ProgressChangedEventArgs.d"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/FotaLibrary/KermitCrcProvider.swift":
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/KermitCrcProvider.o"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/KermitCrcProvider.swiftdeps"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/KermitCrcProvider.dia"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/KermitCrcProvider.d"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/KermitCrcProvider.swiftconstvalues"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/FotaLibrary/DateExtentions.swift":
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/DateExtentions.swiftdeps"
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/DateExtentions.o"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/DateExtentions.dia"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/DateExtentions.d"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/FotaLibrary/build/FotaLibrary.build/Debug-iphoneos/FotaLibrary.build/Objects-normal/arm64/DateExtentions.swiftconstvalues"

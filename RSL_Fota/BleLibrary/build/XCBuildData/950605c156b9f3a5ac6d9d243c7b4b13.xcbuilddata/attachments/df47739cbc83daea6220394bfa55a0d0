@@ -1,0 +1,10 @@
+framework module FotaLibrary {
+  umbrella header "FotaLibrary.h"
+  export *
+
+  module * { export * }
+}
+
+module FotaLibrary.__Swift {
+  exclude header "FotaLibrary-Swift.h"
+}

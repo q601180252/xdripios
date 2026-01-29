@@ -1,0 +1,85 @@
+{
+  "buildCommand" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : false,
+    "targets" : null
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "4b92076d245e9472b2b0531a9359e063da6fa25475685736a78f7eb7bcbfddb5"
+    },
+    {
+      "guid" : "a3a3996bead2b1791c952669a1c13ab403c1f4935a994d8152976adbd26f3497"
+    },
+    {
+      "guid" : "0795d2169226e670e29ed953dcb4cff7c16670e629e654d057e557a013501e92"
+    },
+    {
+      "guid" : "0795d2169226e670e29ed953dcb4cff742e8779d9d20ff2d20b9b0a03d67011a"
+    },
+    {
+      "guid" : "0795d2169226e670e29ed953dcb4cff7c7f57503049b36be46766fd257fb4725"
+    },
+    {
+      "guid" : "0795d2169226e670e29ed953dcb4cff77cd76ec77dc8467dd66da4919ef64fb4"
+    },
+    {
+      "guid" : "0795d2169226e670e29ed953dcb4cff7703edcdfee51d1cf6e6449727a9b4782"
+    }
+  ],
+  "containerPath" : "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "dependencyScope" : "workspace",
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphoneos",
+      "sdk" : "iphoneos18.5",
+      "sdkVariant" : "iphoneos",
+      "supportedArchitectures" : [
+        "arm64e",
+        "arm64v8",
+        "arm64",
+        "armv8"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/liyang/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/liyang/Library/Developer/Xcode/DerivedData/xdrip-daeoaiomulfkuughlpdumhmifisf/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/liyang/Library/Developer/Xcode/DerivedData/xdrip-daeoaiomulfkuughlpdumhmifisf/Index.noindex/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ASSETCATALOG_FILTER_FOR_DEVICE_MODEL" : "iPhone11,8",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_OS_VERSION" : "18.6.2",
+          "ASSETCATALOG_FILTER_FOR_THINNING_DEVICE_CONFIGURATION" : "iPhone11,8",
+          "BUILD_ACTIVE_RESOURCES_ONLY" : "YES",
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "NO",
+          "TARGET_DEVICE_IDENTIFIER" : "00008020-000A64D0229A002E",
+          "TARGET_DEVICE_MODEL" : "iPhone11,8",
+          "TARGET_DEVICE_OS_VERSION" : "18.6.2",
+          "TARGET_DEVICE_PLATFORM_NAME" : "iphoneos"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

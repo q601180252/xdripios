@@ -1,0 +1,323 @@
+{
+  "" : {
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/xDrip Widget Extension-master.dia",
+    "emit-module-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/xDrip Widget Extension-master-emit-module.d",
+    "emit-module-diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/xDrip Widget Extension-master-emit-module.dia",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/xDrip Widget Extension-master.swiftdeps"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/Constants/ConstantsWidgetExtension.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsWidgetExtension.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsWidgetExtension.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsWidgetExtension.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsWidgetExtension.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsWidgetExtension.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsWidgetExtension.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsWidgetExtension~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/DataModels/XDripWidgetAttributes.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetAttributes.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetAttributes.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetAttributes.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetAttributes.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetAttributes.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetAttributes.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetAttributes~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/Views/AccessoryCircularView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryCircularView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryCircularView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryCircularView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryCircularView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryCircularView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryCircularView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryCircularView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/Views/AccessoryRectangularView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryRectangularView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryRectangularView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryRectangularView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryRectangularView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryRectangularView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryRectangularView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/AccessoryRectangularView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/Views/SystemLargeView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemLargeView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemLargeView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemLargeView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemLargeView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemLargeView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemLargeView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemLargeView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/Views/SystemMediumView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemMediumView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemMediumView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemMediumView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemMediumView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemMediumView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemMediumView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemMediumView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/Views/SystemSmallView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemSmallView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemSmallView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemSmallView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemSmallView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemSmallView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemSmallView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/SystemSmallView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/XDripWidget+Entry.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Entry.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Entry.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Entry.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Entry.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Entry.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Entry.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Entry~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/XDripWidget+EntryView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+EntryView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+EntryView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+EntryView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+EntryView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+EntryView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+EntryView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+EntryView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/XDripWidget+Provider.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Provider.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Provider.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Provider.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Provider.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Provider.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Provider.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget+Provider~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/XDripWidget.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidget~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/XDripWidgetBundle.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetBundle.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetBundle.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetBundle.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetBundle.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetBundle.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetBundle.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetBundle~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Widget/XDripWidgetLiveActivity.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetLiveActivity.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetLiveActivity.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetLiveActivity.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetLiveActivity.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetLiveActivity.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetLiveActivity.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/XDripWidgetLiveActivity~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsAlerts.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsAlerts.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsAlerts.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsAlerts.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsAlerts.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsAlerts.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsAlerts.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsAlerts~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsBGGraphBuilder.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsBloodGlucose.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsBloodGlucose~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsCalibrationAlgorithms.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsGlucoseChartSwiftUI.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsHomeView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsHomeView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsHomeView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsHomeView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsHomeView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsHomeView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsHomeView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsHomeView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsLibreLinkUp.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsLiveActivity.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLiveActivity.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLiveActivity.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLiveActivity.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLiveActivity.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLiveActivity.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLiveActivity.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsLiveActivity~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsUI.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsUI.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsUI.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsUI.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsUI.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsUI.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsUI.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/ConstantsUI~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Bundle.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Bundle.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Bundle.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Bundle.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Bundle.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Bundle.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Bundle.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Bundle~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Date.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Date.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Date.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Date.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Date.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Date.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Date.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Date~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Double.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Double.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Double.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Double.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Double.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Double.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Double.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/Double~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/View.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/View.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/View.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/View.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/View.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/View.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/View.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/View~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Charts/GlucoseChartType.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartType.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartType.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartType.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartType.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartType.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartType.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartType~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/LibreLinkUp/LibreLinkUpModels.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LibreLinkUpModels.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LibreLinkUpModels.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LibreLinkUpModels.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LibreLinkUpModels.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LibreLinkUpModels.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LibreLinkUpModels.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LibreLinkUpModels~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/LiveActivity/LiveActivityType.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LiveActivityType.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LiveActivityType.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LiveActivityType.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LiveActivityType.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LiveActivityType.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LiveActivityType.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/LiveActivityType~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Widgets/WidgetSharedUserDefaultsModel.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/WidgetSharedUserDefaultsModel.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/WidgetSharedUserDefaultsModel.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/WidgetSharedUserDefaultsModel.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/WidgetSharedUserDefaultsModel.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/WidgetSharedUserDefaultsModel.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/WidgetSharedUserDefaultsModel.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/WidgetSharedUserDefaultsModel~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/SwiftUIViews/GlucoseChartView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GlucoseChartView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsCommon.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsCommon.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsCommon.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsCommon.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsCommon.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsCommon.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsCommon.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsCommon~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsHomeView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsHomeView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsHomeView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsHomeView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsHomeView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsHomeView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsHomeView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsHomeView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsSettingsView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsSettingsView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsSettingsView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsSettingsView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsSettingsView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsSettingsView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsSettingsView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/TextsSettingsView~partial.swiftmodule"
+  },
+  "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Widget Extension.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "" : {
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/xDrip Watch Complication Extension-master.dia",
+    "emit-module-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/xDrip Watch Complication Extension-master-emit-module.d",
+    "emit-module-diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/xDrip Watch Complication Extension-master-emit-module.dia",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/xDrip Watch Complication Extension-master.swiftdeps"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch App/Constants/ConstantsAppleWatch.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAppleWatch.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAppleWatch.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAppleWatch.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAppleWatch.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAppleWatch.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAppleWatch.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAppleWatch~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/Constants/ConstantsWatchComplication.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsWatchComplication.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsWatchComplication.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsWatchComplication.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsWatchComplication.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsWatchComplication.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsWatchComplication.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsWatchComplication~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/DataModels/ComplicationSharedUserDefaultsModel.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ComplicationSharedUserDefaultsModel.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ComplicationSharedUserDefaultsModel.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ComplicationSharedUserDefaultsModel.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ComplicationSharedUserDefaultsModel.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ComplicationSharedUserDefaultsModel.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ComplicationSharedUserDefaultsModel.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ComplicationSharedUserDefaultsModel~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/Texts/TextsWatchComplication.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsWatchComplication.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsWatchComplication.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsWatchComplication.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsWatchComplication.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsWatchComplication.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsWatchComplication.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsWatchComplication~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/Views/AccessoryCircularView.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCircularView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCircularView.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCircularView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCircularView.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCircularView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCircularView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCircularView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/Views/AccessoryCornerView.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCornerView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCornerView.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCornerView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCornerView.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCornerView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCornerView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryCornerView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/Views/AccessoryInlineView.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryInlineView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryInlineView.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryInlineView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryInlineView.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryInlineView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryInlineView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryInlineView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/Views/AccessoryRectangularView.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryRectangularView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryRectangularView.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryRectangularView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryRectangularView.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryRectangularView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryRectangularView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/AccessoryRectangularView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/XDripWatchComplication+Entry.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Entry.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Entry.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Entry.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Entry.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Entry.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Entry.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Entry~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/XDripWatchComplication+EntryView.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+EntryView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+EntryView.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+EntryView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+EntryView.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+EntryView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+EntryView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+EntryView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/XDripWatchComplication+Provider.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Provider.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Provider.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Provider.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Provider.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Provider.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Provider.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication+Provider~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Watch Complication/XDripWatchComplication.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/XDripWatchComplication~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsAlerts.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAlerts.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAlerts.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAlerts.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAlerts.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAlerts.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAlerts.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsAlerts~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsBGGraphBuilder.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBGGraphBuilder~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsBloodGlucose.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsBloodGlucose~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsCalibrationAlgorithms.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsCalibrationAlgorithms~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsGlucoseChartSwiftUI.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsHomeView.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsHomeView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsHomeView.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsHomeView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsHomeView.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsHomeView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsHomeView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsHomeView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsLibreLinkUp.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsUI.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsUI.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsUI.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsUI.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsUI.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsUI.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsUI.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/ConstantsUI~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Bundle.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Bundle.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Bundle.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Bundle.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Bundle.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Bundle.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Bundle.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Bundle~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Date.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Date.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Date.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Date.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Date.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Date.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Date.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Date~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Double.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Double.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Double.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Double.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Double.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Double.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Double.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/Double~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/View.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/View.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/View.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/View.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/View.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/View.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/View.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/View~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Charts/GlucoseChartType.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartType.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartType.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartType.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartType.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartType.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartType.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartType~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Followers/FollowerBackgroundKeepAliveType.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/FollowerBackgroundKeepAliveType.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/FollowerBackgroundKeepAliveType.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/FollowerBackgroundKeepAliveType.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/FollowerBackgroundKeepAliveType.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/FollowerBackgroundKeepAliveType.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/FollowerBackgroundKeepAliveType.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/FollowerBackgroundKeepAliveType~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/LibreLinkUp/LibreLinkUpModels.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LibreLinkUpModels.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LibreLinkUpModels.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LibreLinkUpModels.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LibreLinkUpModels.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LibreLinkUpModels.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LibreLinkUpModels.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LibreLinkUpModels~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/LiveActivity/LiveActivityType.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LiveActivityType.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LiveActivityType.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LiveActivityType.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LiveActivityType.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LiveActivityType.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LiveActivityType.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/LiveActivityType~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/SwiftUIViews/GlucoseChartView.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartView.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartView.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GlucoseChartView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsCommon.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsCommon.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsCommon.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsCommon.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsCommon.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsCommon.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsCommon.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsCommon~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsHomeView.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsHomeView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsHomeView.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsHomeView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsHomeView.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsHomeView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsHomeView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsHomeView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsSettingsView.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsSettingsView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsSettingsView.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsSettingsView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsSettingsView.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsSettingsView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsSettingsView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/TextsSettingsView~partial.swiftmodule"
+  },
+  "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "llvm-bc" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-watchos/xDrip Watch Complication Extension.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

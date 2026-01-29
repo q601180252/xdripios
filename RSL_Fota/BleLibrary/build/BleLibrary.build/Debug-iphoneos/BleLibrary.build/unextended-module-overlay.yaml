@@ -1,0 +1,23 @@
+{
+  "version": 0,
+  "use-external-names": false,
+  "case-sensitive": false,
+  "roots": [{
+    "type": "directory",
+    "name": "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/Debug-iphoneos/BleLibrary.framework/Modules",
+    "contents": [{
+      "type": "file",
+      "name": "module.modulemap",
+      "external-contents": "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    "type": "directory",
+    "name": "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/Debug-iphoneos/BleLibrary.framework/Headers",
+    "contents": [{
+      "type": "file",
+      "name": "BleLibrary-Swift.h",
+      "external-contents": "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/unextended-interface-header.h",
+    }]
+  }]
+}

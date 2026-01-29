@@ -1,0 +1,48 @@
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary/EventArgs/ConnectionSucceededEventArgs.swift":
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/ConnectionSucceededEventArgs.o"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/ConnectionSucceededEventArgs.swiftconstvalues"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/ConnectionSucceededEventArgs.swiftdeps"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/ConnectionSucceededEventArgs.d"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/ConnectionSucceededEventArgs.dia"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary/Util/Crc16.swift":
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/Crc16.swiftdeps"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/Crc16.dia"
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/Crc16.o"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/Crc16.d"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/Crc16.swiftconstvalues"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary/Util/WriteType.swift":
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/WriteType.o"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/WriteType.swiftdeps"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/WriteType.swiftconstvalues"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/WriteType.dia"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/WriteType.d"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary/Extention/TaskMagic.swift":
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/TaskMagic.swiftdeps"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/TaskMagic.d"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/TaskMagic.swiftconstvalues"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/TaskMagic.dia"
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/TaskMagic.o"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary/Util/LogManager/LogLevel.swift":
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/LogLevel.swiftdeps"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/LogLevel.dia"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/LogLevel.swiftconstvalues"
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/LogLevel.o"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/LogLevel.d"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary/EventArgs/TaskCompletedEventArgs.swift":
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/TaskCompletedEventArgs.dia"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/TaskCompletedEventArgs.swiftconstvalues"
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/TaskCompletedEventArgs.o"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/TaskCompletedEventArgs.d"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/TaskCompletedEventArgs.swiftdeps"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary/EventArgs/CBServiceDiscoveredEventArgs.swift":
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/CBServiceDiscoveredEventArgs.o"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/CBServiceDiscoveredEventArgs.swiftconstvalues"
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/CBServiceDiscoveredEventArgs.swiftdeps"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/CBServiceDiscoveredEventArgs.d"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/CBServiceDiscoveredEventArgs.dia"
+"/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary/EventImp/EventHandlerWrapper.swift":
+  swift-dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/EventHandlerWrapper.swiftdeps"
+  dependencies: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/EventHandlerWrapper.d"
+  object: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/EventHandlerWrapper.o"
+  const-values: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/EventHandlerWrapper.swiftconstvalues"
+  diagnostics: "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/build/BleLibrary.build/Debug-iphoneos/BleLibrary.build/Objects-normal/arm64/EventHandlerWrapper.dia"

@@ -1,0 +1,179 @@
+{
+  "" : {
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/xDrip Notification Context Extension-master.dia",
+    "emit-module-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/xDrip Notification Context Extension-master-emit-module.d",
+    "emit-module-diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/xDrip Notification Context Extension-master-emit-module.dia",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/xDrip Notification Context Extension-master.swiftdeps"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Notification Context Extension/NotificationView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xDrip Notification Context Extension/NotificationViewController.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationViewController.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationViewController.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationViewController.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationViewController.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationViewController.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationViewController.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/NotificationViewController~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsAlerts.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsAlerts.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsAlerts.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsAlerts.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsAlerts.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsAlerts.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsAlerts.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsAlerts~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsBloodGlucose.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsBloodGlucose.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsBloodGlucose~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsCalendar.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsCalendar.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsCalendar.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsCalendar.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsCalendar.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsCalendar.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsCalendar.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsCalendar~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsGlucoseChartSwiftUI.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsGlucoseChartSwiftUI~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsHomeView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsHomeView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsHomeView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsHomeView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsHomeView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsHomeView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsHomeView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsHomeView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Constants/ConstantsLibreLinkUp.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/ConstantsLibreLinkUp~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/Double.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/Double.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/Double.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/Double.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/Double.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/Double.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/Double.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/Double~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Extensions/View.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/View.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/View.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/View.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/View.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/View.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/View.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/View~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Alerts/AlertNotificationDictionary.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertNotificationDictionary.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertNotificationDictionary.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertNotificationDictionary.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertNotificationDictionary.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertNotificationDictionary.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertNotificationDictionary.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertNotificationDictionary~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Alerts/AlertUrgencyType.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertUrgencyType.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertUrgencyType.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertUrgencyType.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertUrgencyType.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertUrgencyType.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertUrgencyType.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/AlertUrgencyType~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/Charts/GlucoseChartType.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartType.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartType.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartType.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartType.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartType.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartType.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartType~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Managers/LiveActivity/LiveActivityType.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/LiveActivityType.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/LiveActivityType.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/LiveActivityType.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/LiveActivityType.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/LiveActivityType.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/LiveActivityType.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/LiveActivityType~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/SwiftUIViews/GlucoseChartView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GlucoseChartView~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsAlerts.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsAlerts.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsAlerts.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsAlerts.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsAlerts.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsAlerts.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsAlerts.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsAlerts~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsCommon.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsCommon.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsCommon.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsCommon.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsCommon.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsCommon.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsCommon.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsCommon~partial.swiftmodule"
+  },
+  "/Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/xdrip/Texts/TextsSettingsView.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsSettingsView.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsSettingsView.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsSettingsView.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsSettingsView.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsSettingsView.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsSettingsView.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/TextsSettingsView~partial.swiftmodule"
+  },
+  "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "llvm-bc" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/xdrip.build/Debug-iphoneos/xDrip Notification Context Extension.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}
