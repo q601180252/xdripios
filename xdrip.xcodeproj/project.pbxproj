@@ -383,6 +383,7 @@
 		B6F479C82F2B7F6400B56FD7 /* BleLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6F479AB2F2B7C7E00B56FD7 /* BleLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B6F479C92F2B7F6A00B56FD7 /* FotaLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F479AE2F2B7C7E00B56FD7 /* FotaLibrary.framework */; };
 		B6F479CA2F2B7F6A00B56FD7 /* FotaLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6F479AE2F2B7C7E00B56FD7 /* FotaLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6F479DB2F2B89AC00B56FD7 /* LibOutshine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6F479DA2F2B89AC00B56FD7 /* LibOutshine.xcframework */; };
 		CE1B2FE025D0264B00F642F5 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1B2FD125D0264900F642F5 /* LaunchScreen.strings */; };
 		CE1B2FE125D0264B00F642F5 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1B2FD425D0264900F642F5 /* Main.strings */; };
 		D400F8032778BD8000B57648 /* TextsTreatmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D400F8022778BD8000B57648 /* TextsTreatmentsView.swift */; };
@@ -1359,6 +1360,7 @@
 		B6F479B02F2B7C8B00B56FD7 /* BleLibrary.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = BleLibrary.framework.dSYM; sourceTree = "<group>"; };
 		B6F479B12F2B7C8B00B56FD7 /* FotaLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FotaLibrary.framework; sourceTree = "<group>"; };
 		B6F479B22F2B7C8B00B56FD7 /* FotaLibrary.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = FotaLibrary.framework.dSYM; sourceTree = "<group>"; };
+		B6F479DA2F2B89AC00B56FD7 /* LibOutshine.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LibOutshine.xcframework; sourceTree = "<group>"; };
 		CE1B2FC825D0261500F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Alerts.strings; sourceTree = "<group>"; };
 		CE1B2FCD25D0264900F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AlertTypesSettingsView.strings; sourceTree = "<group>"; };
 		CE1B2FCF25D0264900F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LibreNFC.strings; sourceTree = "<group>"; };
@@ -1686,7 +1688,7 @@
 		F824374324CB7A9000BED341 /* Cell_Phone_Ring_Tone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cell_Phone_Ring_Tone.caf; sourceTree = "<group>"; };
 		F824374424CB7A9100BED341 /* Siri_Alert_Urgent_High_Glucose.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Siri_Alert_Urgent_High_Glucose.caf; sourceTree = "<group>"; };
 		F824374524CB7A9100BED341 /* In_A_Hurry.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = In_A_Hurry.caf; sourceTree = "<group>"; };
-		F824374624CB7A9100BED341 /* Nightguard.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nightguard.caf; sourceTree = "<group>"; };
+		F824374624CB7A9100BED341 /* Nightguard.caf */ = {isa = PBXFileReference; lastKnownFileType = text; path = Nightguard.caf; sourceTree = "<group>"; };
 		F824374724CB7A9100BED341 /* Burglar_Alarm_Siren_2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Burglar_Alarm_Siren_2.caf; sourceTree = "<group>"; };
 		F824374824CB7A9200BED341 /* Rush.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rush.caf; sourceTree = "<group>"; };
 		F824374924CB7A9200BED341 /* Siri_Urgent_High_Glucose.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Siri_Urgent_High_Glucose.caf; sourceTree = "<group>"; };
@@ -2168,6 +2170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6F479DB2F2B89AC00B56FD7 /* LibOutshine.xcframework in Frameworks */,
 				B6F479B62F2B7C8B00B56FD7 /* FotaLibrary.framework in Frameworks */,
 				B6F479B72F2B7C8B00B56FD7 /* BleLibrary.framework in Frameworks */,
 				B6F479C72F2B7F6400B56FD7 /* BleLibrary.framework in Frameworks */,
@@ -3274,6 +3277,7 @@
 		F8AC425121ADEBD60078C348 = {
 			isa = PBXGroup;
 			children = (
+				B6F479DA2F2B89AC00B56FD7 /* LibOutshine.xcframework */,
 				B6F479B32F2B7C8B00B56FD7 /* Frameworks */,
 				B6F4790F2F2B7C7E00B56FD7 /* RSL_Fota */,
 				471C9C022B933461005E1326 /* xDrip Widget Extension.entitlements */,

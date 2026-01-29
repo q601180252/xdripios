@@ -14,14 +14,14 @@ struct ShowHideItemsView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    // MARK: - private @State properties
+    // MARK: - private @SwiftUI.State properties
     
-    @State private var showMiniChart = UserDefaults.standard.showMiniChart
-    @State private var showStatistics = UserDefaults.standard.showStatistics
-    @State private var showTreatmentsOnChart = UserDefaults.standard.showTreatmentsOnChart
-    @State private var speakReadings = UserDefaults.standard.speakReadings
-    @State private var allowStandByHighContrast = UserDefaults.standard.allowStandByHighContrast
-    @State private var forceStandByBigNumbers = UserDefaults.standard.forceStandByBigNumbers
+    @SwiftUI.State private var showMiniChart = UserDefaults.standard.showMiniChart
+    @SwiftUI.State private var showStatistics = UserDefaults.standard.showStatistics
+    @SwiftUI.State private var showTreatmentsOnChart = UserDefaults.standard.showTreatmentsOnChart
+    @SwiftUI.State private var speakReadings = UserDefaults.standard.speakReadings
+    @SwiftUI.State private var allowStandByHighContrast = UserDefaults.standard.allowStandByHighContrast
+    @SwiftUI.State private var forceStandByBigNumbers = UserDefaults.standard.forceStandByBigNumbers
     
     // MARK: - private properties
     

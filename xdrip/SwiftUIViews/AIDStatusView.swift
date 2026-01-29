@@ -36,10 +36,10 @@ struct AIDStatusView: View {
     }
     
     // store a boolean flag. We'll toggle this with the timer to refresh the view
-    @State private var refreshView = false
+    @SwiftUI.State private var refreshView = false
     
     // store the current pickerview index
-    @State private var pickerViewSelected: PickerViews = .deviceStatus
+    @SwiftUI.State private var pickerViewSelected: PickerViews = .deviceStatus
     
     // save typing
     /// is true if the user is using mg/dL units (pulled from UserDefaults)

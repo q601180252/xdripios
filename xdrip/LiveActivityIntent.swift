@@ -7,14 +7,8 @@
 //
 
 import AppIntents
-import Foundation
 
-// https://developer.apple.com/documentation/activitykit/displaying-live-data-with-live-activities#Start-and-stop-Live-Activities-from-App-Intents
-// https://developer.apple.com/documentation/appintents/liveactivityintent
-
-/// App Intent used to restart the live activities via Apple Shortcuts automation
-/// The user needs to add this as an Automation (for somebody who never opens the app, one automation set every 6 hours is needed,
-/// although just one set at 03hrs could be enough for most people to ensure the live activity isn't cancelled during the night)
+@available(iOS 16.0, *)
 struct RestartLiveActivityIntent: LiveActivityIntent {
     static var title: LocalizedStringResource = "Restart Live Activity"
     static var description = IntentDescription("Restarts the glucose monitoring live activity.", categoryName: "Live Activity")

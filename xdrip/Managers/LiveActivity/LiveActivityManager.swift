@@ -13,6 +13,7 @@ import SwiftUI
 import UIKit
 
 /// manager class to handle the live activity events
+@available(iOS 16.1, *)
 public final class LiveActivityManager {
     // MARK: - Private variables
     

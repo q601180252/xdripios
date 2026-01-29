@@ -6,29 +6,29 @@ struct LoopDelayScheduleView: View {
     private static let maximumAmountOfValues:Int = 5
     
     /// will store two arrays, one with loopdelayschedules (timestamps between 00:00 at 23:59 in minutes), one with loopdelayvalues in minutes
-    @State private var loopDelays:[(Int, Int)] = [(Int, Int)]()
+    @SwiftUI.State private var loopDelays:[(Int, Int)] = [(Int, Int)]()
 
     /// state variable, if true then view is shown to add a new row or updating an existing row
-    @State private var addMode = false
+    @SwiftUI.State private var addMode = false
     
     /// index in loopDelays, points to loopDelay being updated. Used to update a loopDelay. If nil then user is adding a new loopDelay, if  not nil then user is updating a loopDelay
     ///
-    /// add @State property wrapper because the value is changed
-    @State private var loopDelayToUpdate:Int?
+    /// add @SwiftUI.State property wrapper because the value is changed
+    @SwiftUI.State private var loopDelayToUpdate:Int?
     
     /// used in sheet that allows to add or update a loop delay row : delay selected
-    @State private var selectedDelay:Int = 0
+    @SwiftUI.State private var selectedDelay:Int = 0
     
     /// used in DatePicker to add or update a loop delay row - this is the timestamp
-    @State private var selectedDate:Date = Date()
+    @SwiftUI.State private var selectedDate:Date = Date()
     
     /// state variable to control display of alert
-    @State private var duplicateLoopDelayAlertIsPresented = false
+    @SwiftUI.State private var duplicateLoopDelayAlertIsPresented = false
     
     /// used in conjunction with duplicateLoopDelayAlertIsPresented
     ///
     /// setting duplicateLoopDelayAlertIsPresented to true while the add sheet is being presented, doesn't show the alert. Seems solution is as described here https://stackoverflow.com/questions/63968344/swiftui-how-to-show-an-alert-after-a-sheet-is-closed, which is to show the alert when the sheet is dismissed
-    @State private var showLoopDelayAlertOnDismiss = false
+    @SwiftUI.State private var showLoopDelayAlertOnDismiss = false
     
     init() {
         

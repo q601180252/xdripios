@@ -20,26 +20,26 @@ struct BgReadingsView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    // MARK: - private @State properties
+    // MARK: - private @SwiftUI.State properties
     
     /// the BgReadings pulled from coredata via BgReadingsAccessor
-    @State private var bgReadings: [(BgReading)] = [(BgReading)]()
+    @SwiftUI.State private var bgReadings: [(BgReading)] = [(BgReading)]()
     
     /// a filtered version of bgReadings to show only the values only on the selected date
-    @State private var filteredBgReadings: [(BgReading)] = [(BgReading)]()
+    @SwiftUI.State private var filteredBgReadings: [(BgReading)] = [(BgReading)]()
     
     /// date selected at which we should display BgReadings
-    @State private var dateSelected: Date = Date()
+    @SwiftUI.State private var dateSelected: Date = Date()
     
     /// string holding the name of the day of the date selected
-    @State private var dateSelectedDayName: String = ""
+    @SwiftUI.State private var dateSelectedDayName: String = ""
     
     // from here: https://stackoverflow.com/questions/61041209/how-to-automatically-collapse-datepicker-in-a-form-when-other-field-is-being-edi
     /// state variable to hide the datePicker when the user has selected a date
-    @State private var datePickerReset = UUID()
+    @SwiftUI.State private var datePickerReset = UUID()
     
     /// selection set for multi-select delete in the List
-    @State private var selectedBgReadings: Set<BgReading> = []
+    @SwiftUI.State private var selectedBgReadings: Set<BgReading> = []
 
     /// edit mode binding to enable multi-select in the List
     @Environment(\.editMode) private var editMode
