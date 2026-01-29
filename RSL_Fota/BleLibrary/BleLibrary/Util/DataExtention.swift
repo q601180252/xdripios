@@ -12,12 +12,14 @@
  * Class Name: DataExtension.swift
  ******************************************************************************/
 
-extension Data {
-    func subdata(in range: ClosedRange<Index>) -> Data{
+import Foundation
+
+public extension Data {
+    public func subdata(in range: ClosedRange<Index>) -> Data{
         return subdata(in: range.lowerBound..<range.upperBound)
     }
     
-    mutating func insertRangeAt(source: Data, sourceIndex: Int, destinationIndex: Int, length: Int)
+    public mutating func insertRangeAt(source: Data, sourceIndex: Int, destinationIndex: Int, length: Int)
     {
         for i in 0..<length
         {
@@ -25,11 +27,11 @@ extension Data {
         }
     }
     
-    func reverse() -> Data{
+    public func reversedData() -> Data{
         return Data(reversed())
     }
     
-    func toArray() -> [UInt8]{
+    public func toArray() -> [UInt8]{
         return [UInt8](self)
     }
 }

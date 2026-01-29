@@ -103,7 +103,7 @@ public enum LibreSensorType: String {
     /// checks crc if needed for the sensor type
     func crcIsOk(rxBuffer:inout Data, headerLength: Int, log: OSLog?) -> Bool {
         
-        guard Crc.LibreCrc(data: &rxBuffer, headerOffset: headerLength, libreSensorType: self) else {
+        guard BubbleCrc.LibreCrc(data: &rxBuffer, headerOffset: headerLength, libreSensorType: self) else {
             
             if let log = log {
                 trace("    in crcIsOk, CRC check failed", log: log, category: ConstantsLog.categoryCGMBubble, type: .info)

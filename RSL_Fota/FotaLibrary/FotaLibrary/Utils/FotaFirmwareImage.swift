@@ -103,8 +103,8 @@ public struct FotaFirmwareImage
             
             let imageStartAddress = UInt32(resetHandler & ~0x7ff)
             
-            let offsetVersionInfo = versionInfoPointer - imageStartAddress + fileOffset
-            let offsetImageDescriptor = imageDescriptorPointer - imageStartAddress + fileOffset
+            let offsetVersionInfo: UInt32 = (versionInfoPointer - imageStartAddress) + fileOffset
+            let offsetImageDescriptor: UInt32 = (imageDescriptorPointer - imageStartAddress) + fileOffset
             
             offset = offsetVersionInfo
             try checkBounds(data: fileData, address: offset, size: 8 + 16, info: "Version info offset")
@@ -112,7 +112,7 @@ public struct FotaFirmwareImage
             self._version = FotaFirmwareVersion()
             try self._version!.setVersion(data: fileData, offset: Int(offset), length: 8)
             offset += 8
-            _deviceId = fileData.subdata(in: (Int(offsetVersionInfo) + 8)...(Int(offsetVersionInfo) + 24))
+            _deviceId = fileData.subdata(in: Int(offsetVersionInfo + 8)..<Int(offsetVersionInfo + 24))
             offset += 16
             
             if isFotaImage
@@ -125,12 +125,12 @@ public struct FotaFirmwareImage
                 offset += 64
                 
                 // service uuid
-                let serviceUuidData: Data = fileData.subdata(in: Int(offset)...Int(offset + 16))
-                _fotaServiceUuid = CBUUID(data: serviceUuidData.reverse())
+                let serviceUuidData: Data = fileData.subdata(in: Int(offset)..<Int(offset + 16))
+                _fotaServiceUuid = CBUUID(data: serviceUuidData.reversedData())
                 offset += 16
                 let nameLenght = try BufferAccess.ReadUInt16LittleEndian(buffer: fileData.toArray(), offset: Int(offset))
                 offset += 2
-                var name = String(data: fileData.subdata(in: Int(offset)...(Int(offset) + Int(nameLenght))), encoding: String.Encoding.utf8) as String?
+                var name = String(data: fileData.subdata(in: Int(offset)..<(Int(offset) + Int(nameLenght))), encoding: String.Encoding.utf8) as String?
             }
             
             offset = offsetImageDescriptor
@@ -139,10 +139,10 @@ public struct FotaFirmwareImage
             var imageSize = try BufferAccess.ReadUInt32LittleEndian(buffer: fileData.toArray(), offset: Int(offset))
             imageSize += UInt32(signatureSize)
             offset += 4
-            _buildId = fileData.subdata(in: Int(offset)...Int(offset + 32))
+            _buildId = fileData.subdata(in: Int(offset)..<Int(offset + 32))
             
             try checkBounds(data: fileData, address: fileOffset + imageSize, size:0 , info: "Image end")
-            _imageData = fileData.subdata(in: Int(fileOffset)...Int(fileOffset + imageSize))
+            _imageData = fileData.subdata(in: Int(fileOffset)..<Int(fileOffset + imageSize))
             offset = imageSize
             
             // pad offset to 2048
