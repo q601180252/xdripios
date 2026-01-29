@@ -1,6 +1,0 @@
-framework module LibOutshine {
-  umbrella header "LibOutshine-umbrella.h"
-
-  export *
-  module * { export * }
-}
