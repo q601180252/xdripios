@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="133" id="KGk-i7-Jjw" customClass="DeviceCell" customModule="DemoApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="875" height="133"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="875" height="133"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pF-0F-epg">
+                        <rect key="frame" x="10" y="5" width="859" height="128"/>
+                        <color key="backgroundColor" red="0.85490196078431369" green="0.49803921568627452" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8h-ra-hcP">
+                        <rect key="frame" x="16" y="5" width="853" height="128"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fQt-H0-0fx">
+                                <rect key="frame" x="7" y="0.0" width="836" height="128"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zTy-jb-aQ8">
+                                        <rect key="frame" x="0.0" y="0.0" width="41.5" height="128"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsf-5V-ZF0">
+                                                <rect key="frame" x="0.0" y="0.0" width="41.5" height="63"/>
+                                                <accessibility key="accessibilityConfiguration" label="Name Label"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.1529411765" green="0.41176470590000003" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rB9-qA-pux">
+                                                <rect key="frame" x="0.0" y="65" width="41.5" height="63"/>
+                                                <accessibility key="accessibilityConfiguration" label="UUID Label"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <color key="textColor" red="0.2274509804" green="0.30196078430000001" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="p4t-T1-bwi">
+                                        <rect key="frame" x="809.5" y="0.0" width="26.5" height="128"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_rssi_four" translatesAutoresizingMaskIntoConstraints="NO" id="UV8-Gt-zuh">
+                                                <rect key="frame" x="0.0" y="0.0" width="26.5" height="63"/>
+                                                <accessibility key="accessibilityConfiguration" label="RSSI Level Image"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKJ-Tk-4Wh">
+                                                <rect key="frame" x="0.0" y="65" width="26.5" height="63"/>
+                                                <accessibility key="accessibilityConfiguration" label="RSSI Label"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <color key="textColor" red="0.2274509804" green="0.30196078430000001" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fQt-H0-0fx" secondAttribute="trailing" constant="10" id="FTO-bQ-TVZ"/>
+                            <constraint firstItem="fQt-H0-0fx" firstAttribute="leading" secondItem="b8h-ra-hcP" secondAttribute="leading" constant="7" id="NtR-od-61Q"/>
+                            <constraint firstAttribute="bottom" secondItem="fQt-H0-0fx" secondAttribute="bottom" id="aeb-Rn-nxz"/>
+                            <constraint firstItem="fQt-H0-0fx" firstAttribute="top" secondItem="b8h-ra-hcP" secondAttribute="top" id="mES-1c-b0w"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4pF-0F-epg" firstAttribute="bottom" secondItem="b8h-ra-hcP" secondAttribute="bottom" id="2Ya-T5-bYe"/>
+                    <constraint firstItem="b8h-ra-hcP" firstAttribute="top" secondItem="4pF-0F-epg" secondAttribute="top" id="5Pj-gb-9fh"/>
+                    <constraint firstItem="4pF-0F-epg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="8yK-d3-U8Z"/>
+                    <constraint firstAttribute="bottom" secondItem="4pF-0F-epg" secondAttribute="bottom" id="MUy-b7-Hl9"/>
+                    <constraint firstItem="4pF-0F-epg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="MhU-og-2Ti"/>
+                    <constraint firstItem="b8h-ra-hcP" firstAttribute="leading" secondItem="4pF-0F-epg" secondAttribute="leading" constant="6" id="hVD-lO-8f1"/>
+                    <constraint firstAttribute="trailing" secondItem="4pF-0F-epg" secondAttribute="trailing" constant="6" id="mn8-0Y-9dE"/>
+                    <constraint firstItem="4pF-0F-epg" firstAttribute="trailing" secondItem="b8h-ra-hcP" secondAttribute="trailing" id="sUk-23-eEK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containerView" destination="b8h-ra-hcP" id="Qz3-0K-6DC"/>
+                <outlet property="nameLabel" destination="hsf-5V-ZF0" id="3ww-6L-loz"/>
+                <outlet property="rssiImage" destination="UV8-Gt-zuh" id="ARI-6C-qHn"/>
+                <outlet property="rssiLabel" destination="UKJ-Tk-4Wh" id="06J-jP-Cxd"/>
+                <outlet property="shadedView" destination="4pF-0F-epg" id="k0O-7O-Kk3"/>
+                <outlet property="uuidLabel" destination="rB9-qA-pux" id="k66-XP-faf"/>
+            </connections>
+            <point key="canvasLocation" x="186.23188405797103" y="96.763392857142847"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_rssi_four" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
