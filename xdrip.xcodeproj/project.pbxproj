@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94E56CCD2D190C5A00BEC953 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E56CCC2D190C5A00BEC953 /* CustomExtensions.swift */; };
+		94E56CCF2D190C5A00BEC953 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E56CCE2D190C5A00BEC953 /* Constants.swift */; };
 		47037B8E2C072346000BD6BD /* ConstantsAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88EC279260120C000DF0EAF /* ConstantsAlerts.swift */; };
 		47037B8F2C072973000BD6BD /* ConstantsAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88EC279260120C000DF0EAF /* ConstantsAlerts.swift */; };
 		47037B902C072974000BD6BD /* ConstantsAlerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88EC279260120C000DF0EAF /* ConstantsAlerts.swift */; };
