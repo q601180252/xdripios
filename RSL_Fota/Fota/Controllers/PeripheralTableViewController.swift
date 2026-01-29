@@ -18,12 +18,12 @@ import Foundation
 
 class PeripheralTableViewController: UITableViewController {
     
-    @IBOutlet weak var progressView: ProgressView!
+    @IBOutlet weak var progressView: UIActivityIndicatorView!
     //MARK: Properties
     var peripherals = [FotaPeripheral]()
     
     //MARK: members
-    var manager: FotaPeripheralManager = AppDelegate.shared().peripheralManager
+    var manager: FotaPeripheralManager = (UIApplication.shared.delegate as! AppDelegate).peripheralManager
     
     //MARK: eventhandlers
     private var _bleProducListChangedHandler: EventHandlerProtocol?
@@ -37,12 +37,12 @@ class PeripheralTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         progressView.isHidden = true
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
-        AppDelegate.shared().peripheralManager.onPauseScan = { [weak self] in
+        (UIApplication.shared.delegate as! AppDelegate).peripheralManager.onPauseScan = { [weak self] in
             DispatchQueue.main.async {
                 self?.EndRefresh()
             }
         }
-        AppDelegate.shared().peripheralManager.onBluetoothOn = { [weak self] in
+        (UIApplication.shared.delegate as! AppDelegate).peripheralManager.onBluetoothOn = { [weak self] in
             DispatchQueue.main.async {
                 self?.showGradientAnimation(flag: true)
             }
@@ -55,12 +55,12 @@ class PeripheralTableViewController: UITableViewController {
         registerEvents()
         
                 // if a peripheral is selected, teardown and dispose
-                if AppDelegate.shared().peripheralManager.selected != nil
+                if (UIApplication.shared.delegate as! AppDelegate).peripheralManager.selected != nil
                 {
                     do{
-                        try AppDelegate.shared().peripheralManager.selected?.teardown()
-                        AppDelegate.shared().peripheralManager.selected?.dispose()
-                        AppDelegate.shared().peripheralManager.selected = nil
+                        try (UIApplication.shared.delegate as! AppDelegate).peripheralManager.selected?.teardown()
+                        (UIApplication.shared.delegate as! AppDelegate).peripheralManager.selected?.dispose()
+                        (UIApplication.shared.delegate as! AppDelegate).peripheralManager.selected = nil
                     }
                     catch
                     {
@@ -126,8 +126,8 @@ class PeripheralTableViewController: UITableViewController {
             if let peripheral = sender as? FotaPeripheral {
                 _ = segue.destination as! BleDeviceViewController
                 
-                AppDelegate.shared().peripheralManager.stopScan()
-                AppDelegate.shared().peripheralManager.selected = peripheral
+                (UIApplication.shared.delegate as! AppDelegate).peripheralManager.stopScan()
+                (UIApplication.shared.delegate as! AppDelegate).peripheralManager.selected = peripheral
                 
                 deregisterEvents()
             }
@@ -142,7 +142,7 @@ class PeripheralTableViewController: UITableViewController {
     func onBleListChanged(args: EmptyEventArgs)
     {
         DispatchQueue.main.async {
-            self.peripherals = AppDelegate.shared().peripheralManager.peripherals;
+            self.peripherals = (UIApplication.shared.delegate as! AppDelegate).peripheralManager.peripherals;
             self.tableView.reloadData()
         }
     }
@@ -164,12 +164,12 @@ class PeripheralTableViewController: UITableViewController {
     @objc private func refreshPeripheralList(_ sender: Any)
     {
         do{
-            if AppDelegate.shared() != nil
+            if (UIApplication.shared.delegate as! AppDelegate) != nil
             {
-                AppDelegate.shared().peripheralManager.selected?.dispose()
-                AppDelegate.shared().peripheralManager.selected = nil
+                (UIApplication.shared.delegate as! AppDelegate).peripheralManager.selected?.dispose()
+                (UIApplication.shared.delegate as! AppDelegate).peripheralManager.selected = nil
             }
-            AppDelegate.shared().peripheralManager.onBluetoothOff = { [weak self] in
+            (UIApplication.shared.delegate as! AppDelegate).peripheralManager.onBluetoothOff = { [weak self] in
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Bluetooth Disabled", message: "The app needs bluetooth to be enabled to work correctly", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
@@ -181,12 +181,12 @@ class PeripheralTableViewController: UITableViewController {
             }
             
             
-            try AppDelegate.shared().peripheralManager.clear()
+            try (UIApplication.shared.delegate as! AppDelegate).peripheralManager.clear()
             
-            if(AppDelegate.shared().peripheralManager.isBluetoothEnabled())
+            if((UIApplication.shared.delegate as! AppDelegate).peripheralManager.isBluetoothEnabled())
             {
                 // Start scaning for peripherals
-                AppDelegate.shared().peripheralManager.startScan()
+                (UIApplication.shared.delegate as! AppDelegate).peripheralManager.startScan()
                 showGradientAnimation(flag: true)
                 print("scan started")
             }
@@ -214,8 +214,8 @@ class PeripheralTableViewController: UITableViewController {
     
     private func registerEvents()
     {
-        _bleProducListChangedHandler = AppDelegate.shared().peripheralManager.eventBleProductListChanged.addHandler(self, PeripheralTableViewController.onBleListChanged)
-        _isBusyHandler = AppDelegate.shared().peripheralManager.eventIsBusyChanged.addHandler(self, PeripheralTableViewController.onIsBusyChanged)
+        _bleProducListChangedHandler = (UIApplication.shared.delegate as! AppDelegate).peripheralManager.eventBleProductListChanged.addHandler(self, PeripheralTableViewController.onBleListChanged)
+        _isBusyHandler = (UIApplication.shared.delegate as! AppDelegate).peripheralManager.eventIsBusyChanged.addHandler(self, PeripheralTableViewController.onIsBusyChanged)
     }
     
     private func deregisterEvents()

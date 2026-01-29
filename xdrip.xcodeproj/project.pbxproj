@@ -1701,7 +1701,7 @@
 		F824375024CB7A9300BED341 /* Sci-Fi_Alarm_Loop_1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sci-Fi_Alarm_Loop_1.caf"; sourceTree = "<group>"; };
 		F824375124CB7A9400BED341 /* Siri_Device_Muted.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Siri_Device_Muted.caf; sourceTree = "<group>"; };
 		F824375224CB7A9400BED341 /* Sci-Fi_Spaceship_Warm_Up.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sci-Fi_Spaceship_Warm_Up.caf"; sourceTree = "<group>"; };
-		F824375324CB7A9400BED341 /* Cartoon_Dreamy_Glissando_Harp.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cartoon_Dreamy_Glissando_Harp.caf; sourceTree = "<group>"; };
+		F824375324CB7A9400BED341 /* Cartoon_Dreamy_Glissando_Harp.caf */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartoon_Dreamy_Glissando_Harp.caf; sourceTree = "<group>"; };
 		F824375424CB7A9400BED341 /* Good_Morning.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Good_Morning.caf; sourceTree = "<group>"; };
 		F824375524CB7A9400BED341 /* Sci-Fi_Air_Raid_Alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sci-Fi_Air_Raid_Alarm.caf"; sourceTree = "<group>"; };
 		F824375624CB7A9500BED341 /* Emergency_Alarm_Carbon_Monoxide.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Emergency_Alarm_Carbon_Monoxide.caf; sourceTree = "<group>"; };
