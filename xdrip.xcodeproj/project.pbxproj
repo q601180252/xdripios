@@ -982,6 +982,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		949BCFB32C64E75D00C3E316 /* CADataCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CADataCollector.swift; sourceTree = "<group>"; };
+		94E56CC42D190B3300BEC953 /* LogsBubbleAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsBubbleAccessor.swift; sourceTree = "<group>"; };
+		94E56CC62D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataClass.swift"; sourceTree = "<group>"; };
+		94E56CC72D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		198D44C4260A3A3300A2B4A2 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Alerts.strings; sourceTree = "<group>"; };
 		198D44C5260A3A3300A2B4A2 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AlertTypesSettingsView.strings; sourceTree = "<group>"; };
 		198D44C6260A3A3300A2B4A2 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/BluetoothPeripheralsView.strings; sourceTree = "<group>"; };
@@ -3515,6 +3519,7 @@
 		F8B3A814227DEA69004BA588 /* accessors */ = {
 			isa = PBXGroup;
 			children = (
+				94E56CC42D190B3300BEC953 /* LogsBubbleAccessor.swift */,
 				F8B3A819227DEC92004BA588 /* README.md */,
 				F8B3A816227DEC91004BA588 /* AlertEntriesAccessor.swift */,
 				F8B3A81A227DEC92004BA588 /* AlertTypesAccessor.swift */,
@@ -3826,6 +3831,8 @@
 		F8EA6CA421B9A25B0082976B /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				94E56CC62D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift */,
+				94E56CC72D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift */,
 				F8B3A79122635A25004BA588 /* AlertEntry+CoreDataClass.swift */,
 				F8B3A79222635A25004BA588 /* AlertEntry+CoreDataProperties.swift */,
 				F8B3A78C22622953004BA588 /* AlertType+CoreDataClass.swift */,
