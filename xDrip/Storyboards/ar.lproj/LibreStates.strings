@@ -1,0 +1,22 @@
+
+/// Possible Libre Sensor states
+"ready" = "جاهز";
+
+/// Possible Libre Sensor states
+"expired" = "منتهي الصلاحية";
+
+/// general usage
+"unknown" = "غير معروف";
+"unsupported" = "غير مدعوم";
+
+/// Possible Libre Sensor states
+"starting" = "بداية";
+
+/// Possible Libre Sensor states
+"notYetStarted" = "لم يتم البدء";
+
+/// Possible Libre Sensor states
+"shutdown" = "إيقاف";
+
+/// Possible Libre Sensor states
+"failure" = "خطأ";
