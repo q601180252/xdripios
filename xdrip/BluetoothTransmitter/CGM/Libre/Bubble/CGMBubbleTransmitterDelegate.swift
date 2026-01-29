@@ -19,6 +19,5 @@ protocol CGMBubbleTransmitterDelegate: AnyObject {
     
     /// bubble is sending sensorStatus
     func received(sensorStatus: LibreSensorState, from cGMBubbleTransmitter: CGMBubbleTransmitter)
-    
 }
 
