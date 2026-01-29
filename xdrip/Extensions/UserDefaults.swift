@@ -188,6 +188,7 @@ extension UserDefaults {
         /// overriden active sensor max days (lifetime) - only used for G6 Anubis transmitters
         case activeSensorMaxSensorAgeInDaysOverridenAnubis = "activeSensorMaxSensorAgeInDaysOverridenAnubis"
         
+        case bubbleDb = "bubbleDb"
         
         // Transmitter
         
@@ -2234,6 +2235,15 @@ extension UserDefaults {
         }
         set {
             set(newValue, forKey: Key.maxSensorAgeInDays.rawValue)
+        }
+    }
+    
+    var bubbleDb: Int {
+        get {
+            return integer(forKey: Key.bubbleDb.rawValue)
+        }
+        set {
+            set(newValue, forKey: Key.bubbleDb.rawValue)
         }
     }
     

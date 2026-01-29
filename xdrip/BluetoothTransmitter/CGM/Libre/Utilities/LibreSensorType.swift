@@ -24,6 +24,15 @@ public enum LibreSensorType: String {
    
     case libreProH = "70"
     
+    case libre2Plus = "libre2Plus"
+    case libreUS14day = "libreUS14day"
+    case libre2US = "libre2US"
+    case libre2CA = "libre2CA"
+    case libre2RU = "libre2RU"
+    case libreSense = "libreSense"
+    case libre3 = "libre3"
+    case unsupported
+    
     var description: String {
         
         switch self {
@@ -54,7 +63,22 @@ public enum LibreSensorType: String {
             
         case .libreProH:
             return "Libre PRO H"
-
+        case .libre2Plus:
+            return "Libre 2 Plus"
+        case .libreUS14day:
+            return "Libre 1"
+        case .libre2US:
+            return "Libre 2 US"
+        case .libre2CA:
+            return "Libre 2 CA"
+        case .libre2RU:
+            return "Libre 2 RU"
+        case .libreSense:
+            return "Libre Sense"
+        case .libre3:
+            return "Libre 3"
+        case .unsupported:
+            return "Unsupported"
         }
         
     }
@@ -185,7 +209,10 @@ public enum LibreSensorType: String {
 
         case .libreProH:
             return 14
-
+        case .libreUS14day:
+            return 14
+        case .libre2Plus, .libre2US, .libre2CA, .libre2RU, .libre3, .libreSense, .unsupported:
+            return nil
         }
         
     }

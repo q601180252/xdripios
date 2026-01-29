@@ -25,6 +25,11 @@ protocol CGMTransmitterDelegate:AnyObject {
     /// to pass some text error message, delegate can decide to show to user, log, ...
     func errorOccurred(xDripError: XdripError)
     
+    func infoUpdate()
+}
+
+extension CGMTransmitterDelegate {
+    func infoUpdate() {}
 }
 
 
