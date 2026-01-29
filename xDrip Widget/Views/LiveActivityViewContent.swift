@@ -10,6 +10,7 @@ import SwiftUI
 import WidgetKit
 
 // this is the standard live activity view
+@available(iOSApplicationExtension 16.1, *)
 struct LiveActivityViewContent : View {
     @State var context: ActivityViewContext<XDripWidgetAttributes>
     

@@ -111,114 +111,124 @@ struct GlucoseChartView: View {
     
 
     var body: some View {
-        let domain = (min((bgReadingValues.min() ?? 40), urgentLowLimitInMgDl) - 6) ... (max((bgReadingValues.max() ?? urgentHighLimitInMgDl), urgentHighLimitInMgDl) + 6)
-        
-        let yAxisLineSize = chartType.yAxisLineSize()
-        
-        Chart {
-            if domain.contains(urgentLowLimitInMgDl) {
-                RuleMark(y: .value("", urgentLowLimitInMgDl))
-                    .lineStyle(StrokeStyle(lineWidth: yAxisLineSize, dash: [2 * yAxisLineSize, 6 * yAxisLineSize]))
-                    .foregroundStyle(chartType.yAxisUrgentLowHighLineColor())
-            }
+        if #available(iOSApplicationExtension 16.0, *) {
+            let domain = (min((bgReadingValues.min() ?? 40), urgentLowLimitInMgDl) - 6) ... (max((bgReadingValues.max() ?? urgentHighLimitInMgDl), urgentHighLimitInMgDl) + 6)
             
-            if domain.contains(urgentHighLimitInMgDl) {
-                RuleMark(y: .value("", urgentHighLimitInMgDl))
-                    .lineStyle(StrokeStyle(lineWidth: yAxisLineSize, dash: [2 * yAxisLineSize, 6 * yAxisLineSize]))
-                    .foregroundStyle(chartType.yAxisUrgentLowHighLineColor())
-            }
+            let yAxisLineSize = chartType.yAxisLineSize()
+            
+            Chart {
+                if domain.contains(urgentLowLimitInMgDl) {
+                    RuleMark(y: .value("", urgentLowLimitInMgDl))
+                        .lineStyle(StrokeStyle(lineWidth: yAxisLineSize, dash: [2 * yAxisLineSize, 6 * yAxisLineSize]))
+                        .foregroundStyle(chartType.yAxisUrgentLowHighLineColor())
+                }
+                
+                if domain.contains(urgentHighLimitInMgDl) {
+                    RuleMark(y: .value("", urgentHighLimitInMgDl))
+                        .lineStyle(StrokeStyle(lineWidth: yAxisLineSize, dash: [2 * yAxisLineSize, 6 * yAxisLineSize]))
+                        .foregroundStyle(chartType.yAxisUrgentLowHighLineColor())
+                }
 
-            if domain.contains(lowLimitInMgDl) {
-                RuleMark(y: .value("", lowLimitInMgDl))
-                    .lineStyle(StrokeStyle(lineWidth: yAxisLineSize, dash: [4 * yAxisLineSize, 3 * yAxisLineSize]))
-                    .foregroundStyle(chartType.yAxisLowHighLineColor())
-            }
-            
-            if domain.contains(highLimitInMgDl) {
-                RuleMark(y: .value("", highLimitInMgDl))
-                    .lineStyle(StrokeStyle(lineWidth: yAxisLineSize, dash: [4 * yAxisLineSize, 3 * yAxisLineSize]))
-                    .foregroundStyle(chartType.yAxisLowHighLineColor())
-            }
-            
-            // add a phantom glucose point at the beginning of the timeline to fix the start point in case there are no glucose values at that time (for instances after starting a new sensor)
-            PointMark(x: .value("Time", Date().addingTimeInterval(-hoursToShow * 3600)),
-                      y: .value("BG", 100))
-            .symbol(Circle())
-            .symbolSize(glucoseCircleDiameter)
-            .foregroundStyle(.clear)
+                if domain.contains(lowLimitInMgDl) {
+                    RuleMark(y: .value("", lowLimitInMgDl))
+                        .lineStyle(StrokeStyle(lineWidth: yAxisLineSize, dash: [4 * yAxisLineSize, 3 * yAxisLineSize]))
+                        .foregroundStyle(chartType.yAxisLowHighLineColor())
+                }
+                
+                if domain.contains(highLimitInMgDl) {
+                    RuleMark(y: .value("", highLimitInMgDl))
+                        .lineStyle(StrokeStyle(lineWidth: yAxisLineSize, dash: [4 * yAxisLineSize, 3 * yAxisLineSize]))
+                        .foregroundStyle(chartType.yAxisLowHighLineColor())
+                }
+                
+                // add a phantom glucose point at the beginning of the timeline to fix the start point in case there are no glucose values at that time (for instances after starting a new sensor)
+                PointMark(x: .value("Time", Date().addingTimeInterval(-hoursToShow * 3600)),
+                          y: .value("BG", 100))
+                .symbol(Circle())
+                .symbolSize(glucoseCircleDiameter)
+                .foregroundStyle(.clear)
 
-            ForEach(bgReadingValues.indices, id: \.self) { index in
-                    PointMark(x: .value("Time", bgReadingDates[index]),
-                              y: .value("BG", bgReadingValues[index]))
-                    .symbol(Circle())
-                    .symbolSize(glucoseCircleDiameter)
-                    .foregroundStyle(bgColor(bgValueInMgDl: bgReadingValues[index]))
+                ForEach(bgReadingValues.indices, id: \.self) { index in
+                        PointMark(x: .value("Time", bgReadingDates[index]),
+                                  y: .value("BG", bgReadingValues[index]))
+                        .symbol(Circle())
+                        .symbolSize(glucoseCircleDiameter)
+                        .foregroundStyle(bgColor(bgValueInMgDl: bgReadingValues[index]))
+                }
+                
+                // add a phantom glucose point five minutes after the end of any BG values to fix the end point
+                // we use it to make sure the chart ends "now" even if the last bg reading was some time ago
+                // it also serves to make sure the last chartpoint circle isn't cut off by the y-axis
+                PointMark(x: .value("Time", Date().addingTimeInterval(5 * 60)),
+                          y: .value("BG", 100))
+                .symbol(Circle())
+                .symbolSize(glucoseCircleDiameter)
+                .foregroundStyle(.clear)
             }
-            
-            // add a phantom glucose point five minutes after the end of any BG values to fix the end point
-            // we use it to make sure the chart ends "now" even if the last bg reading was some time ago
-            // it also serves to make sure the last chartpoint circle isn't cut off by the y-axis
-            PointMark(x: .value("Time", Date().addingTimeInterval(5 * 60)),
-                      y: .value("BG", 100))
-            .symbol(Circle())
-            .symbolSize(glucoseCircleDiameter)
-            .foregroundStyle(.clear)
-        }
-        .chartXAxis {
-            AxisMarks(values: .stride(by: .hour, count: chartType.xAxisLabelEveryHours())) {
-                if let value = $0.as(Date.self) {
-                    if chartType.xAxisShowLabels() {
+            .chartXAxis {
+                AxisMarks(values: .stride(by: .hour, count: chartType.xAxisLabelEveryHours())) {
+                    if let value = $0.as(Date.self) {
+                        if chartType.xAxisShowLabels() {
+                            AxisValueLabel {
+                                let shouldHideLabel = abs(Date().distance(to: value)) < ConstantsGlucoseChartSwiftUI.xAxisLabelFirstClippingInMinutes || abs(Date().addingTimeInterval(-hoursToShow * 3600).distance(to: value)) < ConstantsGlucoseChartSwiftUI.xAxisLabelLastClippingInMinutes ? true : false
+                                
+                                Text(!shouldHideLabel ? value.formatted(.dateTime.hour()) : "")
+                                    .foregroundStyle(Color(.colorSecondary))
+                                    .font(.footnote)
+                                    .offset(x: chartType.xAxisLabelOffsetX(), y: chartType.xAxisLabelOffsetY())
+                            }
+                        }
+                        
+                        AxisGridLine()
+                            .foregroundStyle(ConstantsGlucoseChartSwiftUI.xAxisGridLineColor)
+                    }
+                }
+            }
+            .chartYAxis {
+                AxisMarks(values: [lowLimitInMgDl, highLimitInMgDl]) {
+                    if let value = $0.as(Double.self) {
                         AxisValueLabel {
-                            let shouldHideLabel = abs(Date().distance(to: value)) < ConstantsGlucoseChartSwiftUI.xAxisLabelFirstClippingInMinutes || abs(Date().addingTimeInterval(-hoursToShow * 3600).distance(to: value)) < ConstantsGlucoseChartSwiftUI.xAxisLabelLastClippingInMinutes ? true : false
-                            
-                            Text(!shouldHideLabel ? value.formatted(.dateTime.hour()) : "")
-                                .foregroundStyle(Color(.colorSecondary))
+                            Text(value.mgDlToMmolAndToString(mgDl: isMgDl))
+                                .foregroundStyle(Color(.colorPrimary))
                                 .font(.footnote)
-                                .offset(x: chartType.xAxisLabelOffsetX(), y: chartType.xAxisLabelOffsetY())
+                                .offset(x: chartType.yAxisLabelOffsetX(), y: chartType.yAxisLabelOffsetY())
                         }
                     }
-                    
-                    AxisGridLine()
-                        .foregroundStyle(ConstantsGlucoseChartSwiftUI.xAxisGridLineColor)
                 }
-            }
-        }
-        .chartYAxis {
-            AxisMarks(values: [lowLimitInMgDl, highLimitInMgDl]) {
-                if let value = $0.as(Double.self) {
-                    AxisValueLabel {
-                        Text(value.mgDlToMmolAndToString(mgDl: isMgDl))
-                            .foregroundStyle(Color(.colorPrimary))
-                            .font(.footnote)
-                            .offset(x: chartType.yAxisLabelOffsetX(), y: chartType.yAxisLabelOffsetY())
+                
+                AxisMarks(values: [urgentLowLimitInMgDl, urgentHighLimitInMgDl]) {
+                    if let value = $0.as(Double.self) {
+                        AxisValueLabel {
+                            Text(value.mgDlToMmolAndToString(mgDl: isMgDl))
+                                .foregroundStyle(Color(.colorSecondary))
+                                .font(.footnote)
+                                .offset(x: chartType.yAxisLabelOffsetX(), y: chartType.yAxisLabelOffsetY())
+                        }
                     }
                 }
             }
-            
-            AxisMarks(values: [urgentLowLimitInMgDl, urgentHighLimitInMgDl]) {
-                if let value = $0.as(Double.self) {
-                    AxisValueLabel {
-                        Text(value.mgDlToMmolAndToString(mgDl: isMgDl))
-                            .foregroundStyle(Color(.colorSecondary))
-                            .font(.footnote)
-                            .offset(x: chartType.yAxisLabelOffsetX(), y: chartType.yAxisLabelOffsetY())
-                    }
-                }
+            .if({ return chartType.frame() ? true : false }()) { view in
+                view.frame(width: chartWidth, height: chartHeight)
             }
+            .if({ return chartType.aspectRatio().enable ? true : false }()) { view in
+                view.aspectRatio(chartType.aspectRatio().aspectRatio, contentMode: chartType.aspectRatio().contentMode)
+            }
+            .if({ return chartType.padding().enable ? true : false }()) { view in
+                view.padding(chartType.padding().padding)
+            }
+            .chartYAxis(chartType.yAxisShowLabels())
+            .chartYScale(domain: domain)
+            .modifier(ChartBackgroundModifier(chartType: chartType))
+            .clipShape(RoundedRectangle(cornerRadius: chartType.cornerRadius()))
+        } else {
+            // Fallback for iOS < 16
+            VStack {
+                Text("Chart requires iOS 16+")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .frame(width: chartWidth, height: chartHeight)
         }
-        .if({ return chartType.frame() ? true : false }()) { view in 
-            view.frame(width: chartWidth, height: chartHeight)
-        }
-        .if({ return chartType.aspectRatio().enable ? true : false }()) { view in
-            view.aspectRatio(chartType.aspectRatio().aspectRatio, contentMode: chartType.aspectRatio().contentMode)
-        }
-        .if({ return chartType.padding().enable ? true : false }()) { view in 
-            view.padding(chartType.padding().padding)
-        }
-        .chartYAxis(chartType.yAxisShowLabels())
-        .chartYScale(domain: domain)
-        .modifier(ChartBackgroundModifier(chartType: chartType))
-        .clipShape(RoundedRectangle(cornerRadius: chartType.cornerRadius()))
     }
 }
 

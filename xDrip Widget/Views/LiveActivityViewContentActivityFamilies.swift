@@ -68,6 +68,7 @@ struct LiveActivityViewContentActivityFamilies: View {
 }
 
 // MARK: - extensions
+@available(iOSApplicationExtension 16.0, *)
 extension WidgetFamily {
     var toSidebarRowSize: SidebarRowSize {
         switch self {

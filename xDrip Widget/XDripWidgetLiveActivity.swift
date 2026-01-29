@@ -10,6 +10,7 @@ import ActivityKit
 import SwiftUI
 import WidgetKit
 
+@available(iOSApplicationExtension 16.1, *)
 struct XDripWidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: XDripWidgetAttributes.self) { context in
@@ -83,6 +84,7 @@ struct XDripWidgetLiveActivity: Widget {
     }
 }
 
+@available(iOSApplicationExtension 16.2, *)
 struct XDripWidgetLiveActivity_Previews: PreviewProvider {
     // generate some random dates for the preview
     static func bgDateArray() -> [Date] {

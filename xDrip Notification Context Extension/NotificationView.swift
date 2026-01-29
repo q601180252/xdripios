@@ -27,7 +27,7 @@ struct NotificationView: View {
     
     var body: some View {
         ZStack {
-            Color(ConstantsAlerts.notificationBackgroundColor)
+            Color(uiColor: UIColor(ConstantsAlerts.notificationBackgroundColor))
                 .ignoresSafeArea()
             
             VStack(alignment: .center, spacing: 0) {
@@ -65,7 +65,7 @@ struct NotificationView: View {
                 
                 GlucoseChartView(glucoseChartType: .notificationExpanded, bgReadingValues: bgReadingValues, bgReadingDates: bgReadingDates, isMgDl: isMgDl ?? true, urgentLowLimitInMgDl: urgentLowLimitInMgDl ?? 60, lowLimitInMgDl: lowLimitInMgDl ?? 70, highLimitInMgDl: highLimitInMgDl ?? 180, urgentHighLimitInMgDl: urgentHighLimitInMgDl ?? 250, liveActivityType: nil, hoursToShowScalingHours: nil, glucoseCircleDiameterScalingHours: nil, overrideChartHeight: nil, overrideChartWidth: nil, highContrast: nil)
             }
-            .background(ConstantsAlerts.notificationBackgroundColor)
+            .background(Color(uiColor: UIColor(ConstantsAlerts.notificationBackgroundColor)))
         }
     }
     

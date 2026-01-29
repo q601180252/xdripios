@@ -36,7 +36,7 @@ extension XDripWidget.EntryView {
                     
                     if let deviceStatusIconImage = entry.widgetState.deviceStatusIconImage(), let deviceStatusColor = entry.widgetState.deviceStatusColor() {
                         deviceStatusIconImage
-                            .font(.title3).bold()
+                            .font(.title3.weight(.bold))
                             .foregroundStyle(deviceStatusColor)
                     }
                 }
@@ -48,7 +48,7 @@ extension XDripWidget.EntryView {
             HStack(alignment: .center) {
                 // if we're in follower mode and a patient name exists, let's use it with preference over the data source
                 Text(entry.widgetState.followerPatientName ?? entry.widgetState.dataSourceDescription)
-                    .font(.caption).bold()
+                    .font(.caption.weight(.bold))
                     .foregroundStyle(.colorSecondary)
                     .padding(.trailing, -4)
                 

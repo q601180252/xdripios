@@ -13,6 +13,8 @@ import SwiftUI
 struct XDripWidgetBundle: WidgetBundle {
     var body: some Widget {
         XDripWidget()
-        XDripWidgetLiveActivity()
+        if #available(iOSApplicationExtension 16.1, *) {
+            XDripWidgetLiveActivity()
+        }
     }
 }

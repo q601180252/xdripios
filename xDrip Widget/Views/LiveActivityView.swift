@@ -10,6 +10,7 @@ import SwiftUI
 import WidgetKit
 
 // conditionally show a view with the activity families added if available
+@available(iOSApplicationExtension 16.1, *)
 struct LiveActivityView: View {
     @State var context: ActivityViewContext<XDripWidgetAttributes>
     
@@ -41,6 +42,7 @@ struct LiveActivityViewWithActivityFamily: View {
     }
 }
 
+@available(iOSApplicationExtension 16.1, *)
 struct LiveActivityViewWithoutActivityFamily: View {
     @State var context: ActivityViewContext<XDripWidgetAttributes>
     

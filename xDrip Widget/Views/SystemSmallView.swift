@@ -25,7 +25,7 @@ extension XDripWidget.EntryView {
                     
                     if let deviceStatusIconImage = entry.widgetState.deviceStatusIconImage(), let deviceStatusColor = entry.widgetState.deviceStatusColor() {
                         deviceStatusIconImage
-                            .font(.body).bold()
+                            .font(.body.weight(.bold))
                             .foregroundStyle(deviceStatusColor)
                     } else {
                         Text(entry.widgetState.deltaChangeStringInUserChosenUnit())
@@ -42,7 +42,7 @@ extension XDripWidget.EntryView {
                 
                 HStack(alignment: .center) {
                     Text(entry.widgetState.dataSourceDescription)
-                        .font(.caption).bold()
+                        .font(.caption.weight(.bold))
                         .foregroundStyle(.colorSecondary)
                     
                     Spacer()
@@ -72,7 +72,7 @@ extension XDripWidget.EntryView {
                         
                         if let deviceStatusIconImage = entry.widgetState.deviceStatusIconImage(), let deviceStatusColor = entry.widgetState.deviceStatusColor() {
                             deviceStatusIconImage
-                                .font(.title3).bold()
+                                .font(.title3.weight(.bold))
                                 .foregroundStyle(isAtNight() ? .white : deviceStatusColor)
                         } else {
                             Text(entry.widgetState.deltaChangeStringInUserChosenUnit())
@@ -111,7 +111,7 @@ extension XDripWidget.EntryView {
                                 Spacer()
                                 
                                 deviceStatusIconImage
-                                    .font(.title2).bold()
+                                    .font(.title2.weight(.bold))
                                     .foregroundStyle(isAtNight() ? .white : deviceStatusColor)
                             }
                         }

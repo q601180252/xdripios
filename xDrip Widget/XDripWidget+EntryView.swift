@@ -41,9 +41,23 @@ extension XDripWidget {
             case .systemLarge:
                 systemLargeView
             case .accessoryCircular:
-                accessoryCircularView
+                if #available(iOSApplicationExtension 16.0, *) {
+                    accessoryCircularView
+                } else {
+                    Text("N/A")
+                }
             case .accessoryRectangular:
-                accessoryRectangularView
+                if #available(iOSApplicationExtension 16.0, *) {
+                    accessoryRectangularView
+                } else {
+                    Text("N/A")
+                }
+            case .accessoryInline:
+                if #available(iOSApplicationExtension 16.0, *) {
+                    Text("Inline View Not Implemented") // Placeholder or actual view
+                } else {
+                    Text("N/A")
+                }
             default:
                 Text("No Data Available")
             }

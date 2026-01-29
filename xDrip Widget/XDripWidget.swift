@@ -12,6 +12,15 @@ import SwiftUI
 struct XDripWidget: Widget {
     let kind: String = "xDripWidget"
     
+    private var supportedFamilies: [WidgetFamily] {
+        var families: [WidgetFamily] = [.systemSmall, .systemMedium, .systemLarge]
+        if #available(iOSApplicationExtension 16.0, *) {
+            families.append(.accessoryCircular)
+            families.append(.accessoryRectangular)
+        }
+        return families
+    }
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             XDripWidget.EntryView(entry: entry)
@@ -19,13 +28,7 @@ struct XDripWidget: Widget {
         }
         .configurationDisplayName(ConstantsHomeView.applicationName)
         .description("Show the current blood glucose level")
-        .supportedFamilies([
-                .systemSmall,
-                .systemMedium,
-                .systemLarge,
-                .accessoryCircular,
-                .accessoryRectangular
-            ])
+        .supportedFamilies(supportedFamilies)
     }
 }
 
@@ -38,12 +41,14 @@ struct XDripWidget_Previews: PreviewProvider {
             XDripWidget.EntryView(entry: .placeholder)
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
                 .previewDisplayName("systemMedium")
-            XDripWidget.EntryView(entry: .placeholder)
-                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-                .previewDisplayName("accessoryCircular")
-            XDripWidget.EntryView(entry: .placeholder)
-                .previewContext(WidgetPreviewContext(family: .accessoryInline))
-                .previewDisplayName("accessoryInline")
+            if #available(iOSApplicationExtension 16.0, *) {
+                XDripWidget.EntryView(entry: .placeholder)
+                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+                    .previewDisplayName("accessoryCircular")
+                XDripWidget.EntryView(entry: .placeholder)
+                    .previewContext(WidgetPreviewContext(family: .accessoryInline))
+                    .previewDisplayName("accessoryInline")
+            }
         }
     }
 }

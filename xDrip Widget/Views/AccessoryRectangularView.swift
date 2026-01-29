@@ -11,6 +11,7 @@ import SwiftUI
 import WidgetKit
 
 extension XDripWidget.EntryView {
+    @available(iOSApplicationExtension 16.0, *)
     var accessoryRectangularView: some View {
         ZStack {
             AccessoryWidgetBackground()
