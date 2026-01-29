@@ -1,0 +1,100 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     '/Users/liyang/Library/Developer/Xcode/DerivedData/LibOutshine-dokskgnjtqaqztdlzzeatcgixlyz/Build/Intermediates.noindex/ArchiveIntermediates/LibOutshine/InstallationBuildProductsLocation/Library/Frameworks/LibOutshine.framework/LibOutshine'
+relocations:
+  - { offset: 0x61EFF, size: 0x8, addend: 0x0, symName: _LibOutshineVersionString, symObjAddr: 0x0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x61F34, size: 0x8, addend: 0x0, symName: _LibOutshineVersionNumber, symObjAddr: 0x30, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x61F71, size: 0x8, addend: 0x0, symName: '-[a abc]', symObjAddr: 0x0, symBinAddr: 0xAC8, symSize: 0xA9 }
+  - { offset: 0x61F9F, size: 0x8, addend: 0x0, symName: '-[a abc]', symObjAddr: 0x0, symBinAddr: 0xAC8, symSize: 0xA9 }
+  - { offset: 0x62062, size: 0x8, addend: 0x0, symName: '-[a abcd]', symObjAddr: 0xA9, symBinAddr: 0xB71, symSize: 0x8C }
+  - { offset: 0x620FD, size: 0x8, addend: 0x0, symName: '-[a sha256:]', symObjAddr: 0x135, symBinAddr: 0xBFD, symSize: 0x129 }
+  - { offset: 0x62288, size: 0x8, addend: 0x0, symName: '-[a abcde:]', symObjAddr: 0x25E, symBinAddr: 0xD26, symSize: 0xC5 }
+  - { offset: 0x6233B, size: 0x8, addend: 0x0, symName: '-[a hexadecimal:]', symObjAddr: 0x323, symBinAddr: 0xDEB, symSize: 0x164 }
+  - { offset: 0x624CA, size: 0x8, addend: 0x0, symName: '___17-[a hexadecimal:]_block_invoke', symObjAddr: 0x487, symBinAddr: 0xF4F, symSize: 0xBF }
+  - { offset: 0x625FF, size: 0x8, addend: 0x0, symName: ___copy_helper_block_e8_32s40s, symObjAddr: 0x546, symBinAddr: 0x100E, symSize: 0x25 }
+  - { offset: 0x62640, size: 0x8, addend: 0x0, symName: ___destroy_helper_block_e8_32s40s, symObjAddr: 0x56B, symBinAddr: 0x1033, symSize: 0x25 }
+  - { offset: 0x627EC, size: 0x8, addend: 0x0, symName: '-[DBOutshine init]', symObjAddr: 0x0, symBinAddr: 0x1058, symSize: 0xBA }
+  - { offset: 0x6280B, size: 0x8, addend: 0x0, symName: '-[DBOutshine init]', symObjAddr: 0x0, symBinAddr: 0x1058, symSize: 0xBA }
+  - { offset: 0x62882, size: 0x8, addend: 0x0, symName: '-[DBOutshine encodeAuth:patchUid:patchInfo:type:callback:error:]', symObjAddr: 0xBA, symBinAddr: 0x1112, symSize: 0x1FA }
+  - { offset: 0x62A90, size: 0x8, addend: 0x0, symName: '-[DBOutshine libreCAParsing:data:data2:data344:patchInfo:patchUid:callback:error:]', symObjAddr: 0x2B4, symBinAddr: 0x130C, symSize: 0x20A }
+  - { offset: 0x62D08, size: 0x8, addend: 0x0, symName: '+[DBOutshine isSupported:]', symObjAddr: 0x4BE, symBinAddr: 0x1516, symSize: 0x6F }
+  - { offset: 0x62F5C, size: 0x8, addend: 0x0, symName: '-[DBP1P2New encodeAuth:patchUid:type:]', symObjAddr: 0x0, symBinAddr: 0x1585, symSize: 0x167 }
+  - { offset: 0x62F91, size: 0x8, addend: 0x0, symName: '-[DBP1P2New encodeAuth:patchUid:type:]', symObjAddr: 0x0, symBinAddr: 0x1585, symSize: 0x167 }
+  - { offset: 0x6313D, size: 0x8, addend: 0x0, symName: '-[DBP1P2New decodeData:data2:data344:patchUid:]', symObjAddr: 0x167, symBinAddr: 0x16EC, symSize: 0x219 }
+  - { offset: 0x633CD, size: 0x8, addend: 0x0, symName: '-[DBP1P2New hexadecimal:]', symObjAddr: 0x380, symBinAddr: 0x1905, symSize: 0x164 }
+  - { offset: 0x6355C, size: 0x8, addend: 0x0, symName: '___25-[DBP1P2New hexadecimal:]_block_invoke', symObjAddr: 0x4E4, symBinAddr: 0x1A69, symSize: 0xBF }
+  - { offset: 0x63691, size: 0x8, addend: 0x0, symName: '-[DBP1P2New toHexString:]', symObjAddr: 0x5ED, symBinAddr: 0x1B28, symSize: 0x117 }
+  - { offset: 0x63968, size: 0x8, addend: 0x0, symName: _strData, symObjAddr: 0x3E00, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x639A2, size: 0x8, addend: 0x0, symName: _str3a20, symObjAddr: 0x23E00, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x639C6, size: 0x8, addend: 0x0, symName: _str621e, symObjAddr: 0x24DA0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x639DD, size: 0x8, addend: 0x0, symName: _Gb0x221ae0, symObjAddr: 0x341D8, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63A04, size: 0x8, addend: 0x0, symName: _Gb0x401e3a20, symObjAddr: 0x341E0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63A1B, size: 0x8, addend: 0x0, symName: _Gb0x4021621e, symObjAddr: 0x341E8, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63A32, size: 0x8, addend: 0x0, symName: _b0x21675E, symObjAddr: 0x25D40, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63A5A, size: 0x8, addend: 0x0, symName: _b0x2162F9, symObjAddr: 0x25DC0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63A7D, size: 0x8, addend: 0x0, symName: _b0x21634D_12f, symObjAddr: 0x25E00, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63AA0, size: 0x8, addend: 0x0, symName: _b0x2163b7_199, symObjAddr: 0x25E20, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63AC3, size: 0x8, addend: 0x0, symName: _b0x216272_54, symObjAddr: 0x25E50, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63ADA, size: 0x8, addend: 0x0, symName: _b0x2163EF_1d1, symObjAddr: 0x25E70, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63AF1, size: 0x8, addend: 0x0, symName: _b0x216401_1e3, symObjAddr: 0x25E90, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63B14, size: 0x8, addend: 0x0, symName: _b0x216551_333, symObjAddr: 0x25EB0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63B2B, size: 0x8, addend: 0x0, symName: _b0x216563_345, symObjAddr: 0x25ED0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63B4E, size: 0x8, addend: 0x0, symName: _b0x2165e9_3cb, symObjAddr: 0x25EF0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63B65, size: 0x8, addend: 0x0, symName: _b0x21662f_411, symObjAddr: 0x25F10, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63B7C, size: 0x8, addend: 0x0, symName: _b0x216672_454, symObjAddr: 0x25F30, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63B93, size: 0x8, addend: 0x0, symName: _b0x216684_466, symObjAddr: 0x25F50, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63BAA, size: 0x8, addend: 0x0, symName: _b0x2167B4_596, symObjAddr: 0x25F70, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63BC1, size: 0x8, addend: 0x0, symName: _sub_199_2163C9, symObjAddr: 0x25F82, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63BE4, size: 0x8, addend: 0x0, symName: _sub_423_216641, symObjAddr: 0x25F90, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63BFB, size: 0x8, addend: 0x0, symName: _b0x2165D7_3B9, symObjAddr: 0x25FB0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63C12, size: 0x8, addend: 0x0, symName: _b0x21671C_4FE, symObjAddr: 0x25FD0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63C35, size: 0x8, addend: 0x0, symName: _b0x216792_574, symObjAddr: 0x26020, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63C4C, size: 0x8, addend: 0x0, symName: _b0x216575_357, symObjAddr: 0x26070, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63C6F, size: 0x8, addend: 0x0, symName: _b0x21650B_2ED, symObjAddr: 0x260D0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63C92, size: 0x8, addend: 0x0, symName: _b0x21635F_141, symObjAddr: 0x26120, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63CA9, size: 0x8, addend: 0x0, symName: _b0x2164C1_2A3, symObjAddr: 0x26170, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63CC0, size: 0x8, addend: 0x0, symName: _b0x21635F_87, symObjAddr: 0x261C0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63CD7, size: 0x8, addend: 0x0, symName: _b0x2166CA_4AC, symObjAddr: 0x26210, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63CEE, size: 0x8, addend: 0x0, symName: _b0x216413_1F5, symObjAddr: 0x26260, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63D05, size: 0x8, addend: 0x0, symName: _b0x2166B8_49A, symObjAddr: 0x262B0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63D1C, size: 0x8, addend: 0x0, symName: _b0x21649D_27F, symObjAddr: 0x262D0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63D33, size: 0x8, addend: 0x0, symName: _b0x216467_249, symObjAddr: 0x262F0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63D4A, size: 0x8, addend: 0x0, symName: _b0x216284_66, symObjAddr: 0x26310, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63D61, size: 0x8, addend: 0x0, symName: _b0x2164AF_291, symObjAddr: 0x26330, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63D78, size: 0x8, addend: 0x0, symName: _b0x216479_25B, symObjAddr: 0x26350, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63D8F, size: 0x8, addend: 0x0, symName: _b0x216455_237, symObjAddr: 0x26370, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63DA6, size: 0x8, addend: 0x0, symName: _b0x21648B_26D, symObjAddr: 0x26390, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63DBD, size: 0x8, addend: 0x0, symName: _sub_357_2165B7, symObjAddr: 0x263B0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63DE0, size: 0x8, addend: 0x0, symName: _sub_2ED_21654D, symObjAddr: 0x26400, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63DF7, size: 0x8, addend: 0x0, symName: _sub_2A3_216503, symObjAddr: 0x26450, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63E0E, size: 0x8, addend: 0x0, symName: _sub_4AC_21670C, symObjAddr: 0x264A0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63E25, size: 0x8, addend: 0x0, symName: _sub_66_216296, symObjAddr: 0x264F0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63E3C, size: 0x8, addend: 0x0, symName: _b0x2163A1_183, symObjAddr: 0x26510, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63E5F, size: 0x8, addend: 0x0, symName: _b0x21660D_3EF, symObjAddr: 0x26540, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63E82, size: 0x8, addend: 0x0, symName: _b0x216792_26D, symObjAddr: 0x26590, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63EA5, size: 0x8, addend: 0x0, symName: _b0x2162E7_C9, symObjAddr: 0x265C0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63EBC, size: 0x8, addend: 0x0, symName: _b0x21630B_ED, symObjAddr: 0x265E0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63EDF, size: 0x8, addend: 0x0, symName: _b0x2167C6_5A8, symObjAddr: 0x26670, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63EF6, size: 0x8, addend: 0x0, symName: _b0x216650_432, symObjAddr: 0x26690, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63F0D, size: 0x8, addend: 0x0, symName: _data1, symObjAddr: 0x26720, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63F31, size: 0x8, addend: 0x0, symName: _data2, symObjAddr: 0x26930, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63F55, size: 0x8, addend: 0x0, symName: _data3, symObjAddr: 0x26B30, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63F6C, size: 0x8, addend: 0x0, symName: _inBuf16C1, symObjAddr: 0x26D30, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63F83, size: 0x8, addend: 0x0, symName: _inBuf16C2, symObjAddr: 0x26D60, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63F9A, size: 0x8, addend: 0x0, symName: _inBuf16C3, symObjAddr: 0x26D90, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63FB1, size: 0x8, addend: 0x0, symName: _inBuf16C4, symObjAddr: 0x26DC0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63FC8, size: 0x8, addend: 0x0, symName: _B0xBFFFF0401, symObjAddr: 0x26DF0, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63FDF, size: 0x8, addend: 0x0, symName: _B0xBFFFF0402, symObjAddr: 0x26E20, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x63FF6, size: 0x8, addend: 0x0, symName: _B0xBFFFF0403, symObjAddr: 0x26E50, symBinAddr: 0x0, symSize: 0x0 }
+  - { offset: 0x64000, size: 0x8, addend: 0x0, symName: _sub_1211E8, symObjAddr: 0x174, symBinAddr: 0x1C3F, symSize: 0x108 }
+  - { offset: 0x642AA, size: 0x8, addend: 0x0, symName: _calculateMain, symObjAddr: 0x27C, symBinAddr: 0x1D47, symSize: 0x7CD }
+  - { offset: 0x64950, size: 0x8, addend: 0x0, symName: _decodeNFC, symObjAddr: 0xA49, symBinAddr: 0x2514, symSize: 0x355 }
+  - { offset: 0x64C07, size: 0x8, addend: 0x0, symName: _calculate0x4052a004Ex, symObjAddr: 0xD9E, symBinAddr: 0x2869, symSize: 0x1518 }
+  - { offset: 0x66054, size: 0x8, addend: 0x0, symName: _calculate0x4052F0F0Ex, symObjAddr: 0x2904, symBinAddr: 0x43CF, symSize: 0xB38 }
+  - { offset: 0x66C15, size: 0x8, addend: 0x0, symName: _calculate0x4052a004Part, symObjAddr: 0x2541, symBinAddr: 0x400C, symSize: 0x3C3 }
+  - { offset: 0x67032, size: 0x8, addend: 0x0, symName: _decodeBle, symObjAddr: 0x22B6, symBinAddr: 0x3D81, symSize: 0x28B }
+  - { offset: 0x67300, size: 0x8, addend: 0x0, symName: _encodeAuth, symObjAddr: 0x363C, symBinAddr: 0x4F07, symSize: 0x2D9 }
+  - { offset: 0x675D3, size: 0x8, addend: 0x0, symName: _encodeMacAuth, symObjAddr: 0x3915, symBinAddr: 0x51E0, symSize: 0x1B6 }
+  - { offset: 0x67794, size: 0x8, addend: 0x0, symName: _encodeActivate, symObjAddr: 0x3ACB, symBinAddr: 0x5396, symSize: 0x19D }
+  - { offset: 0x67929, size: 0x8, addend: 0x0, symName: _decodeData, symObjAddr: 0x3C68, symBinAddr: 0x5533, symSize: 0x3A }
+...
