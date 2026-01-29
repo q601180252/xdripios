@@ -125,7 +125,7 @@ public enum LibreSensorType: String {
         
         guard patchInfo.count > 1 else {return nil}
         
-        let firstTwoChars = patchInfo[0..<2].uppercased()
+        let firstTwoChars = String(patchInfo.prefix(2)).uppercased()
         
         switch firstTwoChars {
             

@@ -52,6 +52,7 @@ public final class LiveActivityManager {
 
 // MARK: - Helper Extension
 
+@available(iOS 16.2, *)
 extension LiveActivityManager {
     /// Public API: Debounced update entry point
     func update(contentState: XDripWidgetAttributes.ContentState, forceRestart: Bool = false) {

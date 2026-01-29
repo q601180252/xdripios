@@ -46,7 +46,7 @@ struct SettingsViewHelpSettingsViewModel:SettingsViewModelProtocol {
             // get the 2 character language code for the App Locale (i.e. "en", "es", "nl", "fr")
             // if the user has the app in a language other than English and they have the "auto translate" option selected, then load the help pages through Google Translate
             // important to check the the URLs actually exist in ConstansHomeView before trying to open them
-            if let languageCode = NSLocale.current.language.languageCode?.identifier, languageCode != ConstantsHomeView.onlineHelpBaseLocale && UserDefaults.standard.translateOnlineHelp {
+            if let languageCode = Locale.current.languageCode, languageCode != ConstantsHomeView.onlineHelpBaseLocale && UserDefaults.standard.translateOnlineHelp {
                 
                 guard let url = URL(string: ConstantsHomeView.onlineHelpURLTranslated1 + languageCode + ConstantsHomeView.onlineHelpURLTranslated2) else { return .nothing }
                 
