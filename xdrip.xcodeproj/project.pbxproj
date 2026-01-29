@@ -241,6 +241,8 @@
 		94E56CCD2D19425500BEC953 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E56CCA2D19425500BEC953 /* DetailCell.swift */; };
 		B61A33882E5FE23E00F26BA9 /* LibOutshine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F13153E72C66081A006E34C8 /* LibOutshine.xcframework */; };
 		B61A33892E5FE23E00F26BA9 /* LibOutshine.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F13153E72C66081A006E34C8 /* LibOutshine.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B62110BE2F2B69420054B13C /* BleLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62110BD2F2B69320054B13C /* BleLibrary.framework */; };
+		B62110BF2F2B69420054B13C /* BleLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B62110BD2F2B69320054B13C /* BleLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B67A30652E6ACD5100510CC5 /* FotaLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 940BBDE62CDF55260063FC19 /* FotaLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE1B2FE025D0264B00F642F5 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1B2FD125D0264900F642F5 /* LaunchScreen.strings */; };
 		CE1B2FE125D0264B00F642F5 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE1B2FD425D0264900F642F5 /* Main.strings */; };
@@ -816,16 +818,16 @@
 			remoteGlobalIDString = 7C43C7C2225F05F100B0172D;
 			remoteInfo = FotaLibrary;
 		};
-		B6394D0F2F2B67C40048E7AC /* PBXContainerItemProxy */ = {
+		B62110B92F2B69320054B13C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B6394D0C2F2B67C40048E7AC /* BleLibrary.xcodeproj */;
+			containerPortal = B62110B62F2B69320054B13C /* BleLibrary.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 7CF2CA51225DCB4C004A07F4;
 			remoteInfo = BleLibrary;
 		};
-		B6394D122F2B67C40048E7AC /* PBXContainerItemProxy */ = {
+		B62110BC2F2B69320054B13C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B6394D0C2F2B67C40048E7AC /* BleLibrary.xcodeproj */;
+			containerPortal = B62110B62F2B69320054B13C /* BleLibrary.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 7CF2CA52225DCB4C004A07F4;
 			remoteInfo = BleLibrary;
@@ -846,6 +848,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B62110BF2F2B69420054B13C /* BleLibrary.framework in Embed Frameworks */,
 				B67A30652E6ACD5100510CC5 /* FotaLibrary.framework in Embed Frameworks */,
 				B61A33892E5FE23E00F26BA9 /* LibOutshine.xcframework in Embed Frameworks */,
 				470824D3297484B500C52317 /* SwiftCharts in Embed Frameworks */,
@@ -1131,7 +1134,7 @@
 		94E56CC72D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		94E56CCA2D19425500BEC953 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		94E56CCB2D19425500BEC953 /* SummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCell.swift; sourceTree = "<group>"; };
-		B6394D0C2F2B67C40048E7AC /* BleLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BleLibrary.xcodeproj; path = /Users/liyang/Documents/work/ioscode/xdripios164/RSL_Fota/BleLibrary/BleLibrary.xcodeproj; sourceTree = "<absolute>"; };
+		B62110B62F2B69320054B13C /* BleLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BleLibrary.xcodeproj; path = /Users/liyang/Documents/work/wunew/ios/loopcloud2/xdripios/RSL_Fota/BleLibrary/BleLibrary.xcodeproj; sourceTree = "<absolute>"; };
 		B6F91DD32EB1C6130024331C /* BleLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BleLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1B2FC825D0261500F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Alerts.strings; sourceTree = "<group>"; };
 		CE1B2FCD25D0264900F642F5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/AlertTypesSettingsView.strings; sourceTree = "<group>"; };
@@ -2013,6 +2016,7 @@
 			files = (
 				B61A33882E5FE23E00F26BA9 /* LibOutshine.xcframework in Frameworks */,
 				F81F3C4225D1D91300520946 /* CoreNFC.framework in Frameworks */,
+				B62110BE2F2B69420054B13C /* BleLibrary.framework in Frameworks */,
 				470824D2297484B500C52317 /* SwiftCharts in Frameworks */,
 				4779BCEE2974306300515714 /* ActionClosurable in Frameworks */,
 				F821CF9722AE589E005C1E43 /* HealthKit.framework in Frameworks */,
@@ -2361,10 +2365,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B6394D0D2F2B67C40048E7AC /* Products */ = {
+		B62110B72F2B69320054B13C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B6394D132F2B67C40048E7AC /* BleLibrary.framework */,
+				B62110BD2F2B69320054B13C /* BleLibrary.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2990,7 +2994,7 @@
 				F8AC425B21ADEBD60078C348 /* Products */,
 				F85DC29B21CFCEB800B9F74A /* Recovered References */,
 				F8AC425C21ADEBD60078C348 /* xdrip */,
-				B6394D0C2F2B67C40048E7AC /* BleLibrary.xcodeproj */,
+				B62110B62F2B69320054B13C /* BleLibrary.xcodeproj */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -4079,7 +4083,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B6394D102F2B67C40048E7AC /* PBXTargetDependency */,
+				B62110BA2F2B69320054B13C /* PBXTargetDependency */,
 				B67A305A2E6ACCC100510CC5 /* PBXTargetDependency */,
 				4716A4FD2B406C3F00419052 /* PBXTargetDependency */,
 				47DE41B12B864EE50041DA19 /* PBXTargetDependency */,
@@ -4172,8 +4176,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = B6394D0D2F2B67C40048E7AC /* Products */;
-					ProjectRef = B6394D0C2F2B67C40048E7AC /* BleLibrary.xcodeproj */;
+					ProductGroup = B62110B72F2B69320054B13C /* Products */;
+					ProjectRef = B62110B62F2B69320054B13C /* BleLibrary.xcodeproj */;
 				},
 				{
 					ProductGroup = 940BBDE12CDF55250063FC19 /* Products */;
@@ -4199,11 +4203,11 @@
 			remoteRef = 940BBDE52CDF55260063FC19 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		B6394D132F2B67C40048E7AC /* BleLibrary.framework */ = {
+		B62110BD2F2B69320054B13C /* BleLibrary.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = BleLibrary.framework;
-			remoteRef = B6394D122F2B67C40048E7AC /* PBXContainerItemProxy */;
+			remoteRef = B62110BC2F2B69320054B13C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -5054,10 +5058,10 @@
 			target = 47A6ABDE2B790CC60047A4BA /* xDrip Watch App */;
 			targetProxy = 47DE41B02B864EE50041DA19 /* PBXContainerItemProxy */;
 		};
-		B6394D102F2B67C40048E7AC /* PBXTargetDependency */ = {
+		B62110BA2F2B69320054B13C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BleLibrary;
-			targetProxy = B6394D0F2F2B67C40048E7AC /* PBXContainerItemProxy */;
+			targetProxy = B62110B92F2B69320054B13C /* PBXContainerItemProxy */;
 		};
 		B67A305A2E6ACCC100510CC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
