@@ -1,6 +1,7 @@
 import UIKit
 import CoreData
 import OSLog
+import FotaLibrary
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -11,6 +12,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /// the quickActionsManager instance needed to process the shortcut items received
     private let quickActionsManager = QuickActionsManager()
+    
+    lazy var peripheralManager: FotaPeripheralManager = {
+        return FotaPeripheralManager(true)
+    }()
+    
+    static func shared() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
     
     /// allow the orientation to be changed as per the settings for each individual view controller
     var restrictRotation:UIInterfaceOrientationMask = .all

@@ -229,10 +229,10 @@
 		47F7B1C62C68BBE100609DA7 /* ConstantsCalibrationAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1585422EDB706007F5B5D /* ConstantsCalibrationAlgorithms.swift */; };
 		47F7B1CD2C68CC3000609DA7 /* ConstantsCalibrationAlgorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A1585422EDB706007F5B5D /* ConstantsCalibrationAlgorithms.swift */; };
 		47FB28082636B04200042FFB /* StatisticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB28072636B04200042FFB /* StatisticsManager.swift */; };
-		949BCFB42C64E75D00C3E316 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		94E56CC52D190B3300BEC953 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		94E56CC82D190B3E00BEC953 /* (null) in Sources */ = {isa = PBXBuildFile; };
-		94E56CC92D190B3E00BEC953 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		949BCFB42C64E75D00C3E316 /* CADataCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949BCFB32C64E75D00C3E316 /* CADataCollector.swift */; };
+		94E56CC52D190B3300BEC953 /* LogsBubbleAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E56CC42D190B3300BEC953 /* LogsBubbleAccessor.swift */; };
+		94E56CC82D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E56CC72D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift */; };
+		94E56CC92D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E56CC62D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift */; };
 		B6F479142F2B7C7E00B56FD7 /* Fota.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6F478E52F2B7C7E00B56FD7 /* Fota.storyboard */; };
 		B6F479162F2B7C7E00B56FD7 /* DeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F478E22F2B7C7E00B56FD7 /* DeviceCell.xib */; };
 		B6F479182F2B7C7E00B56FD7 /* s7.3_h1.5_20240728.fota in Resources */ = {isa = PBXBuildFile; fileRef = B6F478EB2F2B7C7E00B56FD7 /* s7.3_h1.5_20240728.fota */; };
@@ -982,10 +982,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		949BCFB32C64E75D00C3E316 /* CADataCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CADataCollector.swift; sourceTree = "<group>"; };
-		94E56CC42D190B3300BEC953 /* LogsBubbleAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsBubbleAccessor.swift; sourceTree = "<group>"; };
-		94E56CC62D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataClass.swift"; sourceTree = "<group>"; };
-		94E56CC72D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		198D44C4260A3A3300A2B4A2 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Alerts.strings; sourceTree = "<group>"; };
 		198D44C5260A3A3300A2B4A2 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/AlertTypesSettingsView.strings; sourceTree = "<group>"; };
 		198D44C6260A3A3300A2B4A2 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/BluetoothPeripheralsView.strings; sourceTree = "<group>"; };
@@ -1213,6 +1209,9 @@
 		666E283826F7E54C00ACE4DF /* xDrip.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = xDrip.xcconfig; path = xdrip/xDrip.xcconfig; sourceTree = "<group>"; };
 		666E283926F7E54C00ACE4DF /* Version.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Version.xcconfig; path = xdrip/Version.xcconfig; sourceTree = "<group>"; };
 		949BCFB32C64E75D00C3E316 /* CADataCollector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CADataCollector.swift; sourceTree = "<group>"; };
+		94E56CC42D190B3300BEC953 /* LogsBubbleAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsBubbleAccessor.swift; sourceTree = "<group>"; };
+		94E56CC62D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataClass.swift"; sourceTree = "<group>"; };
+		94E56CC72D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B6F478652F2B7C7E00B56FD7 /* Characteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
 		B6F478662F2B7C7E00B56FD7 /* CharacteristicPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicPermissions.swift; sourceTree = "<group>"; };
 		B6F478672F2B7C7E00B56FD7 /* CharacteristicsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicsProtocol.swift; sourceTree = "<group>"; };
@@ -4895,14 +4894,14 @@
 				F8F16715272745A2001AA3D8 /* DexcomCalibrationResponseType.swift in Sources */,
 				F8F9721B23A5915900C3F17D /* CGMMiaoMiaoTransmitter.swift in Sources */,
 				F8F9721A23A5915900C3F17D /* CGMBubbleTransmitter.swift in Sources */,
-				949BCFB42C64E75D00C3E316 /* (null) in Sources */,
-				94E56CC52D190B3300BEC953 /* (null) in Sources */,
-				94E56CC82D190B3E00BEC953 /* (null) in Sources */,
-				94E56CC92D190B3E00BEC953 /* (null) in Sources */,
-				949BCFB42C64E75D00C3E316 /* (null) in Sources */,
-				94E56CC52D190B3300BEC953 /* (null) in Sources */,
-				94E56CC82D190B3E00BEC953 /* (null) in Sources */,
-				94E56CC92D190B3E00BEC953 /* (null) in Sources */,
+				949BCFB42C64E75D00C3E316 /* CADataCollector.swift in Sources */,
+				94E56CC52D190B3300BEC953 /* LogsBubbleAccessor.swift in Sources */,
+				94E56CC82D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift in Sources */,
+				94E56CC92D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift in Sources */,
+				949BCFB42C64E75D00C3E316 /* CADataCollector.swift in Sources */,
+				94E56CC52D190B3300BEC953 /* LogsBubbleAccessor.swift in Sources */,
+				94E56CC82D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift in Sources */,
+				94E56CC92D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift in Sources */,
 				4752B400263570DA0081D551 /* ConstantsStatistics.swift in Sources */,
 				47A6ABFF2B795DA30047A4BA /* GlucoseChartType.swift in Sources */,
 				F227BF192B9DF76D00CEEAAD /* SettingsViewContactImageSettingsViewModel.swift in Sources */,

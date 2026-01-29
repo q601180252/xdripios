@@ -16,7 +16,9 @@ struct RestartLiveActivityIntent: LiveActivityIntent {
     @MainActor
     func perform() async throws -> some IntentResult {
         // restart the live activity via the LiveActivityManager singleton
-        LiveActivityManager.shared.restartFromIntent()
+        if #available(iOS 16.2, *) {
+            LiveActivityManager.shared.restartFromIntent()
+        }
         return .result()
     }
 }
