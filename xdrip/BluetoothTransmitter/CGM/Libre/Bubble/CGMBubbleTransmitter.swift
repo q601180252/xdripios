@@ -454,7 +454,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                                     bubbleDelegate?.received(serialNumber: serial, from: self)
                                     if serial != currentSerial {
                                         self.sensorSerialNumber = serial
-                                        self.trace("    new sensor detected :  %{public}@", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .info, serial)
+                                        trace("    new sensor detected :  %{public}@", log: self.log, category: ConstantsLog.categoryCGMBubble, type: OSLogType.info, serial)
                                         cgmDelegate?.newSensorDetected(sensorStartDate: nil)
                                         bubbleDelegate?.received(serialNumber: serial, from: self)
                                     }
