@@ -72,11 +72,13 @@ class CADataCollector {
         isWaiting = true
         
         trace("    before encodeAuth:  %{public}@", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .error, "data: \(caData1), patchUid: \(patchUid)")
+        print("[CADataCollector] before encodeAuth: data: \(caData1), patchUid: \(patchUid)")
 
         do {
             try outshine.encodeAuth(caData1, patchUid: patchUid, patchInfo: patchInfo, type: 0) { [weak self] caP1, data in
                 guard let self else { return }
                 trace("    after encodeAuth:  %{public}@", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .error, "p1: \(caP1), data: \(data)")
+                print("[CADataCollector] after encodeAuth: p1: \(caP1), data: \(data)")
 
                 self.caP1 = caP1
                 self.writeFunc?(data)
@@ -85,6 +87,7 @@ class CADataCollector {
         } catch {
             
             trace("    encodeAuth error:  %{public}@", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .error, "error: \(error.localizedDescription)")
+            print("[CADataCollector] encodeAuth error: \(error.localizedDescription)")
         }
     }
     
@@ -94,12 +97,14 @@ class CADataCollector {
         guard let patchUid = patchUid, let patchInfo = patchInfo else { return }
 
         trace("    before libreCAParsing:  %{public}@", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .error, "caP1: \(caP1), data: \(caData1), data2: \(caData2), data344: \(caData344), patchInfo: \(patchInfo), patchUid: \(patchUid)")
+        print("[CADataCollector] before libreCAParsing: caP1: \(caP1 ?? "nil"), patchInfo: \(patchInfo), patchUid: \(patchUid)")
 
         do {
             try outshine.libreCAParsing(caP1 ?? "", data: caData1, data2: caData2, data344: caData344, patchInfo: patchInfo, patchUid: patchUid) { [weak self] result  in
                 guard let self else { return }
                 
                 trace("    after libreCAParsing:  %{public}@", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .error, "result: \(result)")
+                print("[CADataCollector] after libreCAParsing: result: \(result)")
 
                 if let r = result as? String {
                     self.isWaiting = false
@@ -109,6 +114,7 @@ class CADataCollector {
 
         } catch {
             trace("    libreCAParsing error:  %{public}@", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .error, "error: \(error.localizedDescription)")
+            print("[CADataCollector] libreCAParsing error: \(error.localizedDescription)")
         }
     }
     

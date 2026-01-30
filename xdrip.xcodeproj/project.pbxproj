@@ -235,6 +235,7 @@
 		94E56CC92D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E56CC62D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift */; };
 		B6E2FD472F2C47C500284D0B /* LibOutshine.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E2FD462F2C47C500284D0B /* LibOutshine.xcframework */; };
 		B6E2FDA12F2C550800284D0B /* LibOutshine.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6E2FD462F2C47C500284D0B /* LibOutshine.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B6E2FDF32F2C957C00284D0B /* LibreProAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E2FDF22F2C957C00284D0B /* LibreProAlgorithm.swift */; };
 		B6F479142F2B7C7E00B56FD7 /* Fota.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6F478E52F2B7C7E00B56FD7 /* Fota.storyboard */; };
 		B6F479162F2B7C7E00B56FD7 /* DeviceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6F478E22F2B7C7E00B56FD7 /* DeviceCell.xib */; };
 		B6F479182F2B7C7E00B56FD7 /* s7.3_h1.5_20240728.fota in Resources */ = {isa = PBXBuildFile; fileRef = B6F478EB2F2B7C7E00B56FD7 /* s7.3_h1.5_20240728.fota */; };
@@ -1215,6 +1216,7 @@
 		94E56CC62D190B3E00BEC953 /* LogsBubble+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataClass.swift"; sourceTree = "<group>"; };
 		94E56CC72D190B3E00BEC953 /* LogsBubble+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogsBubble+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B6E2FD462F2C47C500284D0B /* LibOutshine.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = LibOutshine.xcframework; sourceTree = "<group>"; };
+		B6E2FDF22F2C957C00284D0B /* LibreProAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibreProAlgorithm.swift; sourceTree = "<group>"; };
 		B6F478652F2B7C7E00B56FD7 /* Characteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characteristic.swift; sourceTree = "<group>"; };
 		B6F478662F2B7C7E00B56FD7 /* CharacteristicPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicPermissions.swift; sourceTree = "<group>"; };
 		B6F478672F2B7C7E00B56FD7 /* CharacteristicsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacteristicsProtocol.swift; sourceTree = "<group>"; };
@@ -4126,6 +4128,7 @@
 		F8F971E123A5915900C3F17D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B6E2FDF22F2C957C00284D0B /* LibreProAlgorithm.swift */,
 				F8F971E823A5915900C3F17D /* CRC.swift */,
 				F8177024248ED4DE00AA3600 /* Libre1DerivedAlgorithmParameters.swift */,
 				F8A5EEAD25791F370085E660 /* Libre2BLEUtilities.swift */,
@@ -4966,6 +4969,7 @@
 				B6F4791C2F2B7C7E00B56FD7 /* DataReceivedEventArgs.swift in Sources */,
 				B6F4791D2F2B7C7E00B56FD7 /* ConnectionSecurityProtocol.swift in Sources */,
 				B6F4791E2F2B7C7E00B56FD7 /* DisconnectSucceededEventArgs.swift in Sources */,
+				B6E2FDF32F2C957C00284D0B /* LibreProAlgorithm.swift in Sources */,
 				B6F4791F2F2B7C7E00B56FD7 /* IsConnectableUpdatedEventArgs.swift in Sources */,
 				B6F479202F2B7C7E00B56FD7 /* TaskCharacteristicWrite.swift in Sources */,
 				B6F479212F2B7C7E00B56FD7 /* CharacteristicPermissions.swift in Sources */,

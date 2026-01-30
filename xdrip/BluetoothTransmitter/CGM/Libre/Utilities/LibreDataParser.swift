@@ -268,7 +268,49 @@ class LibreDataParser {
         }
 
     }
-    
+
+    // MARK: - Libre Pro（完整算法与 librepro.cpp readProGlucoseValue / readHistoricalValues / pressHistroy2 一致）
+
+    /// Libre Pro 专用解析：trend 176 字节 + history 200 字节，使用 LibreProAlgorithm 完整校准与平滑管道。
+    /// - trend: 176 字节（含校准区）；history: 200 字节；bstart: history 内起始字节；historyCount: 历史条数；start = historyCount - count
+    public func libreProDataProcessor(trend: Data, history: Data, bstart: Int, historyCount: Int, cgmTransmitterDelegate: CGMTransmitterDelegate?, completionHandler: @escaping (LibreSensorState?, XdripError?) -> Void) {
+        guard trend.count >= 0xAA, history.count >= (bstart + 6) else {
+            completionHandler(nil, nil)
+            return
+        }
+        let trendArray = [UInt8](trend)
+        let historyArray = [UInt8](history)
+        let sensorState = LibreSensorState(stateByte: UInt8(trend[4] & 0xFF))
+        let ourTime = Date()
+
+        // 实时值：完整 readProGlucoseValue 管道（Temp1～Temp7Ex + trendArrow）
+        var glucoseData: [GlucoseData] = []
+        if let (value, _, dataQuality, _) = LibreProAlgorithm.readProGlucoseValue(trendArray) {
+            let sensorTimeInMinutes = (Int(trend[74]) & 0xFF) + (Int(trend[75]) & 0xFF) << 8
+            let sensorStartTimeInSeconds = ourTime.timeIntervalSince1970 - Double(sensorTimeInMinutes * 60)
+            let currentTime = sensorStartTimeInSeconds + Double(sensorTimeInMinutes) * 60.0
+            let glucoseMgDl = dataQuality == 0 ? Double(value) : 0
+            glucoseData.append(GlucoseData(timeStamp: Date(timeIntervalSince1970: currentTime), glucoseLevelRaw: glucoseMgDl))
+        }
+
+        // 历史值：完整 readHistoricalValues + pressHistroy2 过滤
+        let count = min(32, historyCount, bstart + 6 <= history.count ? max(0, (history.count - bstart) / 6) : 0)
+        let start = historyCount - count
+        if count > 0, start >= 0 {
+            let (sensorTimeInMinutes, historyValues) = LibreProAlgorithm.readHistoricalValues(current: trendArray, data: historyArray, bstart: bstart, start: start, end: count)
+            let sensorStartTimeInSeconds = ourTime.timeIntervalSince1970 - Double(sensorTimeInMinutes * 60)
+            for item in historyValues {
+                let t = sensorStartTimeInSeconds + Double(item.time) * 60.0
+                let glucoseMgDl = item.dataQuality == 0 ? Double(item.oopValue) : 0
+                glucoseData.append(GlucoseData(timeStamp: Date(timeIntervalSince1970: t), glucoseLevelRaw: glucoseMgDl))
+            }
+        }
+
+        let sensorTimeInMinutes = (Int(trend[74]) & 0xFF) + (Int(trend[75]) & 0xFF) << 8
+        glucoseData.sort { $0.timeStamp > $1.timeStamp }
+        handleGlucoseData(result: (glucoseData, sensorTimeInMinutes, sensorState, nil), cgmTransmitterDelegate: cgmTransmitterDelegate, completionHandler: completionHandler)
+    }
+
     // MARK: - private functions
     
     /// processes libre data that is in Libre 1 format, this includes decrypted Libre 2 - this is with oop web

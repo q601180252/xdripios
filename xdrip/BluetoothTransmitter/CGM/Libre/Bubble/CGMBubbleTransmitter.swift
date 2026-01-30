@@ -78,6 +78,32 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
     
     fileprivate var cacheBattery: UInt8 = 0x00
 
+    // MARK: - Libre Pro 状态（与 Android BubbleLibrePro 一致）
+    /// 仅当本轮已发送 getProTrend 时为 true；否则 0x82 按 344 字节流处理，避免 0xC1 晚于 0x80 时错用 Pro 分支
+    private var expectedProStream = false
+    private static let proTrendBytes = 176
+    private static let proHistoryBlockBytes = 25 * 8  // 200
+    private var proTrendAccumulated = Data()
+    private var proHistoryAccumulated = Data()
+    private var isProHistory = false
+    private var proTrendDataHex: String?
+    private var proHistroyStart = 0
+    private var proHistoryCount = 0
+    
+    private func resetProState() {
+        proTrendAccumulated = Data()
+        proHistoryAccumulated = Data()
+        isProHistory = false
+        proTrendDataHex = nil
+        proHistroyStart = 0
+        proHistoryCount = 0
+    }
+    
+    /// 与 Android BubbleLibrePro.getProHistroyEnd(start) 一致：发送读 Pro history 命令
+    private func getProHistoryEndCommand(start: Int) -> Data {
+        Data([0x02, appId, UInt8(start & 0xFF), UInt8(start >> 8), 25, 0])
+    }
+
     // MARK: - Initialization
     
     /// - parameters:
@@ -123,6 +149,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
         package.writeFunc = { [weak self] data in self?.write(data: data) }
         package.libreDataCallback = { [weak self] result in
             guard let self else { return }
+            print("[Bubble BLE] libreDataCallback 收到 result 长度=\(result.count)")
             // logsBubbleAccessor 可能涉及 Core Data，在主线程执行
             DispatchQueue.main.async { [weak self] in
                 guard let self else { return }
@@ -133,19 +160,19 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
             }
 
             if var crcData = result.hexadecimal(), let patchUid = patchUid, let patchInfo = patchInfo {
-                                        
+                print("[Bubble BLE] libreDataCallback 解析 hex 成功 crcData.count=\(crcData.count) patchUid=\(patchUid) patchInfo=\(patchInfo)")
                 guard BubbleCrc.LibreCrc(data: &crcData, headerOffset: 0, libreSensorType: nil) else {
-                    
                     trace("    crc check failed, no further processing", log: log, category: ConstantsLog.categoryBlucon, type: .error)
-                    
+                    print("[Bubble BLE] libreDataCallback CRC 校验失败，不再处理")
                     // transmitter can go to sleep
                     return
                 }
+                print("[Bubble BLE] libreDataCallback CRC 通过，进入主线程处理")
 
-                 
                 DispatchQueue.main.async {
                     let sensorTime = Int(crcData[317]) << 8 + Int(crcData[316])
                     let sensorMaxTime = Int(crcData[327]) << 8 + Int(crcData[326])
+                    print("[Bubble BLE] libreDataCallback sensorTime=\(sensorTime) sensorMaxTime=\(sensorMaxTime) maxAgeInDays=\(Double(sensorMaxTime) / 60.0 / 24.0)")
                 
                     self.maxAgeInDays = Double(sensorMaxTime) / 60.0 / 24.0
                     UserDefaults.standard.activeSensorMaxSensorAgeInDays = self.maxAgeInDays
@@ -154,6 +181,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                     if state == .ready && sensorTime < 60 {
                         state = .starting
                     }
+                    print("[Bubble BLE] libreDataCallback sensorState=\(state) stateByte=\(crcData[4])")
                     
                     if let libreSensorSerialNumber = self.libreSensorSerialNumber {
                         
@@ -177,8 +205,9 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                     }
 
                     self.lastDataTime=Date().timeIntervalSince1970
-                    
+                    print("[Bubble BLE] libreDataCallback 调用 libreDataProcessor serialNumber=\(self.libreSensorSerialNumber?.serialNumber ?? "nil")")
                     self.libreDataParser.libreDataProcessor(libreSensorSerialNumber: self.libreSensorSerialNumber?.serialNumber, patchInfo: patchInfo, webOOPEnabled: self.webOOPEnabled, libreData: crcData, cgmTransmitterDelegate: self.cgmTransmitterDelegate, dataIsDecryptedToLibre1Format: true, testTimeStamp: nil) { (sensorState: LibreSensorState?, xDripError: XdripError?) in
+                        print("[Bubble BLE] libreDataCallback libreDataProcessor 完成 sensorState=\(String(describing: sensorState)) xDripError=\(String(describing: xDripError))")
                         let state = sensorState
                         let bubbleDelegate = self.cGMBubbleTransmitterDelegate
                         DispatchQueue.main.async { [weak self] in
@@ -194,6 +223,8 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                         }
                     }
                 }
+            } else {
+                print("[Bubble BLE] libreDataCallback 跳过: result.hexadecimal() 失败或 patchUid/patchInfo 为 nil, patchUid=\(self.patchUid ?? "nil") patchInfo=\(self.patchInfo ?? "nil")")
             }
 
         }
@@ -228,7 +259,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
         readTimeInterval = nextReadTimeinterval()
 
         logsBubbleAccessor?.updateCountSendInit()
-        if writeDataToPeripheral(data: Data([0x00, appId, readTimeInterval]), type: .withoutResponse) {
+        if writeToPeripheralAndLog(data: Data([0x00, appId, readTimeInterval]), type: .withoutResponse) {
             return true
         } else {
             trace("in sendStartReadingCommand, write failed", log: log, category: ConstantsLog.categoryCGMBubble, type: .error)
@@ -238,7 +269,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
     
     func startOTA() {
         if deviceName?.lowercased().contains("nano") == true {
-            _ = writeDataToPeripheral(data: Data([0x7b, 0x03, 0x00]), type: .withoutResponse)
+            _ = writeToPeripheralAndLog(data: Data([0x7b, 0x03, 0x00]), type: .withoutResponse)
         }
     }
     
@@ -327,23 +358,32 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                             }
                         }
 
+                        // Libre Pro: 收到 dataInfo 后发送 read Pro trend（与 Kotlin BubbleLibrePro.getProTrend 一致）
+                        if libreSensorType == .libreProH {
+                            expectedProStream = true
+                            resetProState()
+                            _ = writeToPeripheralAndLog(data: Data([0x02, appId, 0x00, 0x00, 0x16, 0x00]), type: .withoutResponse)
+                            return
+                        }
+
+                        expectedProStream = false  // 本轮发的是普通读，0x82 按 344 字节流处理
                         //deviceName
                         if(deviceName != "Bubble Nano") {
-                            _ = writeDataToPeripheral(data: Data([0x08, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
+                            _ = writeToPeripheralAndLog(data: Data([0x08, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
                         } else {
                             if firmware.toDouble() ?? 0 >= 8.1 && libreSensorType == .libre1 {
-                                _ = writeDataToPeripheral(data: Data([0x0C, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
-                            } else if firmware.toDouble() ?? 0 >= 2.6 && libreSensorType != nil {       
-                                _ = writeDataToPeripheral(data: Data([0x08, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
+                                _ = writeToPeripheralAndLog(data: Data([0x0C, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
+                            } else if firmware.toDouble() ?? 0 >= 2.6 && libreSensorType != nil {
+                                _ = writeToPeripheralAndLog(data: Data([0x08, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
                             } else {
-                                _ = writeDataToPeripheral(data: Data([0x02, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
+                                _ = writeToPeripheralAndLog(data: Data([0x02, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
                             }
                             
                             if firmware.toDouble() ?? 0 >= 8.1 {
                                 // update bubble db after 10s delay
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) { [weak self] in
                                     guard let self else { return }
-                                    _ = self.writeDataToPeripheral(data: Data([0x7A, self.appId, 0x04]), type: .withoutResponse)
+                                    _ = self.writeToPeripheralAndLog(data: Data([0x7A, self.appId, 0x04]), type: .withoutResponse)
                                 }
                             }
                         }
@@ -388,10 +428,92 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                         
                         self.callbackStates()
 
-                    case .dataPacket, .decryptedDataPacket, .dataPacket2:
+                    case .dataPacket84:
+                        // Android 0x84: libreData 重置，Libre Pro 发 getProTrend，否则发 getBubbleByte07
+                        if libreSensorType == .libreProH {
+                            expectedProStream = true
+                            resetProState()
+                            _ = writeToPeripheralAndLog(data: Data([0x02, appId, 0x00, 0x00, 0x16, 0x00]), type: .withoutResponse)
+                        } else {
+                            expectedProStream = false
+                            _ = writeToPeripheralAndLog(data: Data([0x08, appId, 0x00, 0x00, 0x00, 0x2B]), type: .withoutResponse)
+                        }
+
+                    case .dataPacket, .dataPacket87, .decryptedDataPacket, .dataPacket2:
                         //no different processing for decryptedDataPacket, we look at the firmware version of the bubble and sensortype to determine if data is decrypted or not
                         guard value.count > 4 else {
                             print("[Bubble BLE] .dataPacket 长度不足 count=\(value.count)")
+                            return
+                        }
+                        // Android: 0x87 且 buffer[3] 为 0x03 或 0x27 时忽略
+                        if value[0] == 0x87 && (value[3] == 0x03 || value[3] == 0x27) {
+                            return
+                        }
+                        // Libre Pro: 仅当本轮已发送 getProTrend 时才走 176+200；否则按 344 字节流（避免 0xC1 晚于 0x80 时错用 Pro 分支）
+                        if expectedProStream && libreSensorType == .libreProH {
+                            if isProHistory {
+                                proHistoryAccumulated.append(value.suffix(from: 4))
+                                if proHistoryAccumulated.count >= CGMBubbleTransmitter.proHistoryBlockBytes {
+                                    let historyData = proHistoryAccumulated
+                                    let bstart = proHistroyStart
+                                    let hcount = proHistoryCount
+                                    let trendDataForParser: Data
+                                    if let hex = proTrendDataHex, let data = Data(hexadecimalString: hex), data.count >= CGMBubbleTransmitter.proTrendBytes {
+                                        trendDataForParser = data
+                                    } else {
+                                        trendDataForParser = proTrendAccumulated
+                                    }
+                                    resetProState()
+                                    lastDataTime = Date().timeIntervalSince1970
+                                    if trendDataForParser.count >= CGMBubbleTransmitter.proTrendBytes {
+                                        var crcData = trendDataForParser
+                                        guard LibreSensorType.libreProH.crcIsOk(rxBuffer: &crcData, headerLength: 0, log: log) else {
+                                            print("[Bubble BLE] Libre Pro trend CRC 校验失败")
+                                            return
+                                        }
+                                        let bubbleDelegate = cGMBubbleTransmitterDelegate
+                                        let cgmDelegate = cgmTransmitterDelegate
+                                        // 与 Android getLibreProGlucose(trend, history, bstart, start, count) 对齐的解析
+                                        libreDataParser.libreProDataProcessor(trend: trendDataForParser, history: historyData, bstart: bstart, historyCount: hcount, cgmTransmitterDelegate: cgmDelegate) { [weak self] (sensorState: LibreSensorState?, xDripError: XdripError?) in
+                                            guard let self else { return }
+                                            let state = sensorState
+                                            DispatchQueue.main.async { [weak self] in
+                                                guard let self else { return }
+                                                self.lastGlucoseDate = Date()
+                                                if self.cacheBattery > 0 {
+                                                    self.logsBubbleAccessor?.updateBattery100(Int(self.cacheBattery))
+                                                }
+                                                self.logsBubbleAccessor?.updateCount()
+                                                if let sensorState = state {
+                                                    bubbleDelegate?.received(sensorStatus: sensorState, from: self)
+                                                }
+                                            }
+                                        }
+                                    }
+                                    return
+                                }
+                            } else {
+                                proTrendAccumulated.append(value.suffix(from: 4))
+                                if proTrendAccumulated.count >= CGMBubbleTransmitter.proTrendBytes {
+                                    let trend = proTrendAccumulated
+                                    guard trend.count >= 80 else { return }
+                                    let historyCount = Int(trend[78]) & 0xFF + (Int(trend[79]) & 0xFF) << 8
+                                    let sensorTime = Int(trend[74]) & 0xFF + (Int(trend[75]) & 0xFF) << 8
+                                    let histroyByteLen = (historyCount - 32) * 6 + CGMBubbleTransmitter.proTrendBytes
+                                    proHistroyStart = histroyByteLen % 8
+                                    proHistoryCount = historyCount
+                                    proTrendDataHex = trend.hexEncodedString()
+                                    let start: Int
+                                    if historyCount <= 32 {
+                                        start = 22
+                                    } else {
+                                        start = histroyByteLen / 8
+                                    }
+                                    _ = writeToPeripheralAndLog(data: getProHistoryEndCommand(start: start), type: .withoutResponse)
+                                    isProHistory = true
+                                    proTrendAccumulated = Data()
+                                }
+                            }
                             return
                         }
                         
@@ -498,7 +620,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                     case .patchInfo:
                         if value.count >= 11 {
                             patchInfo = value.subdata(in: 5 ..< 11).hexEncodedString().uppercased()
-                            print("[Bubble BLE] .patchInfo patchInfo=\(patchInfo ?? "")")
+                            print("[Bubble BLE] .patchInfo patchInfo222=\(patchInfo ?? "")")
                             
                             package.patchInfo = patchInfo
 
@@ -513,6 +635,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                                     if p.hasPrefix("76") || p.hasPrefix("2b") || p.hasPrefix("2c") {
                                         //TODO
                                         if !DBOutshine.isSupported(patchInfo ?? "") {
+                                            print("[Bubble BLE] isSupported no")
                                             libreSensorType = .unsupported
                                             trace("    unsupported patchInfo %{public}@ ", log: log, category: ConstantsLog.categoryCGMBubble, type: .info, patchInfo ?? "")
                                         }
@@ -550,6 +673,8 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                     case .authData:
                         print("[Bubble BLE] .authData count=\(value.count) hex=\(value.toHexString())")
                         receiveAuthData(data: value)
+                    case .bubbleAck7A:
+                        break  // Bubble 对 0x7A 的应答，静默忽略
                     }
                 } else {
                     print("[Bubble BLE] 未识别类型 firstByte=0x\(String(format: "%02X", value.first ?? 0))")
@@ -602,7 +727,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
         let sub = value[3...]
         var bytes: [UInt8] = [0x0A, appId, UInt8(sub.count)]
         bytes += sub
-        _ = writeDataToPeripheral(data: Data(bytes), type: .withResponse)
+        _ = writeToPeripheralAndLog(data: Data(bytes), type: .withResponse)
     }
     
     private var patchUid: String?
@@ -673,6 +798,12 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
 
     // MARK: - helpers
     
+    /// 写蓝牙数据并打印命令（便于调试）
+    private func writeToPeripheralAndLog(data: Data, type: CBCharacteristicWriteType) -> Bool {
+        print("[Bubble BLE] 发送 length=\(data.count) hex=\(data.toHexString())")
+        return writeDataToPeripheral(data: data, type: type)
+    }
+    
     /// reset rxBuffer, reset startDate, stop packetRxMonitorTimer, set resendPacketCounter to 0
     private func resetRxBuffer() {
         rxBuffer = Data()
@@ -683,8 +814,10 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
 
 fileprivate enum BubbleResponseType: UInt8 {
     case dataPacket = 130 //0x82
+    case dataPacket87 = 0x87  // 与 0x82/0x8C 同为数据包
     case dataPacket2 = 0x8C
     case dataInfo = 128 //0x80
+    case dataPacket84 = 0x84  // Android: 同 0x80 后发 getProTrend 或 getBubbleByte07
     case noSensor = 191 //0xBF
     case serialNumber = 192 //0xC0
     case patchInfo = 193 //0xC1
@@ -695,13 +828,17 @@ fileprivate enum BubbleResponseType: UInt8 {
     
     case authData = 0x8A
     case bubbleDb = 0xB9
+    /// Bubble 对 0x7A (update db) 的应答，静默忽略
+    case bubbleAck7A = 0xBA
 }
 
 extension BubbleResponseType: CustomStringConvertible {
     public var description: String {
         switch self {
-        case .dataPacket, .decryptedDataPacket, .dataPacket2:
+        case .dataPacket, .dataPacket87, .decryptedDataPacket, .dataPacket2:
             return "Data packet received"
+        case .dataPacket84:
+            return "Data packet 0x84"
         case .noSensor:
             return "No sensor detected"
         case .dataInfo:
@@ -714,6 +851,8 @@ extension BubbleResponseType: CustomStringConvertible {
             return "Auth data"
         case .bubbleDb:
             return "Bubble DB"
+        case .bubbleAck7A:
+            return "Bubble ACK 0x7A"
         }
     }
 }
