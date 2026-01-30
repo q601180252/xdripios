@@ -144,6 +144,8 @@ func trace(_ message: StaticString, log:OSLog, category: String, type: OSLogType
                 endOfMessage = String(endOfMessage[endOfMessageRange])
                 if let argValue = args[argumentsCounter] as? String {
                     endOfMessage = argValue + endOfMessage
+                } else if let argValue = args[argumentsCounter] as? CustomStringConvertible {
+                    endOfMessage = argValue.description + endOfMessage
                 }
             } else if endOfMessage.starts(with: "d") || endOfMessage.starts(with: "D") {
                 let indexOfAt = endOfMessage.indexes(of: "d", options: [NSString.CompareOptions.caseInsensitive])
@@ -176,9 +178,11 @@ func trace(_ message: StaticString, log:OSLog, category: String, type: OSLogType
     let timeStamp = dateFormatNSLog.string(from: Date())
     
     // nslog if enabled and if type = debug, then check also if debug logging is required
+//    print(ConstantsLog.tracePrefix + " " + timeStamp + " " + applicationVersion + " " + buildNumber + " " + category + " " + Date().toStringForTrace(timeStyle: .medium, dateStyle: .none) + " " + actualMessage)
     if UserDefaults.standard.NSLogEnabled && (type != .debug || (type == .debug && UserDefaults.standard.addDebugLevelLogsInTraceFileAndNSLog)) {
         
-        NSLog("%@", ConstantsLog.tracePrefix + " " + timeStamp + " " + applicationVersion + " " + buildNumber + " " + category + " " + Date().toStringForTrace(timeStyle: .medium, dateStyle: .none) + " " + actualMessage)
+         NSLog("%@", ConstantsLog.tracePrefix + " " + timeStamp + " " + applicationVersion + " " + buildNumber + " " + category + " " + Date().toStringForTrace(timeStyle: .medium, dateStyle: .none) + " " + actualMessage)
+   
         
     }
     

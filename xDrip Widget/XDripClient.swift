@@ -90,6 +90,6 @@ public class XDripClient {
 
 extension Bundle {
     public var appGroupSuiteName: String {
-        return object(forInfoDictionaryKey: "AppGroupIdentifier") as! String
+        return object(forInfoDictionaryKey: "AppGroupIdentifier") as? String ?? ""
     }
 }

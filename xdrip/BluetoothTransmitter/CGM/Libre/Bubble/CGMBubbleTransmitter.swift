@@ -123,11 +123,14 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
         package.writeFunc = { [weak self] data in self?.write(data: data) }
         package.libreDataCallback = { [weak self] result in
             guard let self else { return }
-            
-            if self.cacheBattery > 0 {
-                self.logsBubbleAccessor?.updateBattery100(Int(self.cacheBattery))
+            // logsBubbleAccessor 可能涉及 Core Data，在主线程执行
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                if self.cacheBattery > 0 {
+                    self.logsBubbleAccessor?.updateBattery100(Int(self.cacheBattery))
+                }
+                self.logsBubbleAccessor?.updateCount()
             }
-            self.logsBubbleAccessor?.updateCount()
 
             if var crcData = result.hexadecimal(), let patchUid = patchUid, let patchInfo = patchInfo {
                                         
@@ -176,17 +179,18 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                     self.lastDataTime=Date().timeIntervalSince1970
                     
                     self.libreDataParser.libreDataProcessor(libreSensorSerialNumber: self.libreSensorSerialNumber?.serialNumber, patchInfo: patchInfo, webOOPEnabled: self.webOOPEnabled, libreData: crcData, cgmTransmitterDelegate: self.cgmTransmitterDelegate, dataIsDecryptedToLibre1Format: true, testTimeStamp: nil) { (sensorState: LibreSensorState?, xDripError: XdripError?) in
-                        
-                        self.lastGlucoseDate = Date()
-                        
-                        self.resetRxBuffer()
-                        
-                        if let sensorState = sensorState {
-                            self.cGMBubbleTransmitterDelegate?.received(sensorStatus: sensorState, from: self)
-                        }
-                        
-                        if self.readTimeInterval != 0x05 {
-                            _ = self.sendStartReadingCommmand()
+                        let state = sensorState
+                        let bubbleDelegate = self.cGMBubbleTransmitterDelegate
+                        DispatchQueue.main.async { [weak self] in
+                            guard let self else { return }
+                            self.lastGlucoseDate = Date()
+                            self.resetRxBuffer()
+                            if let sensorState = state {
+                                bubbleDelegate?.received(sensorStatus: sensorState, from: self)
+                            }
+                            if self.readTimeInterval != 0x05 {
+                                _ = self.sendStartReadingCommmand()
+                            }
                         }
                     }
                 }
@@ -245,7 +249,10 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
         super.peripheral(peripheral, didUpdateNotificationStateFor: characteristic, error: error)
         
         if error == nil && characteristic.isNotifying {
-            _ = sendStartReadingCommmand()
+            // BLE 回调线程，sendStartReadingCommmand 内会调 logsBubbleAccessor，放到主线程
+            DispatchQueue.main.async { [weak self] in
+                _ = self?.sendStartReadingCommmand()
+            }
         }
         
     }
@@ -255,7 +262,11 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
         super.peripheral(peripheral, didUpdateValueFor: characteristic, error: error)
         
         if let value = characteristic.value {
-            print("===did update \(value.toHexString())")
+            // 蓝牙回调：完整打印原始数据（长度 + 十六进制）
+            print("[Bubble BLE] 收到数据 length=\(value.count) hex=\(value.toHexString())")
+            if let first = value.first, let type = BubbleResponseType(rawValue: first) {
+                print("[Bubble BLE] 类型=\(type) firstByte=0x\(String(format: "%02X", first))")
+            }
             
             //check if buffer needs to be reset
             if (Date() > startDate.addingTimeInterval(CGMBubbleTransmitter.maxWaitForpacketInSeconds - 1)) {
@@ -268,6 +279,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                     switch bubbleResponseState {
                         
                     case .bubbleDb:
+                        print("[Bubble BLE] .bubbleDb count=\(value.count)")
                         func setBubbleDb(value: Data) {
                             guard value.count > 2 else { return }
                             let db = value[2]
@@ -275,23 +287,33 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                         }
 
                     case .dataInfo:
+                        // dataInfo 至少需要 5 字节: [2],[3] 固件, [4] 电量, [count-2],[count-1] 硬件
+                        guard value.count >= 5 else {
+                            print("[Bubble BLE] .dataInfo 长度不足 count=\(value.count)")
+                            return
+                        }
                         
                         // get hardware, firmware and batteryPercentage
                         let hardware = value[value.count-2].description + "." + value[value.count-1].description
                         let firmware = value[2].description + "." + value[3].description
                         let batteryPercentage = Int(value[4])
+                        print("[Bubble BLE] .dataInfo firmware=\(firmware) hardware=\(hardware) battery=\(batteryPercentage)%")
                         
-                        // send firmware, hardware and battery to delegeate
-                        cGMBubbleTransmitterDelegate?.received(firmware: firmware, from: self)
-                        cGMBubbleTransmitterDelegate?.received(hardware: hardware, from: self)
-                        cGMBubbleTransmitterDelegate?.received(batteryLevel: batteryPercentage, from: self)
-                        
-                        // send batteryPercentage to delegate
-                        cgmTransmitterDelegate?.cgmTransmitterInfoReceived(glucoseData: &emptyArray, transmitterBatteryInfo: TransmitterBatteryInfo.percentage(percentage: batteryPercentage), sensorAge: nil)
-                        
-                        if batteryPercentage > 0 {
-                            logsBubbleAccessor?.updateBattery(batteryPercentage)
-                            logsBubbleAccessor?.updateBattery100(batteryPercentage)
+                        // delegate 可能涉及 UI/Core Data，统一在主线程回调避免 EXC_BREAKPOINT
+                        let delegate = cGMBubbleTransmitterDelegate
+                        let cgmDelegate = cgmTransmitterDelegate
+                        let battery = batteryPercentage
+                        DispatchQueue.main.async { [weak self] in
+                            guard let self else { return }
+                            delegate?.received(firmware: firmware, from: self)
+                            delegate?.received(hardware: hardware, from: self)
+                            delegate?.received(batteryLevel: battery, from: self)
+                            var empty = self.emptyArray
+                            cgmDelegate?.cgmTransmitterInfoReceived(glucoseData: &empty, transmitterBatteryInfo: TransmitterBatteryInfo.percentage(percentage: battery), sensorAge: nil)
+                            if battery > 0 {
+                                self.logsBubbleAccessor?.updateBattery(battery)
+                                self.logsBubbleAccessor?.updateBattery100(battery)
+                            }
                         }
                         
                         // store received firmware local
@@ -337,7 +359,10 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                         
                     case .serialNumber:
                         
-                        guard value.count >= 10 else { return }
+                        guard value.count >= 10 else {
+                            print("[Bubble BLE] .serialNumber 长度不足 count=\(value.count)")
+                            return
+                        }
                         
                         // as serialNumber is always the first packet being sent, resetRxBuffer (just in case it wasn't done yet
                         resetRxBuffer()
@@ -346,6 +371,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                         rxBuffer.append(value.subdata(in: 2..<10))
                         
                         patchUid = value.subdata(in: 2..<10).hexEncodedString().uppercased()
+                        print("[Bubble BLE] .serialNumber patchUid=\(patchUid)")
                         
                         package.patchUid = patchUid
                         
@@ -364,12 +390,17 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
 
                     case .dataPacket, .decryptedDataPacket, .dataPacket2:
                         //no different processing for decryptedDataPacket, we look at the firmware version of the bubble and sensortype to determine if data is decrypted or not
+                        guard value.count > 4 else {
+                            print("[Bubble BLE] .dataPacket 长度不足 count=\(value.count)")
+                            return
+                        }
                         
                         rxBuffer.append(value.suffix(from: 4))
+                        print("[Bubble BLE] .dataPacket 追加 \(value.count - 4) 字节, rxBuffer.count=\(rxBuffer.count)")
                         
                         if rxBuffer.count >= 352 {
                             
-                            print("rx buffer \(rxBuffer.toHexString())")
+                            print("[Bubble BLE] rxBuffer 完整(352) hex=\(rxBuffer.toHexString())")
                             var dataIsDecryptedToLibre1Format = false
                             
                             // for libre2 and libreUS we will do decryption
@@ -412,43 +443,38 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
 
                             }
                             
-                            // did we receive a serialNumber ?
+                            // did we receive a serialNumber ? delegate 涉及 UI/Core Data，在主线程回调
                             if let libreSensorSerialNumber = libreSensorSerialNumber {
-                                
-                                cGMBubbleTransmitterDelegate?.received(serialNumber: libreSensorSerialNumber.serialNumber, from: self)
-
-                                // verify serial number and if changed inform delegate
-                                if libreSensorSerialNumber.serialNumber != sensorSerialNumber {
-
-                                    // store self.sensorSerialNumber
-                                    sensorSerialNumber = libreSensorSerialNumber.serialNumber
-                                    
-                                    trace("    new sensor detected :  %{public}@", log: log, category: ConstantsLog.categoryCGMBubble, type: .info, libreSensorSerialNumber.serialNumber)
-                                    
-                                    // inform cgmTransmitterDelegate about new sensor detected
-                                    // assign sensorStartDate, for this type of transmitter the sensorAge is passed in another call to cgmTransmitterDelegate
-                                    cgmTransmitterDelegate?.newSensorDetected(sensorStartDate: nil)
-
-                                    // inform cGMBubbleTransmitterDelegate about new sensor detected
-                                    cGMBubbleTransmitterDelegate?.received(serialNumber: libreSensorSerialNumber.serialNumber, from: self)
-                                    
+                                let serial = libreSensorSerialNumber.serialNumber
+                                let bubbleDelegate = cGMBubbleTransmitterDelegate
+                                let cgmDelegate = cgmTransmitterDelegate
+                                let currentSerial = sensorSerialNumber
+                                DispatchQueue.main.async { [weak self] in
+                                    guard let self else { return }
+                                    bubbleDelegate?.received(serialNumber: serial, from: self)
+                                    if serial != currentSerial {
+                                        self.sensorSerialNumber = serial
+                                        self.trace("    new sensor detected :  %{public}@", log: self.log, category: ConstantsLog.categoryCGMBubble, type: .info, serial)
+                                        cgmDelegate?.newSensorDetected(sensorStartDate: nil)
+                                        bubbleDelegate?.received(serialNumber: serial, from: self)
+                                    }
                                 }
-
                             }
 
                             libreDataParser.libreDataProcessor(libreSensorSerialNumber: libreSensorSerialNumber?.serialNumber, patchInfo: patchInfo, webOOPEnabled: webOOPEnabled, libreData:  (rxBuffer.subdata(in: bubbleHeaderLength..<(344 + bubbleHeaderLength))), cgmTransmitterDelegate: cgmTransmitterDelegate, dataIsDecryptedToLibre1Format: dataIsDecryptedToLibre1Format, testTimeStamp: nil) { [weak self] (sensorState: LibreSensorState?, xDripError: XdripError?) in
-                                
                                 guard let self = self else { return }
-                                
-                                self.lastGlucoseDate = Date()
-                                
-                                if self.cacheBattery > 0 {
-                                    self.logsBubbleAccessor?.updateBattery100(Int(cacheBattery))
-                                }
-                                self.logsBubbleAccessor?.updateCount()
-
-                                if let sensorState = sensorState {
-                                    self.cGMBubbleTransmitterDelegate?.received(sensorStatus: sensorState, from: self)
+                                let state = sensorState
+                                let bubbleDelegate = self.cGMBubbleTransmitterDelegate
+                                DispatchQueue.main.async { [weak self] in
+                                    guard let self else { return }
+                                    self.lastGlucoseDate = Date()
+                                    if self.cacheBattery > 0 {
+                                        self.logsBubbleAccessor?.updateBattery100(Int(self.cacheBattery))
+                                    }
+                                    self.logsBubbleAccessor?.updateCount()
+                                    if let sensorState = state {
+                                        bubbleDelegate?.received(sensorStatus: sensorState, from: self)
+                                    }
                                 }
                             }
 
@@ -459,16 +485,20 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                         }
                         
                     case .noSensor:
-                        if(Date().timeIntervalSince1970-lastDataTime>10000){
-                            cgmTransmitterDelegate?.sensorNotDetected()
-                            
-                            logsBubbleAccessor?.updateCountBf()
+                        print("[Bubble BLE] .noSensor")
+                        if Date().timeIntervalSince1970 - lastDataTime > 10000 {
+                            let cgmDelegate = cgmTransmitterDelegate
+                            DispatchQueue.main.async { [weak self] in
+                                guard let self else { return }
+                                cgmDelegate?.sensorNotDetected()
+                                self.logsBubbleAccessor?.updateCountBf()
+                            }
                         }
 
                     case .patchInfo:
-                        if value.count >= 10 {
-                            
+                        if value.count >= 11 {
                             patchInfo = value.subdata(in: 5 ..< 11).hexEncodedString().uppercased()
+                            print("[Bubble BLE] .patchInfo patchInfo=\(patchInfo ?? "")")
                             
                             package.patchInfo = patchInfo
 
@@ -490,8 +520,15 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                                 }
                                 
                                 self.libreSensorType = libreSensorType
-                                cGMBubbleTransmitterDelegate?.received(libreSensorType: libreSensorType, from: self)
-                                cgmTransmitterDelegate?.infoUpdate()
+                                // delegate 涉及 UI/Core Data，在主线程回调
+                                let bubbleDelegate = cGMBubbleTransmitterDelegate
+                                let cgmDelegate = cgmTransmitterDelegate
+                                let sensorType = libreSensorType
+                                DispatchQueue.main.async { [weak self] in
+                                    guard let self else { return }
+                                    bubbleDelegate?.received(libreSensorType: sensorType, from: self)
+                                    cgmDelegate?.infoUpdate()
+                                }
                             }
                             
                             // we have the patchInfo now, so recalculate the sensorSerialNumber
@@ -503,16 +540,23 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
                             // assign self.libreSensorSerialNumber to received libreSensorSerialNumber
                             self.libreSensorSerialNumber = libreSensorSerialNumber
                             
-                            self.callbackStates()
+                            // callbackStates 内部会调 delegate，在主线程执行
+                            DispatchQueue.main.async { [weak self] in
+                                self?.callbackStates()
+                            }
 
                         }
                         
                     case .authData:
+                        print("[Bubble BLE] .authData count=\(value.count) hex=\(value.toHexString())")
                         receiveAuthData(data: value)
                     }
+                } else {
+                    print("[Bubble BLE] 未识别类型 firstByte=0x\(String(format: "%02X", value.first ?? 0))")
                 }
             }
         } else {
+            print("[Bubble BLE] characteristic.value 为 nil")
             trace("in peripheral didUpdateValueFor, value is nil, no further processing", log: log, category: ConstantsLog.categoryCGMBubble, type: .error)
         }
         
