@@ -644,7 +644,8 @@ public class AlertManager: NSObject {
             }
             
             // add a small BG chart image as an attachment to the notification content
-            let thumbnailAttachment = try! UNNotificationAttachment(identifier: "thumbnail", url: URL.documentsDirectory.appendingPathComponent("\(ConstantsGlucoseChartSwiftUI.filenameNotificationThumbnailImage).png"), options: [UNNotificationAttachmentOptionsThumbnailHiddenKey: false])
+            let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let thumbnailAttachment = try! UNNotificationAttachment(identifier: "thumbnail", url: documentsDirectory.appendingPathComponent("\(ConstantsGlucoseChartSwiftUI.filenameNotificationThumbnailImage).png"), options: [UNNotificationAttachmentOptionsThumbnailHiddenKey: false])
             
             content.attachments = [thumbnailAttachment]
             

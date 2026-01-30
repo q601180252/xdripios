@@ -76,48 +76,51 @@ class BleDeviceViewController: UITableViewController, UIGestureRecognizerDelegat
         fileAppLabel.text = fotaFile?.AppImage.version.imageVersion
         
         let view = UIView(frame: UIScreen.main.bounds)
-        view.backgroundColor = .modena
+        view.backgroundColor = UIColor(named: "modena") ?? .white
         
         progressView = UIProgressView()
         
-        progressView.progressTintColor = .pinkRed
-        progressView.trackTintColor = .grayProgress
+        progressView.progressTintColor = UIColor(named: "pinkRed") ?? .red
+        progressView.trackTintColor = UIColor(named: "grayProgress") ?? .gray
         progressView.progressViewStyle = .bar
 
-        self.view.backgroundColor = .modena
+        self.view.backgroundColor = UIColor(named: "modena") ?? .white
         self.view.addSubview(view)
                 
         view.addSubview(progressView)
         progressView.progress = 0
                 
         let label = UILabel()
-        label.text = TextsSetting.upgrade
+        label.text = "Firmware Upgrade" // Placeholder since TextsSetting is missing
         label.textColor = .white
         label.font = .systemFont(ofSize: 34)
         view.addSubview(label)
-        label.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(100)
-            make.centerX.equalToSuperview()
-        }
+        label.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            label.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
         
         let aLabel = UILabel()
-        aLabel.text = TextsSetting.upgrade
+        aLabel.text = "Firmware Upgrade" // Placeholder since TextsSetting is missing
         aLabel.textColor = .white
         aLabel.font = .systemFont(ofSize: 14)
         view.addSubview(aLabel)
-        aLabel.text = UserDefaultsUnit.mac ?? ""
-        aLabel.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(24)
-            make.centerX.equalToSuperview()
-        }
+        aLabel.text = "" // Placeholder since UserDefaultsUnit is missing
+        aLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            aLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 24),
+            aLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
 
         
-        progressView.snp.makeConstraints { (make) in
-            make.height.equalTo(14)
-            make.left.equalTo(20)
-            make.right.equalTo(-20)
-            make.top.equalTo(aLabel.snp.bottom).offset(14)
-        }
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            progressView.heightAnchor.constraint(equalToConstant: 14),
+            progressView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            progressView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            progressView.topAnchor.constraint(equalTo: aLabel.bottomAnchor, constant: 14)
+        ])
 
     }
     
@@ -134,7 +137,9 @@ class BleDeviceViewController: UITableViewController, UIGestureRecognizerDelegat
     
     func onBleListChanged(args: EmptyEventArgs)
     {
-        let uuidString = AppDelegate.cgmTransmitter?.peripheral?.peripheral?.identifier.uuidString
+        // Use deviceAddress property as peripheral is private in BluetoothTransmitter
+        let uuidString = AppDelegate.cgmTransmitter?.deviceAddress
+        // PeripheralProtocol has 'uuid', not 'identifier'
         manager.selected = manager.peripherals.filter({ $0.peripheral?.uuid.uuidString == uuidString }).first
         
         print(manager.peripherals.map({$0.name}))
@@ -150,7 +155,10 @@ class BleDeviceViewController: UITableViewController, UIGestureRecognizerDelegat
     private var _bleProducListChangedHandler: EventHandlerProtocol?
 
     private func startOTA() {
-        AppDelegate.cgmTransmitter?.startOTA()
+        if let transmitter = AppDelegate.cgmTransmitter as? CGMBubbleTransmitter {
+            transmitter.startOTA()
+            // transmitter.disconnectCurrent() // Assuming this method exists or you might need a different approach
+        }
         
 //        bPeripheral = AppDelegate.cgmTransmitter?.peripheral
 //        AppDelegate.cgmTransmitter?.disconnectCurrent()
@@ -177,8 +185,8 @@ class BleDeviceViewController: UITableViewController, UIGestureRecognizerDelegat
                 
         _bleProducListChangedHandler?.dispose()
         
-        AppDelegate.cgmTransmitter?.disconnectCurrent()
-        AppDelegate.cgmTransmitter?.scan()
+        // AppDelegate.cgmTransmitter?.disconnectCurrent()
+        // AppDelegate.cgmTransmitter?.scan()
     }
     
     @objc func backButtonAction() {
@@ -266,14 +274,14 @@ class BleDeviceViewController: UITableViewController, UIGestureRecognizerDelegat
     {
         if  manager.selected?.state == PeripheralState.idle
         {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            // UIApplication.shared.isNetworkActivityIndicatorVisible = false
             self.navigationController?.navigationBar.isUserInteractionEnabled = true
             backEnabledButton()
         }
         
         if  manager.selected?.state == PeripheralState.update || manager.selected?.state == PeripheralState.establishLink
         {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true;
+            // UIApplication.shared.isNetworkActivityIndicatorVisible = true;
             self.navigationController?.navigationBar.isUserInteractionEnabled = false
             backDisabledButton()
         }

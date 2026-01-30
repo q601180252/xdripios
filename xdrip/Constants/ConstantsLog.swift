@@ -24,6 +24,9 @@ enum ConstantsLog {
     /// for use in cgm transmitter bubble
     static let categoryCGMBubble =                          "CGMBubble                     "
     
+    /// for use in Blucon
+    static let categoryBlucon =                             "Blucon                        "
+    
     /// for use in cgm xdripg4
     static let categoryCGMxDripG4 =                         "CGMxDripG4                    "
     

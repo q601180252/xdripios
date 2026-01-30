@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return FotaPeripheralManager(true)
     }()
     
+    static var cgmTransmitter: CGMBubbleTransmitter? = nil
+    
     static func shared() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }

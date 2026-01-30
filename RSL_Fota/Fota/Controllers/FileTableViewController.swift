@@ -40,6 +40,8 @@ class FileTableViewController: UITableViewController, UIDocumentPickerDelegate {
                 case .destructive:
                     //Do nothing
                     break;
+                @unknown default:
+                    break
                 }}))
             self.present(alert, animated: true, completion: nil)
         }
@@ -151,7 +153,13 @@ class FileTableViewController: UITableViewController, UIDocumentPickerDelegate {
     }
     
     func openDocumentPicker(presentOn controller: UIViewController) {
-        let documentPickerVC = UIDocumentPickerViewController(documentTypes: ["public.data"], in: .import)
+        let documentPickerVC: UIDocumentPickerViewController
+        if #available(iOS 14.0, *) {
+            documentPickerVC = UIDocumentPickerViewController(forOpeningContentTypes: [.data], asCopy: true)
+        } else {
+            documentPickerVC = UIDocumentPickerViewController(documentTypes: ["public.data"], in: .import)
+        }
+        
         documentPickerVC.delegate = self
         if #available(iOS 13.0, *) {
             documentPickerVC.isModalInPresentation = true
@@ -281,6 +289,6 @@ class FileTableViewController: UITableViewController, UIDocumentPickerDelegate {
         
         let selectedFile = files[indexPath.row]
         
-        fotaFile = FotaFile(fileName: selectedFile)
+        fotaFile = FotaFile(filePath: selectedFile)
     }
 }

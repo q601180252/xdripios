@@ -231,11 +231,22 @@ class LibreDataParser {
                 // should never come here ?
                 trace("in libreDataProcessor, is libreUS but data is not decrypted - no further processing", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
                 
-            case .libre2, .libre2C5, .libre2C6, .libre27F:
+            case .libre2, .libre2C5, .libre2C6, .libre27F, .libre2RU:
                 
                 // should never come here ?
                 trace("in libreDataProcessor, is libre2 but data is not decrypted - no further processing", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
                 
+            case .libreUS14day:
+                 trace("in libreDataProcessor, is libreUS14day but data is not decrypted - no further processing", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
+                
+            case .libre2US, .libre2CA:
+                trace("in libreDataProcessor, is libre2US/CA but data is not decrypted - no further processing", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
+                
+            case .libre2Plus, .libreSense, .libre3:
+                 trace("in libreDataProcessor, is libre2Plus/Sense/3 but data is not decrypted - no further processing", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
+            
+            case .unknown, .libre1New, .unsupported:
+                 trace("in libreDataProcessor, is unknown/new/unsupported - no further processing", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
             }
             
         } else if (!webOOPEnabled || dataIsDecryptedToLibre1Format) {

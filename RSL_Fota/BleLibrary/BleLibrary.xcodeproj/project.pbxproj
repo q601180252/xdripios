@@ -216,6 +216,7 @@
 		7CF2CA61225DCB73004A07F4 /* PeripheralManagerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManagerProtocol.swift; sourceTree = "<group>"; };
 		94AF73E12C6F250C00429893 /* TaskMagic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMagic.swift; sourceTree = "<group>"; };
 		F144EE172C6ED89E004EC404 /* TaskPrepare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPrepare.swift; sourceTree = "<group>"; };
+		B6F47A002F2B800000B56FD7 /* xDrip.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "../../xdrip/xDrip.xcconfig"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -607,6 +608,7 @@
 /* Begin XCBuildConfiguration section */
 		7CF2CA58225DCB4C004A07F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6F47A002F2B800000B56FD7 /* xDrip.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -671,6 +673,7 @@
 		};
 		7CF2CA59225DCB4C004A07F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6F47A002F2B800000B56FD7 /* xDrip.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -746,7 +749,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.outshine.BleLibrary;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).BleLibrary";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -774,7 +777,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.outshine.BleLibrary;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER).BleLibrary";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

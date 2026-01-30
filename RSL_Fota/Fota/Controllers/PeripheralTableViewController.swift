@@ -15,8 +15,16 @@
 import FotaLibrary
 import BleLibrary
 import Foundation
+import UIKit
 
 class PeripheralTableViewController: UITableViewController {
+    
+    private struct K {
+        static let cellNibName = "DeviceCell"
+        static let cellIdentifier = "ReusableCell"
+        static let controlView = "ControlView"
+        static let settingsView = "SettingsView"
+    }
     
     @IBOutlet weak var progressView: UIActivityIndicatorView!
     //MARK: Properties
@@ -99,8 +107,8 @@ class PeripheralTableViewController: UITableViewController {
         // Feches the appropriate peripheral for the data source layout
         let peripheral = peripherals[indexPath.row]    
         cell.configure(withName: peripheral.name, withUUID: peripheral.uuid.uuidString, rssiValue: NSNumber(value: Int(peripheral.rssi.description) ?? 0))
-        cell.backgroundColor = .clear
-        cell.contentView.backgroundColor = .clear
+        cell.backgroundColor = UIColor.clear
+        cell.contentView.backgroundColor = UIColor.clear
         cell.updateLayoutsIfNeccessary()
         return cell
     }
@@ -156,7 +164,7 @@ class PeripheralTableViewController: UITableViewController {
         else{
             showGradientAnimation(flag: true)
         }
-        UIApplication.shared.isNetworkActivityIndicatorVisible = args.isBusy
+        // UIApplication.shared.isNetworkActivityIndicatorVisible = args.isBusy
     }
     
     //MARK: Private functions
@@ -164,11 +172,11 @@ class PeripheralTableViewController: UITableViewController {
     @objc private func refreshPeripheralList(_ sender: Any)
     {
         do{
-            if (UIApplication.shared.delegate as! AppDelegate) != nil
-            {
+            // if (UIApplication.shared.delegate as! AppDelegate) != nil
+            // {
                 (UIApplication.shared.delegate as! AppDelegate).peripheralManager.selected?.dispose()
                 (UIApplication.shared.delegate as! AppDelegate).peripheralManager.selected = nil
-            }
+            // }
             (UIApplication.shared.delegate as! AppDelegate).peripheralManager.onBluetoothOff = { [weak self] in
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Bluetooth Disabled", message: "The app needs bluetooth to be enabled to work correctly", preferredStyle: .alert)
@@ -206,9 +214,26 @@ class PeripheralTableViewController: UITableViewController {
     
     func showGradientAnimation(flag: Bool) {
         if flag == true {
-            progressView.applyGradient()
+            progressView.startAnimating()
         } else {
-            progressView.removeGradient()
+            progressView.stopAnimating()
+        }
+    }
+
+    func updateNavigationBar()
+    {
+        if  manager.selected?.state == PeripheralState.idle
+        {
+            // UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            self.navigationController?.navigationBar.isUserInteractionEnabled = true
+            backEnabledButton()
+        }
+        
+        if  manager.selected?.state == PeripheralState.update || manager.selected?.state == PeripheralState.establishLink
+        {
+            // UIApplication.shared.isNetworkActivityIndicatorVisible = true;
+            self.navigationController?.navigationBar.isUserInteractionEnabled = false
+            backDisabledButton()
         }
     }
     
@@ -228,6 +253,24 @@ class PeripheralTableViewController: UITableViewController {
     
     @IBAction func openSettings(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: K.settingsView, sender: self)
+    }
+
+    @objc func backButtonAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    private func backEnabledButton(){
+        let backBarButton = UIBarButtonItem(withCustomType: .backButton,
+                                            target: self,
+                                            action: #selector(PeripheralTableViewController.backButtonAction))
+        self.navigationItem.leftBarButtonItem = backBarButton
+    }
+    
+    private func backDisabledButton(){
+        let backBarButton = UIBarButtonItem(withCustomType: .backDisabledButton,
+                                            target: self,
+                                            action: #selector(PeripheralTableViewController.backButtonAction))
+        self.navigationItem.leftBarButtonItem = backBarButton
     }
     
 }

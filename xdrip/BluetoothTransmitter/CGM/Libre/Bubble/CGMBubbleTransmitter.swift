@@ -131,7 +131,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
 
             if var crcData = result.hexadecimal(), let patchUid = patchUid, let patchInfo = patchInfo {
                                         
-                guard Crc.LibreCrc(data: &crcData, headerOffset: 0, libreSensorType: nil) else {
+                guard BubbleCrc.LibreCrc(data: &crcData, headerOffset: 0, libreSensorType: nil) else {
                     
                     trace("    crc check failed, no further processing", log: log, category: ConstantsLog.categoryBlucon, type: .error)
                     

@@ -68,12 +68,12 @@ struct AIDStatusView: View {
                         
                         VStack(alignment: .leading, spacing: 1) {
                             Text(deviceStatus.systemName() ?? "Status")
-                                .font(.title2).bold()
+                                .font(.title2.bold())
                                 .id(refreshView) // places the refresh here as this text view will always be shown
                             
                             if let appVersion = deviceStatus.appVersion {
                                 Text(appVersion.components(separatedBy: "-").first ?? nilString)
-                                    .font(.callout).bold()
+                                    .font(.callout.bold())
                                     .lineLimit(1)
                                     .minimumScaleFactor(0.5)
                                     .foregroundStyle(Color(.colorSecondary))
@@ -84,7 +84,7 @@ struct AIDStatusView: View {
                         
                         HStack {
                             deviceStatus.deviceStatusIconImage()
-                                .font(.title3).bold()
+                                .font(.title3.bold())
                                 .foregroundStyle(deviceStatus.deviceStatusColor())
                             
                             Text(deviceStatus.deviceStatusTitle())
