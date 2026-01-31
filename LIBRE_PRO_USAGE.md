@@ -83,10 +83,13 @@ previousRawValues = glucoseData.prefix(20).map { $0.glucoseLevelRaw }
 
 ### 传感器信息
 - **传感器年龄**：`sensorTimeInMinutes` 分钟
-- **传感器状态**：根据运行时间推断（< 60min: starting, 60min-14天: ready, > 14天: expired）
+- **传感器状态**：从 `trend[4]` 读取（与 Libre 1 相同）
+  - `0x03`: ready（正常工作）✅ **只有此状态会存储数据**
+  - `0x04`: expired（过期）❌ 不存储数据
+  - `0x05`: shutdown（关闭）❌ 不存储数据
 - **数据质量**：正常值 dataQuality=0
 
-**注意**：Libre Pro 不使用 `trend[4]` 作为状态字节（与标准 Libre 不同）
+**重要**：为确保数据质量，**只有 `ready` 状态的数据会被存储**。传感器在生命周期末期（接近 14 天）可能报告 `expired` 或 `shutdown` 状态，此时数据将被忽略。
 
 ## 算法验证
 

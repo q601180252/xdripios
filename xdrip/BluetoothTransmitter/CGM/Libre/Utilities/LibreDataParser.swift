@@ -286,26 +286,13 @@ class LibreDataParser {
         let trendArray = [UInt8](trend)
         let historyArray = [UInt8](history)
         
-        // Libre Pro 数据格式中 trend[4] 不是 sensor state 字节（与标准 Libre 不同）
-        // 能够成功读取数据就说明传感器工作正常，根据运行时间判断状态
+        // Libre Pro 与 Libre 1 相同，trend[4] 是 sensor state 字节
+        let sensorState = LibreSensorState(stateByte: UInt8(trend[4] & 0xFF))
         let ourTime = Date()
         let sensorTimeInMinutes = (Int(trend[74]) & 0xFF) + (Int(trend[75]) & 0xFF) << 8
         
-        // 根据传感器运行时间推断状态：
-        // - < 60 分钟：starting（预热期）
-        // - 60 分钟 - 14 天：ready（正常工作）
-        // - > 14 天：expired（过期但仍可用）
-        let sensorState: LibreSensorState
-        if sensorTimeInMinutes < 60 {
-            sensorState = .starting
-        } else if sensorTimeInMinutes > 14 * 24 * 60 { // 14 天
-            sensorState = .expired
-        } else {
-            sensorState = .ready
-        }
-        
-        trace("in libreProDataProcessor, sensorState = %{public}@ (推断), sensorTime = %{public}@ minutes", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, sensorState.description, sensorTimeInMinutes.description)
-        print("[LibreDataParser] libreProDataProcessor 开始处理，sensorState=\(sensorState.description) (根据运行时间推断), sensorTime=\(sensorTimeInMinutes) 分钟")
+        trace("in libreProDataProcessor, sensorState = %{public}@ (from trend[4]), sensorTime = %{public}@ minutes", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, sensorState.description, sensorTimeInMinutes.description)
+        print("[LibreDataParser] libreProDataProcessor 开始处理，sensorState=\(sensorState.description) (trend[4]=0x\(String(format: "%02X", trend[4]))), sensorTime=\(sensorTimeInMinutes) 分钟")
         
         // 如需测试算法，手动调用: LibreProAlgorithmTests.runAllTests()
 
@@ -339,19 +326,29 @@ class LibreDataParser {
             let sensorStartTimeInSeconds = ourTime.timeIntervalSince1970 - Double(sensorTimeInMinutes * 60)
             
             trace("in libreProDataProcessor, processing %{public}@ history values", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, historyResults.count.description)
-            print("[LibreDataParser] 处理历史值: \(historyResults.count) 个")
+            print("[LibreDataParser] ========== 处理历史值: \(historyResults.count) 个 ==========")
             
             var validHistoryCount = 0
-            for item in historyResults {
+            for (index, item) in historyResults.enumerated() {
                 let t = sensorStartTimeInSeconds + Double(item.time) * 60.0
                 let glucoseMgDl = item.dataQuality == 0 ? Double(item.oopValue) : 0
+                
+                // 格式化时间戳
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "HH:mm:ss"
+                let timeString = dateFormatter.string(from: Date(timeIntervalSince1970: t))
+                
+                // 打印每个历史值的详细信息
+                let status = glucoseMgDl > 0 ? "✅" : "❌"
+                print("  [\(String(format: "%2d", index))] \(status) time=\(item.time)分钟 (\(timeString)) | 血糖=\(item.oopValue) mg/dL | raw=\(item.raw) | dataQuality=\(item.dataQuality)")
                 
                 if glucoseMgDl > 0 {
                     glucoseData.append(GlucoseData(timeStamp: Date(timeIntervalSince1970: t), glucoseLevelRaw: glucoseMgDl))
                     validHistoryCount += 1
                 }
             }
-            print("[LibreDataParser] 有效历史值: \(validHistoryCount)/\(historyResults.count)")
+            print("[LibreDataParser] ========== 有效历史值: \(validHistoryCount)/\(historyResults.count) ==========")
+            print("")
         }
         
         // 排序：最新的在前
@@ -382,7 +379,49 @@ class LibreDataParser {
         }
         
         trace("in libreProDataProcessor, total glucose data count = %{public}@", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, glucoseData.count.description)
+        
+        // 打印最终数据统计
+        print("[LibreDataParser] ========== 数据统计 ==========")
         print("[LibreDataParser] 总计 glucoseData 数量: \(glucoseData.count)")
+        
+        if glucoseData.count > 0 {
+            let values = glucoseData.map { $0.glucoseLevelRaw }
+            let minValue = values.min() ?? 0
+            let maxValue = values.max() ?? 0
+            let avgValue = values.reduce(0.0, +) / Double(values.count)
+            
+            print("[LibreDataParser] 血糖值范围: \(Int(minValue)) - \(Int(maxValue)) mg/dL")
+            print("[LibreDataParser] 平均血糖: \(Int(avgValue)) mg/dL")
+            
+            // 时间范围
+            let sortedByTime = glucoseData.sorted { $0.timeStamp < $1.timeStamp }
+            if let oldest = sortedByTime.first, let newest = sortedByTime.last {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "HH:mm:ss"
+                let oldestTime = dateFormatter.string(from: oldest.timeStamp)
+                let newestTime = dateFormatter.string(from: newest.timeStamp)
+                let span = newest.timeStamp.timeIntervalSince(oldest.timeStamp) / 60.0
+                print("[LibreDataParser] 时间跨度: \(oldestTime) → \(newestTime) (约 \(Int(span)) 分钟)")
+            }
+        }
+        print("[LibreDataParser] ================================")
+        print("")
+        
+        // 显示所有要存储的数据点（按时间正序）
+        if glucoseData.count > 0 {
+            print("[LibreDataParser] ========== 即将存储的所有数据点 ==========")
+            let sortedData = glucoseData.sorted { $0.timeStamp < $1.timeStamp }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM-dd HH:mm:ss"
+            
+            for (index, data) in sortedData.enumerated() {
+                let timeString = dateFormatter.string(from: data.timeStamp)
+                let value = Int(data.glucoseLevelRaw)
+                print("  [\(String(format: "%2d", index + 1))] \(timeString) | \(value) mg/dL")
+            }
+            print("[LibreDataParser] ===============================================")
+            print("")
+        }
         
         // 调用通用处理函数存储到数据库
         print("[LibreDataParser] 调用 handleGlucoseData 存储到数据库...")
@@ -452,10 +491,12 @@ class LibreDataParser {
         if let sensorState = result.sensorState {
             trace("in handleGlucoseData, sensor state = %{public}@", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, sensorState.description)
             
-            if sensorState != .ready && sensorState != .expired {
+            // 严格检查：只允许 ready 状态存储数据
+            // expired 和 shutdown 状态可能返回不可靠的数据
+            if sensorState != .ready {
                 
-                trace("    not processing data as sensor does not have the state ready or expired", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
-                print("[LibreDataParser] ⚠️ 传感器状态不是 ready 或 expired，跳过数据处理")
+                trace("    not processing data as sensor does not have the state ready", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
+                print("[LibreDataParser] ⚠️ 传感器状态不是 ready (当前: \(sensorState.description))，跳过数据处理")
                 
                 // initialize xDripError, to be used in calls to cgmTransmitterDelegate.errorOccurred and completionHandler
                 let xDripError = LibreError.sensorNotReady

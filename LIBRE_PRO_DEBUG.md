@@ -76,18 +76,26 @@
 
 ---
 
-### ❌ 问题 2：日志显示但提示 "传感器状态不是 ready"
+### ❌ 问题 2：日志显示 "传感器状态不是 ready" 或 "shutdown"
 **症状**：
 ```
+[LibreDataParser] sensorState=Sensor is shut down (trend[4]=0x05)
 [LibreDataParser] ⚠️ 传感器状态不是 ready 或 expired，跳过数据处理
 ```
 
-**原因**：传感器状态异常（starting, notActivated 等）
+**原因**：传感器接近生命周期末期（14 天）时报告 `shutdown` 状态
 
-**✅ 已修复**：Libre Pro 的数据格式中 `trend[4]` 不是 sensor state 字节（与标准 Libre 不同），现在改为根据传感器运行时间推断状态：
-- `< 60 分钟`：`.starting`（预热期）
-- `60 分钟 - 14 天`：`.ready`（正常工作）
-- `> 14 天`：`.expired`（过期但仍可用）
+**✅ 已修复**：
+1. **Libre Pro 与 Libre 1 相同**：`trend[4]` 是 sensor state 字节
+2. **iOS 现在接受 shutdown 状态**：跟随 Android 行为，允许 `ready`、`expired` 和 `shutdown` 三种状态
+3. **Libre Pro 特性**：传感器在生命周期末期仍能提供有效数据
+
+**修复后日志**：
+```
+[LibreDataParser] sensorState=Sensor is shut down (trend[4]=0x05)
+[LibreDataParser] ℹ️ 传感器状态为 shutdown，但继续处理数据（Libre Pro 特性）
+[LibreDataParser] ✅ 调用 cgmTransmitterInfoReceived 存储数据
+```
 
 ---
 

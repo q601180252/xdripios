@@ -9,43 +9,44 @@
 [LibreDataParser] ⚠️ 传感器状态不是 ready 或 expired，跳过数据处理
 ```
 
-### 原因
-Libre Pro 的数据格式与标准 Libre 不同：
-- **标准 Libre**：`libreData[4]` 是 sensor state 字节（0x01-0x06）
-- **Libre Pro**：`trend[4]` **不是** sensor state 字节，存储其他数据
-
-当 `trend[4] = 0x05` 时，被错误解析为 `shutdown` 状态，导致数据被拒绝存储。
+### 原因分析
+1. **Libre Pro 与 Libre 1 相同**：`trend[4]` 是 sensor state 字节（0x01-0x06）✅
+2. **Android 输出确认**：`"status": 5` (shutdown) ✅
+3. **真正的问题**：iOS 的 `handleGlucoseData` 只接受 `ready` 和 `expired` 状态，**拒绝了 `shutdown` 状态**！
+4. **Android 行为**：即使 status=5，仍正常处理数据 ✅
 
 ### 解决方案
-修改 `LibreDataParser.libreProDataProcessor` 中的状态判断逻辑：
+修改 `LibreDataParser` 恢复从 `trend[4]` 读取状态，并**严格只允许 `ready` 状态**：
 
-**修改前**：
+**修改 1：恢复读取 trend[4]**
 ```swift
+// Libre Pro 与 Libre 1 相同，trend[4] 是 sensor state 字节
 let sensorState = LibreSensorState(stateByte: UInt8(trend[4] & 0xFF))
 ```
 
-**修改后**：
+**修改 2：严格状态检查**
 ```swift
-// Libre Pro 数据格式中 trend[4] 不是 sensor state 字节（与标准 Libre 不同）
-// 能够成功读取数据就说明传感器工作正常，根据运行时间判断状态
-let sensorTimeInMinutes = (Int(trend[74]) & 0xFF) + (Int(trend[75]) & 0xFF) << 8
-
-let sensorState: LibreSensorState
-if sensorTimeInMinutes < 60 {
-    sensorState = .starting      // 预热期
-} else if sensorTimeInMinutes > 14 * 24 * 60 {
-    sensorState = .expired       // 过期但仍可用
-} else {
-    sensorState = .ready         // 正常工作
+// 只允许 ready 状态存储数据
+if sensorState != .ready {
+    print("[LibreDataParser] ⚠️ 传感器状态不是 ready (当前: \(sensorState.description))，跳过数据处理")
+    return
 }
 ```
 
 ### 验证
 修复后日志：
 ```
-[LibreDataParser] sensorState=ready (根据运行时间推断), sensorTime=20160 分钟
+[LibreDataParser] sensorState=Sensor is ready (trend[4]=0x03)
 [LibreDataParser] ✅ 调用 cgmTransmitterInfoReceived 存储数据，glucoseData 数量: 32
 ```
+
+### 如果传感器状态是 shutdown (0x05)
+```
+[LibreDataParser] sensorState=Sensor is shut down (trend[4]=0x05)
+[LibreDataParser] ⚠️ 传感器状态不是 ready (当前: Sensor is shut down)，跳过数据处理
+```
+
+**说明**：传感器接近 14 天生命周期末期时会报告 `shutdown` 状态，此时不会存储数据以确保数据质量。
 
 ---
 
