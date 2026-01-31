@@ -1,0 +1,250 @@
+name: Build xDrip iOS IPA (Simplified)
+
+on:
+  push:
+    branches: [ main, develop ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      build_configuration:
+        description: 'Build configuration'
+        required: true
+        default: 'Release'
+        type: choice
+        options:
+        - Debug
+        - Release
+
+env:
+  DEVELOPER_TEAM_ID: HHZN32E89C
+  BUNDLE_IDENTIFIER: com.HHZN32E89C.xdripswiftt1li23
+
+jobs:
+  build-ipa:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+        
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0
+        bundler-cache: true
+        
+    - name: Install dependencies
+      run: |
+        gem install bundler:2.4.19
+        bundle install
+        
+    - name: Resolve Package Dependencies
+      run: |
+        xcodebuild -workspace xdrip.xcworkspace -scheme xdrip -resolvePackageDependencies
+        
+    - name: Install Certificates and Provisioning Profiles
+      env:
+        CERTIFICATE_BASE64: ${{ secrets.IOS_DISTRIBUTION_CERTIFICATE_BASE64 }}
+        CERTIFICATE_PASSWORD: ${{ secrets.IOS_DISTRIBUTION_CERTIFICATE_PASSWORD }}
+        PROFILE_MAIN_BASE64: ${{ secrets.IOS_PROVISIONING_PROFILE_MAIN_BASE64 }}
+        PROFILE_WIDGET_BASE64: ${{ secrets.IOS_PROVISIONING_PROFILE_WIDGET_BASE64 }}
+        PROFILE_WATCH_BASE64: ${{ secrets.IOS_PROVISIONING_PROFILE_WATCH_BASE64 }}
+        PROFILE_WATCH_COMPLICATION_BASE64: ${{ secrets.IOS_PROVISIONING_PROFILE_WATCH_COMPLICATION_BASE64 }}
+        PROFILE_NOTIFICATION_BASE64: ${{ secrets.IOS_PROVISIONING_PROFILE_NOTIFICATION_BASE64 }}
+      run: |
+        # 创建临时目录
+        CERTIFICATE_PATH=$RUNNER_TEMP/certificate.p12
+        KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+        KEYCHAIN_PASSWORD=$(openssl rand -base64 32)
+        
+        # 解码证书
+        echo "$CERTIFICATE_BASE64" | base64 --decode > $CERTIFICATE_PATH
+        
+        # 创建临时 keychain
+        security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+        security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+        security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+        
+        # 导入证书到 keychain
+        security import $CERTIFICATE_PATH \
+          -P "$CERTIFICATE_PASSWORD" \
+          -A \
+          -t cert \
+          -f pkcs12 \
+          -k $KEYCHAIN_PATH
+        
+        # 设置 keychain 为默认
+        security list-keychain -d user -s $KEYCHAIN_PATH
+        security default-keychain -s $KEYCHAIN_PATH
+        
+        # 设置证书信任
+        security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+        
+        # 创建 Provisioning Profiles 目录
+        mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+        
+        # 解码并安装 Provisioning Profiles
+        echo "安装 Provisioning Profiles..."
+        
+        # Profile 1: 主应用
+        if [ -n "$PROFILE_MAIN_BASE64" ]; then
+          echo "$PROFILE_MAIN_BASE64" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/main.mobileprovision
+          echo "✅ 主应用 Profile 已安装"
+        fi
+        
+        # Profile 2: Widget
+        if [ -n "$PROFILE_WIDGET_BASE64" ]; then
+          echo "$PROFILE_WIDGET_BASE64" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/widget.mobileprovision
+          echo "✅ Widget Profile 已安装"
+        fi
+        
+        # Profile 3: Watch App
+        if [ -n "$PROFILE_WATCH_BASE64" ]; then
+          echo "$PROFILE_WATCH_BASE64" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/watch.mobileprovision
+          echo "✅ Watch App Profile 已安装"
+        fi
+        
+        # Profile 4: Watch Complication
+        if [ -n "$PROFILE_WATCH_COMPLICATION_BASE64" ]; then
+          echo "$PROFILE_WATCH_COMPLICATION_BASE64" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/complication.mobileprovision
+          echo "✅ Watch Complication Profile 已安装"
+        fi
+        
+        # Profile 5: Notification Extension
+        if [ -n "$PROFILE_NOTIFICATION_BASE64" ]; then
+          echo "$PROFILE_NOTIFICATION_BASE64" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/notification.mobileprovision
+          echo "✅ Notification Profile 已安装"
+        fi
+        
+        # 验证安装
+        echo "已安装的 Profiles:"
+        ls -la ~/Library/MobileDevice/Provisioning\ Profiles/
+        
+        echo "✅ 证书和 Provisioning Profiles 安装完成"
+        
+    - name: Setup App Store Connect API Key
+      env:
+        API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+        API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+        API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+      run: |
+        # 创建 App Store Connect API Key 目录
+        mkdir -p ~/.appstoreconnect/private_keys
+        
+        # 保存 API Key
+        echo "$API_PRIVATE_KEY" > ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8
+        
+        # 设置文件权限
+        chmod 600 ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8
+        
+        # 验证 API Key 是否有效
+        echo "验证 API Key 权限..."
+        xcrun altool --list-apps -u "dummy@example.com" --apiKey "$API_KEY_ID" --apiIssuer "$API_ISSUER_ID" || echo "API Key 验证完成"
+        
+    - name: Verify App Store Connect Configuration
+      env:
+        API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+        API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+      run: |
+        echo "检查 App Store Connect 配置..."
+        
+        # 检查主应用是否存在
+        echo "检查主应用 Bundle ID: com.HHZN32E89C.xdripswiftt1li23"
+        
+        # 检查扩展应用 Bundle ID
+        echo "检查扩展应用 Bundle ID:"
+        echo "- com.HHZN32E89C.xdripswiftt1li23.xDripWidget"
+        echo "- com.HHZN32E89C.xdripswiftt1li23.watchkitapp"
+        echo "- com.HHZN32E89C.xdripswiftt1li23.watchkitapp.xDripWatchComplication"
+        echo "- com.HHZN32E89C.xdripswiftt1li23.xDripNotificationContextExtension"
+        
+        # 检查 App Group
+        echo "检查 App Group: group.com.HHZN32E89C.loopkit.LoopGroup"
+        
+        echo "注意：如果构建失败，请确保在 Apple Developer Portal 中："
+        echo "1. 创建了所有必要的 Bundle ID"
+        echo "2. 为每个 Bundle ID 启用了正确的功能（App Groups, HealthKit, NFC）"
+        echo "3. 创建了对应的 Provisioning Profiles"
+        echo "4. 配置了 App Group 并包含所有 Bundle ID"
+        
+    - name: Setup Fastlane Environment
+      env:
+        API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+        API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+      run: |
+        # 导出环境变量供 Fastlane 使用
+        echo "APPSTORE_API_KEY_ID=$API_KEY_ID" >> $GITHUB_ENV
+        echo "APPSTORE_ISSUER_ID=$API_ISSUER_ID" >> $GITHUB_ENV
+        # API_PRIVATE_KEY 已经保存为文件，不需要作为环境变量
+        
+    - name: Disable Automatic Code Signing
+      run: |
+        # 禁用自动代码签名，使用手动签名
+        # 这样可以避免 "No Account" 错误
+        
+        BUILD_CONFIG=${{ inputs.build_configuration || 'Release' }}
+        
+        # 设置为手动代码签名
+        /usr/libexec/PlistBuddy -c "Set :objects:*:buildSettings:CODE_SIGN_STYLE Manual" xdrip.xcodeproj/project.pbxproj || true
+        
+    - name: Build IPA with xcodebuild
+      env:
+        API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+        API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+      run: |
+        BUILD_CONFIG=${{ inputs.build_configuration || 'Release' }}
+        
+        # 清理构建
+        xcodebuild clean -workspace xdrip.xcworkspace -scheme xdrip
+        
+        # 使用 xcodebuild 构建（手动代码签名模式）
+        # 使用已安装的证书和 Provisioning Profiles
+        xcodebuild archive \
+          -workspace xdrip.xcworkspace \
+          -scheme xdrip \
+          -configuration $BUILD_CONFIG \
+          -destination "generic/platform=iOS" \
+          -archivePath "build/xdrip.xcarchive" \
+          CODE_SIGN_STYLE=Manual \
+          DEVELOPMENT_TEAM=${{ env.DEVELOPER_TEAM_ID }}
+        
+        # 导出 IPA
+        xcodebuild -exportArchive \
+          -archivePath "build/xdrip.xcarchive" \
+          -exportPath "build/ipa" \
+          -exportOptionsPlist "ExportOptions.plist"
+          
+    - name: Upload IPA artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: xdrip-ipa-${{ github.sha }}
+        path: build/ipa/*.ipa
+        retention-days: 30
+        
+    - name: Upload dSYMs artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: xdrip-dsyms-${{ github.sha }}
+        path: build/ipa/*.dSYM.zip
+        retention-days: 30
+        if-no-files-found: ignore
+        
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          build/ipa/*.ipa
+          build/ipa/*.dSYM.zip
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

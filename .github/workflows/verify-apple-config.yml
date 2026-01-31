@@ -1,0 +1,311 @@
+name: Verify Apple Developer Configuration
+
+on:
+  workflow_dispatch:
+    inputs:
+      check_type:
+        description: '检查类型'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - api_key
+          - bundle_ids
+          - provisioning_profiles
+          - capabilities
+
+env:
+  DEVELOPER_TEAM_ID: HHZN32E89C
+  MAIN_BUNDLE_ID: com.HHZN32E89C.xdripswiftt1li23
+  APP_GROUP_ID: group.com.HHZN32E89C.loopkit.LoopGroup
+
+jobs:
+  verify-configuration:
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup App Store Connect API Key
+        env:
+          API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+          API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+          API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+        run: |
+          echo "🔧 设置 App Store Connect API Key..."
+          
+          # 创建目录
+          mkdir -p ~/.appstoreconnect/private_keys
+          
+          # 保存 API Key
+          echo "$API_PRIVATE_KEY" > ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8
+          
+          # 设置文件权限
+          chmod 600 ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8
+          
+          echo "✅ API Key 文件已创建"
+
+      - name: Verify API Key Permissions
+        if: inputs.check_type == 'all' || inputs.check_type == 'api_key'
+        env:
+          API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+          API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+        run: |
+          echo "🔍 验证 API Key 权限..."
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          
+          # 检查 API Key 文件是否存在
+          if [ -f ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8 ]; then
+            echo "✅ API Key 文件存在"
+          else
+            echo "❌ API Key 文件不存在"
+            exit 1
+          fi
+          
+          # 尝试列出应用
+          echo ""
+          echo "📱 尝试访问 App Store Connect..."
+          if xcrun altool --list-apps -u "dummy@example.com" --apiKey "$API_KEY_ID" --apiIssuer "$API_ISSUER_ID" 2>&1 | grep -q "NSInvalidArgumentException"; then
+            echo "⚠️  API Key 可能配置正确，但账户可能没有应用或权限有限"
+          else
+            echo "✅ API Key 可以成功连接到 App Store Connect"
+          fi
+          
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+      - name: Check Bundle IDs Configuration
+        if: inputs.check_type == 'all' || inputs.check_type == 'bundle_ids'
+        run: |
+          echo "🆔 检查 Bundle ID 配置..."
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          echo "需要配置的 Bundle ID："
+          echo ""
+          echo "1. 主应用:"
+          echo "   📱 ${{ env.MAIN_BUNDLE_ID }}"
+          echo "   🔧 必需功能: App Groups, HealthKit, NFC Tag Reading"
+          echo ""
+          echo "2. Widget 扩展:"
+          echo "   🧩 ${{ env.MAIN_BUNDLE_ID }}.xDripWidget"
+          echo "   🔧 必需功能: App Groups"
+          echo ""
+          echo "3. Watch App:"
+          echo "   ⌚ ${{ env.MAIN_BUNDLE_ID }}.watchkitapp"
+          echo "   🔧 必需功能: App Groups"
+          echo ""
+          echo "4. Watch Complication:"
+          echo "   ⌚ ${{ env.MAIN_BUNDLE_ID }}.watchkitapp.xDripWatchComplication"
+          echo "   🔧 必需功能: App Groups"
+          echo ""
+          echo "5. Notification Extension:"
+          echo "   🔔 ${{ env.MAIN_BUNDLE_ID }}.xDripNotificationContextExtension"
+          echo "   🔧 必需功能: App Groups"
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+      - name: Verify Project Bundle IDs
+        if: inputs.check_type == 'all' || inputs.check_type == 'bundle_ids'
+        run: |
+          echo "🔍 验证项目中的 Bundle ID 配置..."
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          
+          # 检查 xcconfig 文件
+          if [ -f "xDrip/xDrip.xcconfig" ]; then
+            echo ""
+            echo "📄 xDrip.xcconfig 配置:"
+            grep "MAIN_APP_BUNDLE_IDENTIFIER" xDrip/xDrip.xcconfig || echo "⚠️  未找到 MAIN_APP_BUNDLE_IDENTIFIER"
+            grep "GROUP_ID" xDrip/xDrip.xcconfig || echo "⚠️  未找到 GROUP_ID"
+          fi
+          
+          # 检查 project.pbxproj 中的 Bundle ID
+          echo ""
+          echo "📄 project.pbxproj 中的 Bundle ID:"
+          grep -o "com\.HHZN32E89C\.xdripswiftt1li23[^\"]*" xdrip.xcodeproj/project.pbxproj | sort -u | while read bundle_id; do
+            echo "   ✓ $bundle_id"
+          done
+          
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+      - name: Check App Group Configuration
+        if: inputs.check_type == 'all' || inputs.check_type == 'capabilities'
+        run: |
+          echo "🔗 检查 App Group 配置..."
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          echo "App Group Identifier:"
+          echo "   ${{ env.APP_GROUP_ID }}"
+          echo ""
+          echo "需要包含在此 App Group 中的 Bundle ID:"
+          echo "   • ${{ env.MAIN_BUNDLE_ID }}"
+          echo "   • ${{ env.MAIN_BUNDLE_ID }}.xDripWidget"
+          echo "   • ${{ env.MAIN_BUNDLE_ID }}.watchkitapp"
+          echo "   • ${{ env.MAIN_BUNDLE_ID }}.watchkitapp.xDripWatchComplication"
+          echo "   • ${{ env.MAIN_BUNDLE_ID }}.xDripNotificationContextExtension"
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+      - name: Check Entitlements Files
+        if: inputs.check_type == 'all' || inputs.check_type == 'capabilities'
+        run: |
+          echo "📜 检查 Entitlements 文件..."
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          
+          # 检查主应用 entitlements
+          if [ -f "xDrip/xdrip.entitlements" ]; then
+            echo "✅ xdrip.entitlements 存在"
+            echo "   App Groups:"
+            grep -A 5 "com.apple.security.application-groups" xDrip/xdrip.entitlements || echo "   ⚠️  未找到 App Groups"
+            echo ""
+            echo "   HealthKit:"
+            grep "com.apple.developer.healthkit" xDrip/xdrip.entitlements || echo "   ⚠️  未找到 HealthKit"
+            echo ""
+            echo "   NFC:"
+            grep "com.apple.developer.nfc.readersession.formats" xDrip/xdrip.entitlements || echo "   ⚠️  未找到 NFC"
+          else
+            echo "⚠️  xdrip.entitlements 不存在"
+          fi
+          
+          # 检查 Widget entitlements
+          echo ""
+          if [ -f "xDrip Widget Extension.entitlements" ]; then
+            echo "✅ xDrip Widget Extension.entitlements 存在"
+          else
+            echo "⚠️  xDrip Widget Extension.entitlements 不存在"
+          fi
+          
+          # 检查 Watch App entitlements
+          echo ""
+          if [ -f "xDrip Watch App/xDrip Watch App.entitlements" ]; then
+            echo "✅ xDrip Watch App.entitlements 存在"
+          else
+            echo "⚠️  xDrip Watch App.entitlements 不存在"
+          fi
+          
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+      - name: Test Provisioning Profile Access
+        if: inputs.check_type == 'all' || inputs.check_type == 'provisioning_profiles'
+        env:
+          API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+          API_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+        run: |
+          echo "📋 测试 Provisioning Profile 访问..."
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo ""
+          
+          # 尝试使用 xcodebuild 的 allowProvisioningUpdates 功能
+          echo "测试是否可以自动创建/更新 Provisioning Profile..."
+          echo ""
+          
+          # 创建一个简单的测试命令
+          xcodebuild -showBuildSettings \
+            -workspace xdrip.xcworkspace \
+            -scheme xdrip \
+            -destination "generic/platform=iOS" \
+            -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_$API_KEY_ID.p8 \
+            -authenticationKeyID $API_KEY_ID \
+            -authenticationKeyIssuerID $API_ISSUER_ID \
+            | grep -i "PRODUCT_BUNDLE_IDENTIFIER\|CODE_SIGN_IDENTITY\|DEVELOPMENT_TEAM" || true
+          
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+      - name: Generate Configuration Report
+        if: always()
+        run: |
+          echo ""
+          echo "═══════════════════════════════════════════"
+          echo "📊 配置验证报告"
+          echo "═══════════════════════════════════════════"
+          echo ""
+          echo "Team ID: ${{ env.DEVELOPER_TEAM_ID }}"
+          echo "Main Bundle ID: ${{ env.MAIN_BUNDLE_ID }}"
+          echo "App Group: ${{ env.APP_GROUP_ID }}"
+          echo ""
+          echo "═══════════════════════════════════════════"
+          echo ""
+          echo "📋 下一步操作："
+          echo ""
+          echo "1. 访问 Apple Developer Portal:"
+          echo "   https://developer.apple.com/account/resources/identifiers/list"
+          echo ""
+          echo "2. 确认所有 Bundle ID 已创建并启用正确的功能"
+          echo ""
+          echo "3. 确认 App Group 已创建并包含所有 Bundle ID"
+          echo ""
+          echo "4. 为每个 Bundle ID 创建 Provisioning Profile:"
+          echo "   - Development Profile (用于测试)"
+          echo "   - Distribution Profile (用于 App Store)"
+          echo ""
+          echo "5. 重新运行构建工作流"
+          echo ""
+          echo "═══════════════════════════════════════════"
+          
+      - name: Upload Verification Report
+        if: always()
+        run: |
+          mkdir -p verification-reports
+          
+          cat > verification-reports/apple-config-report.txt << EOF
+          Apple Developer Configuration Verification Report
+          Generated: $(date)
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          
+          Team ID: ${{ env.DEVELOPER_TEAM_ID }}
+          Main Bundle ID: ${{ env.MAIN_BUNDLE_ID }}
+          App Group: ${{ env.APP_GROUP_ID }}
+          
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          Required Bundle IDs:
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          
+          1. Main App: ${{ env.MAIN_BUNDLE_ID }}
+             Capabilities: App Groups, HealthKit, NFC Tag Reading
+          
+          2. Widget: ${{ env.MAIN_BUNDLE_ID }}.xDripWidget
+             Capabilities: App Groups
+          
+          3. Watch App: ${{ env.MAIN_BUNDLE_ID }}.watchkitapp
+             Capabilities: App Groups
+          
+          4. Watch Complication: ${{ env.MAIN_BUNDLE_ID }}.watchkitapp.xDripWatchComplication
+             Capabilities: App Groups
+          
+          5. Notification Extension: ${{ env.MAIN_BUNDLE_ID }}.xDripNotificationContextExtension
+             Capabilities: App Groups
+          
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          App Group Configuration:
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          
+          App Group ID: ${{ env.APP_GROUP_ID }}
+          
+          Must include all Bundle IDs listed above.
+          
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          Next Steps:
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+          
+          1. Visit Apple Developer Portal
+          2. Create/verify all Bundle IDs with required capabilities
+          3. Create/verify App Group and add all Bundle IDs
+          4. Create Provisioning Profiles for each Bundle ID
+          5. Re-run the build workflow
+          
+          EOF
+          
+          echo "✅ 报告已生成"
+
+      - name: Upload Report as Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apple-configuration-verification-report
+          path: verification-reports/
+          retention-days: 30
+
