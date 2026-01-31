@@ -1,0 +1,77 @@
+name: 4. Build xDrip
+run-name: Build xDrip (${{ github.ref_name }})
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+      - xdrip-v6.3.0-custom
+    paths-ignore:
+      - "docs/**"
+      - "*.md"
+
+jobs:
+  validate:
+    name: Validate
+    uses: ./.github/workflows/validate_secrets.yml
+    secrets: inherit
+
+  build:
+    name: Build xDrip
+    needs: validate
+    runs-on: macos-15
+    steps:
+      # Select Xcode version
+      - name: Select Xcode
+        run: sudo xcode-select --switch /Applications/Xcode_16.2.app/Contents/Developer
+      
+      # Checkout repository
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      
+      # Setup Ruby
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+          bundler-cache: true
+      
+      # Patch Fastlane Match
+      - name: Patch Match Tables
+        run: find /usr/local/lib/ruby/gems -name table_printer.rb | xargs sed -i "" "/puts(Terminal::Table.new(params))/d"
+      
+      # Install dependencies
+      - name: Install Project Dependencies
+        run: bundle install
+      
+      # Sync clock
+      - name: Sync clock
+        run: sudo sntp -sS time.windows.com
+      
+      # Build and release app with Fastlane
+      - name: Fastlane Build & Release
+        run: bundle exec fastlane build_xdrip4ios
+        env:
+          TEAMID: ${{ secrets.TEAMID }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          FASTLANE_KEY_ID: ${{ secrets.FASTLANE_KEY_ID }}
+          FASTLANE_ISSUER_ID: ${{ secrets.FASTLANE_ISSUER_ID }}
+          FASTLANE_KEY: ${{ secrets.FASTLANE_KEY }}
+          GITHUB_WORKSPACE: ${{ github.workspace }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+      
+      # Upload build artifacts
+      - name: Upload Build Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xdrip-build-${{ github.run_number }}
+          path: |
+            ${{ github.workspace }}/*.ipa
+            ${{ github.workspace }}/*.dSYM.zip
+            ${{ github.workspace }}/fastlane/report.xml
+          retention-days: 90
