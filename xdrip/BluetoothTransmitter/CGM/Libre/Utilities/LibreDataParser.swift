@@ -226,7 +226,10 @@ class LibreDataParser {
             case .libreUS, .libreUSE6:// not sure if this works for libreUS
                 
                 // libreUS isn't working yet, create an error and send to delegate
-                cgmTransmitterDelegate?.errorOccurred(xDripError: LibreOOPWebError.libreUSNotSupported)
+                // 必须在主线程调用 delegate
+                DispatchQueue.main.async { [weak cgmTransmitterDelegate] in
+                    cgmTransmitterDelegate?.errorOccurred(xDripError: LibreOOPWebError.libreUSNotSupported)
+                }
                 
                 // should never come here ?
                 trace("in libreDataProcessor, is libreUS but data is not decrypted - no further processing", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
@@ -275,40 +278,116 @@ class LibreDataParser {
     /// - trend: 176 字节（含校准区）；history: 200 字节；bstart: history 内起始字节；historyCount: 历史条数；start = historyCount - count
     public func libreProDataProcessor(trend: Data, history: Data, bstart: Int, historyCount: Int, cgmTransmitterDelegate: CGMTransmitterDelegate?, completionHandler: @escaping (LibreSensorState?, XdripError?) -> Void) {
         guard trend.count >= 0xAA, history.count >= (bstart + 6) else {
+            trace("in libreProDataProcessor, insufficient data length", log: log, category: ConstantsLog.categoryLibreDataParser, type: .error)
             completionHandler(nil, nil)
             return
         }
+        
         let trendArray = [UInt8](trend)
         let historyArray = [UInt8](history)
-        let sensorState = LibreSensorState(stateByte: UInt8(trend[4] & 0xFF))
+        
+        // Libre Pro 数据格式中 trend[4] 不是 sensor state 字节（与标准 Libre 不同）
+        // 能够成功读取数据就说明传感器工作正常，根据运行时间判断状态
         let ourTime = Date()
+        let sensorTimeInMinutes = (Int(trend[74]) & 0xFF) + (Int(trend[75]) & 0xFF) << 8
+        
+        // 根据传感器运行时间推断状态：
+        // - < 60 分钟：starting（预热期）
+        // - 60 分钟 - 14 天：ready（正常工作）
+        // - > 14 天：expired（过期但仍可用）
+        let sensorState: LibreSensorState
+        if sensorTimeInMinutes < 60 {
+            sensorState = .starting
+        } else if sensorTimeInMinutes > 14 * 24 * 60 { // 14 天
+            sensorState = .expired
+        } else {
+            sensorState = .ready
+        }
+        
+        trace("in libreProDataProcessor, sensorState = %{public}@ (推断), sensorTime = %{public}@ minutes", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, sensorState.description, sensorTimeInMinutes.description)
+        print("[LibreDataParser] libreProDataProcessor 开始处理，sensorState=\(sensorState.description) (根据运行时间推断), sensorTime=\(sensorTimeInMinutes) 分钟")
+        
+        // 如需测试算法，手动调用: LibreProAlgorithmTests.runAllTests()
 
-        // 实时值：完整 readProGlucoseValue 管道（Temp1～Temp7Ex + trendArrow）
+        // 实时值（trend）：16 个最近的 1 分钟值
         var glucoseData: [GlucoseData] = []
-        if let (value, _, dataQuality, _) = LibreProAlgorithm.readProGlucoseValue(trendArray) {
-            let sensorTimeInMinutes = (Int(trend[74]) & 0xFF) + (Int(trend[75]) & 0xFF) << 8
+        var trendValues: [Double] = []
+        
+        if let (value, raw, dataQuality, trendArrow) = LibreProAlgorithm.readProGlucoseValue(trendArray) {
             let sensorStartTimeInSeconds = ourTime.timeIntervalSince1970 - Double(sensorTimeInMinutes * 60)
+            
+            // 添加当前值
             let currentTime = sensorStartTimeInSeconds + Double(sensorTimeInMinutes) * 60.0
             let glucoseMgDl = dataQuality == 0 ? Double(value) : 0
-            glucoseData.append(GlucoseData(timeStamp: Date(timeIntervalSince1970: currentTime), glucoseLevelRaw: glucoseMgDl))
-        }
-
-        // 历史值：完整 readHistoricalValues + pressHistroy2 过滤
-        let count = min(32, historyCount, bstart + 6 <= history.count ? max(0, (history.count - bstart) / 6) : 0)
-        let start = historyCount - count
-        if count > 0, start >= 0 {
-            let (sensorTimeInMinutes, historyValues) = LibreProAlgorithm.readHistoricalValues(current: trendArray, data: historyArray, bstart: bstart, start: start, end: count)
-            let sensorStartTimeInSeconds = ourTime.timeIntervalSince1970 - Double(sensorTimeInMinutes * 60)
-            for item in historyValues {
-                let t = sensorStartTimeInSeconds + Double(item.time) * 60.0
-                let glucoseMgDl = item.dataQuality == 0 ? Double(item.oopValue) : 0
-                glucoseData.append(GlucoseData(timeStamp: Date(timeIntervalSince1970: t), glucoseLevelRaw: glucoseMgDl))
+            
+            print("[LibreDataParser] 当前血糖值: \(value) mg/dL, raw=\(raw), dataQuality=\(dataQuality), trendArrow=\(trendArrow), 转换后=\(glucoseMgDl) mg/dL")
+            
+            if glucoseMgDl > 0 {
+                glucoseData.append(GlucoseData(timeStamp: Date(timeIntervalSince1970: currentTime), glucoseLevelRaw: glucoseMgDl))
+                trendValues.append(glucoseMgDl)
+                
+                trace("in libreProDataProcessor, current glucose = %{public}@ mg/dL, raw = %{public}@, trendArrow = %{public}@", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, value.description, raw.description, trendArrow.description)
             }
         }
 
-        let sensorTimeInMinutes = (Int(trend[74]) & 0xFF) + (Int(trend[75]) & 0xFF) << 8
+        // 历史值（history）：15 分钟间隔的历史值
+        let count = min(32, historyCount, bstart + 6 <= history.count ? max(0, (history.count - bstart) / 6) : 0)
+        let start = historyCount - count
+        
+        if count > 0, start >= 0 {
+            let (_, historyResults) = LibreProAlgorithm.readHistoricalValues(current: trendArray, data: historyArray, bstart: bstart, start: start, end: count)
+            let sensorStartTimeInSeconds = ourTime.timeIntervalSince1970 - Double(sensorTimeInMinutes * 60)
+            
+            trace("in libreProDataProcessor, processing %{public}@ history values", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, historyResults.count.description)
+            print("[LibreDataParser] 处理历史值: \(historyResults.count) 个")
+            
+            var validHistoryCount = 0
+            for item in historyResults {
+                let t = sensorStartTimeInSeconds + Double(item.time) * 60.0
+                let glucoseMgDl = item.dataQuality == 0 ? Double(item.oopValue) : 0
+                
+                if glucoseMgDl > 0 {
+                    glucoseData.append(GlucoseData(timeStamp: Date(timeIntervalSince1970: t), glucoseLevelRaw: glucoseMgDl))
+                    validHistoryCount += 1
+                }
+            }
+            print("[LibreDataParser] 有效历史值: \(validHistoryCount)/\(historyResults.count)")
+        }
+        
+        // 排序：最新的在前
         glucoseData.sort { $0.timeStamp > $1.timeStamp }
+        
+        // 检测平坦值（传感器卡住）
+        if glucoseData.count >= 5 {
+            let first5Values = Array(glucoseData.prefix(5)).map { $0.glucoseLevelRaw }
+            if first5Values.allSatisfy({ $0 == first5Values[0] }) {
+                trace("in libreProDataProcessor, detected flat values, skipping data", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
+                
+                // 必须在主线程调用 delegate（CoreData 操作）
+                DispatchQueue.main.async { [weak cgmTransmitterDelegate] in
+                    var emptyArray = [GlucoseData]()
+                    cgmTransmitterDelegate?.cgmTransmitterInfoReceived(glucoseData: &emptyArray, transmitterBatteryInfo: nil, sensorAge: TimeInterval(minutes: Double(sensorTimeInMinutes)))
+                }
+                
+                completionHandler(sensorState, nil)
+                return
+            }
+        }
+        
+        // 存储当前值用于下次连接时的间隙填补（最多存储 20 个）
+        if glucoseData.count > 0 {
+            let rawValues = glucoseData.prefix(20).map { $0.glucoseLevelRaw }
+            previousRawValues = rawValues
+            trace("in libreProDataProcessor, stored %{public}@ raw values for next connection", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, rawValues.count.description)
+        }
+        
+        trace("in libreProDataProcessor, total glucose data count = %{public}@", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, glucoseData.count.description)
+        print("[LibreDataParser] 总计 glucoseData 数量: \(glucoseData.count)")
+        
+        // 调用通用处理函数存储到数据库
+        print("[LibreDataParser] 调用 handleGlucoseData 存储到数据库...")
         handleGlucoseData(result: (glucoseData, sensorTimeInMinutes, sensorState, nil), cgmTransmitterDelegate: cgmTransmitterDelegate, completionHandler: completionHandler)
+        print("[LibreDataParser] handleGlucoseData 调用完成")
     }
 
     // MARK: - private functions
@@ -367,6 +446,8 @@ class LibreDataParser {
     /// if result.errorDescription not nil, then delegate function error will be called
     private func handleGlucoseData(result: (glucoseData:[GlucoseData], sensorTimeInMinutes:Int?, sensorState: LibreSensorState?, xDripError:XdripError?), cgmTransmitterDelegate : CGMTransmitterDelegate?, completionHandler:((_ sensorState: LibreSensorState?, _ xDripError: XdripError?) -> ())) {
         
+        print("[LibreDataParser] handleGlucoseData 被调用，glucoseData 数量: \(result.glucoseData.count), sensorState: \(result.sensorState?.description ?? "nil")")
+        
         // trace the sensor state
         if let sensorState = result.sensorState {
             trace("in handleGlucoseData, sensor state = %{public}@", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, sensorState.description)
@@ -374,12 +455,16 @@ class LibreDataParser {
             if sensorState != .ready && sensorState != .expired {
                 
                 trace("    not processing data as sensor does not have the state ready or expired", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
+                print("[LibreDataParser] ⚠️ 传感器状态不是 ready 或 expired，跳过数据处理")
                 
                 // initialize xDripError, to be used in calls to cgmTransmitterDelegate.errorOccurred and completionHandler
                 let xDripError = LibreError.sensorNotReady
                 
                 // call cgmTransmitterDelegate (this is actually the RootViewController passed in via the BluetoothTransmitter
-                cgmTransmitterDelegate?.errorOccurred(xDripError: xDripError)
+                // 必须在主线程调用 delegate
+                DispatchQueue.main.async { [weak cgmTransmitterDelegate] in
+                    cgmTransmitterDelegate?.errorOccurred(xDripError: xDripError)
+                }
                 
                 // call completionHandler, to inform caller about sensorState and xDripError
                 completionHandler(sensorState, xDripError)
@@ -390,12 +475,16 @@ class LibreDataParser {
             
         } else {
             trace("in handleGlucoseData, sensor state is unknown", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
+            print("[LibreDataParser] ⚠️ 传感器状态未知")
         }
         
         // if result.error not nil, then send it to the delegate and
         if let xDripError =  result.xDripError {
             
-            cgmTransmitterDelegate?.errorOccurred(xDripError: xDripError)
+            // 必须在主线程调用 delegate
+            DispatchQueue.main.async { [weak cgmTransmitterDelegate] in
+                cgmTransmitterDelegate?.errorOccurred(xDripError: xDripError)
+            }
             
         }
 
@@ -412,10 +501,13 @@ class LibreDataParser {
             guard sensorTimeInMinutes >= 60 else {
                 
                 trace("in handleGlucoseData, sensorTimeInMinutes < 60 minutes, no further processing", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
+                print("[LibreDataParser] ⚠️ 传感器时间 < 60 分钟，处于启动阶段")
                 
-                var emptyArray = [GlucoseData]()
-                
-                cgmTransmitterDelegate?.cgmTransmitterInfoReceived(glucoseData: &emptyArray, transmitterBatteryInfo: nil, sensorAge: TimeInterval(minutes: Double(sensorTimeInMinutes)))
+                // 必须在主线程调用 delegate（CoreData 操作）
+                DispatchQueue.main.async { [weak cgmTransmitterDelegate] in
+                    var emptyArray = [GlucoseData]()
+                    cgmTransmitterDelegate?.cgmTransmitterInfoReceived(glucoseData: &emptyArray, transmitterBatteryInfo: nil, sensorAge: TimeInterval(minutes: Double(sensorTimeInMinutes)))
+                }
                 
                 // call completion handler to make sure the sensor state is handled, set state to .starting, because result.sensorState has value .ready here which is not correct
                 completionHandler(.starting, result.xDripError)
@@ -429,7 +521,22 @@ class LibreDataParser {
         var result = result
 
         // call delegate with result
-        cgmTransmitterDelegate?.cgmTransmitterInfoReceived(glucoseData: &result.glucoseData, transmitterBatteryInfo: nil, sensorAge: sensorTimeInResult)
+        print("[LibreDataParser] ✅ 调用 cgmTransmitterInfoReceived 存储数据，glucoseData 数量: \(result.glucoseData.count), sensorAge: \(sensorTimeInResult?.minutes ?? 0) 分钟")
+        
+        // 显示前 3 个值
+        if result.glucoseData.count > 0 {
+            print("[LibreDataParser] 数据样例（前 3 个）:")
+            for (index, data) in result.glucoseData.prefix(3).enumerated() {
+                print("  [\(index)] 时间: \(data.timeStamp), 血糖: \(data.glucoseLevelRaw) mg/dL")
+            }
+        }
+        
+        // 必须在主线程调用 delegate（CoreData 操作）
+        DispatchQueue.main.async { [weak cgmTransmitterDelegate] in
+            var glucoseDataCopy = result.glucoseData
+            cgmTransmitterDelegate?.cgmTransmitterInfoReceived(glucoseData: &glucoseDataCopy, transmitterBatteryInfo: nil, sensorAge: sensorTimeInResult)
+            print("[LibreDataParser] ✅ 数据已传递给委托，存储流程完成")
+        }
         
         completionHandler(result.sensorState, result.xDripError)
         

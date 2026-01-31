@@ -87,7 +87,7 @@ private func readBits(_ buffer: [UInt8], byteOffset: Int, bitOffset: Int, bitCou
     var res = 0
     for i in 0..<bitCount {
         let totalBitOffset = byteOffset * 8 + bitOffset + i
-        let byteIndex = byteOffset + totalBitOffset / 8
+        let byteIndex = totalBitOffset / 8  // ✅ 修复：totalBitOffset 已包含 byteOffset
         let bit = totalBitOffset % 8
         if totalBitOffset >= 0, byteIndex < buffer.count, (Int(buffer[byteIndex]) >> bit) & 1 == 1 {
             res |= (1 << i)
@@ -124,11 +124,13 @@ private func readCalibrationInfo(_ data: [UInt8]) -> [Int] {
 private func glucoseTemperatureTempFromRaw(_ raw: LibreProBLEGlucoseValue, calibrationInfo: [Int]) -> Double {
     if raw.temperature == 128 { return 0.0 }
     let ca = 0.0009180023, cb = 0.0001964561, cc = 0.0000007061775, cd = 0.00000005283566
-    let R = (raw.temperature * Double(1000 + 71500)) / (raw.temperatureAdjustment + Double(calibrationInfo[5])) - Double(1000)
+    let divisor = raw.temperatureAdjustment + Double(calibrationInfo[5])
+    let R = (raw.temperature * Double(1000 + 71500)) / divisor - Double(1000)
     guard R >= 0 else { return 0.0 }
     let logR = log(R)
     let d = pow(logR, 3) * cd + pow(logR, 2) * cc + logR * cb + ca
-    return 1.0 / d - 273.15
+    let result = 1.0 / d - 273.15
+    return result
 }
 
 private func getTemperatureTempValue(i: Int, count: Int, idSum: Double, idPowSum: Double, valueSum: Double, idMultiplyValueSum: Double, values: inout [LibreProBLEGlucoseValue]) -> Double {
@@ -486,8 +488,12 @@ enum LibreProAlgorithm {
         timeOffset(i: index, values: &arr, historyDataLen: historyDataLen, bOffset: true)
     }
     var result: [(time: Int, oopValue: Int, raw: Int, dataQuality: Int)] = []
+    var validCount = 0
     for index in 0..<historyDataLen {
-        var v1 = Int(round(arr[index].value7))
+        // 防止 NaN/Inf 导致崩溃
+        let value7 = arr[index].value7
+        if !value7.isFinite { continue }
+        var v1 = Int(round(value7))
         if v1 < 40 { v1 = 39 }
         arr[index].oopValue = Double(v1)
         let time = arr[index].time
@@ -495,6 +501,9 @@ enum LibreProAlgorithm {
         if time >= 20160 { break }
         if time == 20145 { continue }
         if time >= sensorTime - 20 { break }
+        
+        // 防止 oopValue 和 value 也是 NaN/Inf
+        guard arr[index].oopValue.isFinite && arr[index].value.isFinite else { continue }
         var oop = Int(round(arr[index].oopValue))
         let raw = Int(round(arr[index].value))
         let dataQuality = arr[index].dataQuality
@@ -505,7 +514,9 @@ enum LibreProAlgorithm {
             oop = 0
         }
         result.append((time: time, oopValue: oop, raw: raw, dataQuality: dataQuality == 0 ? 0 : 1))
+        validCount += 1
     }
+    print("[LibreProAlgorithm] readHistoricalValues 完成，有效历史值: \(validCount)/\(historyDataLen)")
     return (sensorTime, result)
     }
 
@@ -552,42 +563,78 @@ enum LibreProAlgorithm {
         readGlucoseValueTemp7Ex(i: index, values: &glucoseTrendArray, historyDataLen: len)
     }
 
+    // 检查是否可以计算 trendArrow（与 Android librepro.cpp 一致）
+    var bTrendArrow = true
     var dAdd1 = 0.0, dAdd2 = 0.0, dAdd3 = 0.0
-    if glucoseTrendArray[0].calibratinoInfoValue != 0 && glucoseTrendArray[9].calibratinoInfoValue != 0 {
+    
+    if glucoseTrendArray[0].calibratinoInfoValue == 0 || glucoseTrendArray[9].calibratinoInfoValue == 0 {
+        dAdd1 = 0
+        bTrendArrow = false
+    } else {
         let dUse1 = (glucoseTrendArray[9].calibratinoInfoValue - glucoseTrendArray[15].calibratinoInfoValue) * 1.02
         let dUse2 = (glucoseTrendArray[0].calibratinoInfoValue - glucoseTrendArray[15].calibratinoInfoValue) * 0.217
         dAdd1 = dUse1 / -6.00 + dUse2 / -15.00
     }
-    if glucoseTrendArray[13].calibratinoInfoValue != 0 && glucoseTrendArray[8].calibratinoInfoValue != 0 {
+    
+    if glucoseTrendArray[13].calibratinoInfoValue == 0 || glucoseTrendArray[8].calibratinoInfoValue == 0 {
+        dAdd2 = 0
+        bTrendArrow = false
+    } else {
         let dUse1 = (glucoseTrendArray[13].calibratinoInfoValue - glucoseTrendArray[15].calibratinoInfoValue) * 0.169
         let dUse2 = (glucoseTrendArray[8].calibratinoInfoValue - glucoseTrendArray[15].calibratinoInfoValue) * 1.054
         dAdd2 = dUse1 / -2.00 + dUse2 / -7.00
     }
-    if glucoseTrendArray[11].calibratinoInfoValue != 0 && glucoseTrendArray[3].calibratinoInfoValue != 0 {
+    
+    if glucoseTrendArray[11].calibratinoInfoValue == 0 || glucoseTrendArray[3].calibratinoInfoValue == 0 {
+        dAdd3 = 0
+        bTrendArrow = false
+    } else {
         let dUse1 = (glucoseTrendArray[11].calibratinoInfoValue - glucoseTrendArray[15].calibratinoInfoValue) * 0.585
         let dUse2 = (glucoseTrendArray[3].calibratinoInfoValue - glucoseTrendArray[15].calibratinoInfoValue) * 0.634
         dAdd3 = dUse1 / -4.00 + dUse2 / -12.00
     }
+    
     var dSumAdd = 0.0, dDivAdd = 0.0
     if dAdd1 != 0.0 { dSumAdd += dAdd1 * 91.00; dDivAdd += 91.00 }
     if dAdd2 != 0.0 { dSumAdd += dAdd2 * 90.0; dDivAdd += 90.0 }
     if dAdd3 != 0.0 { dSumAdd += dAdd3 * 91.00; dDivAdd += 91.00 }
     let dCurr1 = dDivAdd > 0 ? dSumAdd / dDivAdd : 0
+    
     var trendArrow = 0
-    if dCurr1 < 2.0 {
-        if dCurr1 < 1.0 {
-            if dCurr1 > -2.0 { trendArrow = dCurr1 > -1.0 ? 3 : 2 }
-            else { trendArrow = 1 }
-        } else { trendArrow = 4 }
-    } else { trendArrow = 5 }
+    
+    // 如果无法计算有效的 trendArrow，直接返回 0
+    if !bTrendArrow {
+        trendArrow = 0
+    } else {
+        // 计算 trendArrow（仅当 bTrendArrow = true 时）
+        if dCurr1 < 2.0 {
+            if dCurr1 < 1.0 {
+                if dCurr1 > -2.0 { trendArrow = dCurr1 > -1.0 ? 3 : 2 }
+                else { trendArrow = 1 }
+            } else { trendArrow = 4 }
+        } else { trendArrow = 5 }
+    }
 
     let trendIndex = min(max(0, trend), 15)
-    var intValue = Int(round(glucoseTrendArray[trendIndex].value7))
+    // 防止 NaN/Inf
+    let value7 = glucoseTrendArray[trendIndex].value7
+    guard value7.isFinite else {
+        print("[LibreProAlgorithm] trend value7 非有限值: \(value7), 返回 nil")
+        return nil
+    }
+    var intValue = Int(round(value7))
     if intValue - 40 > 460 { trendArrow = 0 }
     if intValue < 39 { intValue = 39 }
     if intValue > 501 { intValue = 501 }
-    let raw = Int(round(glucoseTrendArray[trendIndex].value))
+    
+    let rawValue = glucoseTrendArray[trendIndex].value
+    guard rawValue.isFinite else {
+        print("[LibreProAlgorithm] trend raw value 非有限值: \(rawValue), 返回 nil")
+        return nil
+    }
+    let raw = Int(round(rawValue))
     let dataQuality = glucoseTrendArray[trendIndex].dataQuality
+    print("[LibreProAlgorithm] readProGlucoseValue 完成，当前血糖: \(intValue) mg/dL, 趋势箭头: \(trendArrow), raw: \(raw)")
     return (intValue, raw, dataQuality, trendArrow)
     }
 }
