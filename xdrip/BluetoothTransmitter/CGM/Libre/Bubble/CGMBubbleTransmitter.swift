@@ -45,6 +45,7 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
     private var rxBuffer:Data
     // how long to wait for next packet before sending startreadingcommand
     private static let maxWaitForpacketInSeconds = 60.0
+    private static let minimumGlucoseReadIntervalInSeconds = 4.5 * 60.0
     // length of header added by Bubble in front of data dat is received from Libre sensor
     private let bubbleHeaderLength = 8
    
@@ -263,6 +264,9 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
     }
     
     func nextReadTimeinterval() -> UInt8 {
+        if libreSensorType == .libreProH {
+            return 0x05
+        }
         
         guard let last = lastGlucoseDate else {
             return 0x05
@@ -390,15 +394,12 @@ class CGMBubbleTransmitter:BluetoothTransmitter, CGMTransmitter {
 
                         lastDataTime=0
                         
-                        // 临时注释限流检查，测试 Pro 模式（生产环境恢复）
-                        /*
                         if let last = lastGlucoseDate {
-                            if Date().timeIntervalSince(last) < 4 * 60 {
-                                print("[Bubble BLE] 0x80 → 距上次读取不足4分钟，跳过")
+                            if Date().timeIntervalSince(last) < CGMBubbleTransmitter.minimumGlucoseReadIntervalInSeconds {
+                                print("[Bubble BLE] 0x80 → 距上次读取不足4.5分钟，跳过")
                                 return
                             }
                         }
-                        */
 
                         // 0x80 后发送读数据命令，Bubble 会自动返回 0xC0/0xC1/0x82
                         // 策略：只有当 libreSensorType 已确认为 .libreProH 时才发 Pro 命令

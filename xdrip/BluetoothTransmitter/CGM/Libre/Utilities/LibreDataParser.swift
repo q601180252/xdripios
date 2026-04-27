@@ -15,6 +15,15 @@ class LibreDataParser {
             UserDefaults.standard.previousRawLibreValues = previousRawValues
         }
     }
+
+    private var lastLibreProSensorTimeInMinutes: Int {
+        get {
+            UserDefaults.standard.integer(forKey: "LibreDataParserLastLibreProSensorTimeInMinutes")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "LibreDataParserLastLibreProSensorTimeInMinutes")
+        }
+    }
     
     /// for appending of previously stored values, how many values should match ?
     private let amountOfValuesToCompare = 4
@@ -293,6 +302,20 @@ class LibreDataParser {
         
         trace("in libreProDataProcessor, sensorState = %{public}@ (from trend[4]), sensorTime = %{public}@ minutes", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, sensorState.description, sensorTimeInMinutes.description)
         print("[LibreDataParser] libreProDataProcessor 开始处理，sensorState=\(sensorState.description) (trend[4]=0x\(String(format: "%02X", trend[4]))), sensorTime=\(sensorTimeInMinutes) 分钟")
+
+        if sensorState == .ready,
+           lastLibreProSensorTimeInMinutes > 0,
+           sensorTimeInMinutes >= lastLibreProSensorTimeInMinutes,
+           sensorTimeInMinutes - lastLibreProSensorTimeInMinutes < 5 {
+            trace("in libreProDataProcessor, skipping Libre Pro reading because sensorTime delta is less than 5 minutes", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info)
+            print("[LibreDataParser] Libre Pro 距上次有效数据不足 5 分钟，跳过")
+            DispatchQueue.main.async { [weak cgmTransmitterDelegate] in
+                var emptyArray = [GlucoseData]()
+                cgmTransmitterDelegate?.cgmTransmitterInfoReceived(glucoseData: &emptyArray, transmitterBatteryInfo: nil, sensorAge: TimeInterval(minutes: Double(sensorTimeInMinutes)))
+            }
+            completionHandler(sensorState, nil)
+            return
+        }
         
         // 如需测试算法，手动调用: LibreProAlgorithmTests.runAllTests()
 
@@ -375,6 +398,7 @@ class LibreDataParser {
         if glucoseData.count > 0 {
             let rawValues = glucoseData.prefix(20).map { $0.glucoseLevelRaw }
             previousRawValues = rawValues
+            lastLibreProSensorTimeInMinutes = sensorTimeInMinutes
             trace("in libreProDataProcessor, stored %{public}@ raw values for next connection", log: log, category: ConstantsLog.categoryLibreDataParser, type: .info, rawValues.count.description)
         }
         
@@ -680,6 +704,5 @@ class LibreDataParser {
     }
     
 }
-
 
 
